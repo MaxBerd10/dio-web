@@ -1,0 +1,110 @@
+@import "tailwindcss";
+
+/* ============================================
+   Dio English Tutor — Design Tokens
+   ============================================ */
+
+@theme {
+  /* Brand colors (oklch — modern, perceptually uniform) */
+  --color-primary: oklch(0.54 0.22 280);
+  --color-primary-hover: oklch(0.48 0.22 280);
+  --color-primary-foreground: oklch(0.98 0 0);
+
+  --color-accent: oklch(0.72 0.17 45);
+  --color-accent-hover: oklch(0.66 0.18 45);
+  --color-accent-foreground: oklch(0.15 0 0);
+
+  /* Surfaces (warm-tinted neutrals) */
+  --color-background: oklch(0.99 0.005 80);
+  --color-foreground: oklch(0.18 0.02 280);
+  --color-surface: oklch(0.97 0.006 80);
+  --color-surface-elevated: oklch(1 0 0);
+
+  --color-muted: oklch(0.95 0.008 80);
+  --color-muted-foreground: oklch(0.48 0.02 280);
+
+  --color-border: oklch(0.9 0.01 80);
+  --color-input: oklch(0.93 0.008 80);
+  --color-ring: oklch(0.54 0.22 280);
+
+  /* Semantic */
+  --color-success: oklch(0.65 0.16 145);
+  --color-warning: oklch(0.75 0.17 80);
+  --color-danger: oklch(0.6 0.21 25);
+  --color-danger-foreground: oklch(0.98 0 0);
+
+  /* CEFR level colors (lessons / progress UI uchun) */
+  --color-cefr-a1: oklch(0.7 0.14 145);
+  --color-cefr-a2: oklch(0.7 0.15 175);
+  --color-cefr-b1: oklch(0.65 0.16 230);
+  --color-cefr-b2: oklch(0.6 0.2 280);
+  --color-cefr-c1: oklch(0.6 0.21 320);
+  --color-cefr-c2: oklch(0.55 0.22 15);
+
+  /* Radius */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.625rem;
+  --radius-lg: 0.875rem;
+  --radius-xl: 1.25rem;
+}
+
+/* Dark mode overrides */
+@media (prefers-color-scheme: dark) {
+  @theme {
+    --color-background: oklch(0.15 0.015 280);
+    --color-foreground: oklch(0.96 0.005 80);
+    --color-surface: oklch(0.2 0.018 280);
+    --color-surface-elevated: oklch(0.24 0.02 280);
+
+    --color-muted: oklch(0.25 0.018 280);
+    --color-muted-foreground: oklch(0.68 0.015 280);
+
+    --color-border: oklch(0.3 0.02 280);
+    --color-input: oklch(0.27 0.018 280);
+
+    --color-primary: oklch(0.65 0.2 280);
+    --color-primary-hover: oklch(0.72 0.19 280);
+  }
+}
+
+/* ============================================
+   Base styles
+   ============================================ */
+
+* {
+  border-color: var(--color-border);
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  font-feature-settings: "rlig" 1, "calt" 1;
+  min-height: 100dvh;
+}
+
+/* Touch-friendly: barcha tugmalar/inputlar mobil uchun kamida 44px */
+@media (pointer: coarse) {
+  button, [role="button"], input, select, textarea {
+    min-height: 2.75rem;
+  }
+}
+
+/* Focus ring — accessibility */
+:focus-visible {
+  outline: 2px solid var(--color-ring);
+  outline-offset: 2px;
+}
+
+/* Scrollbar — yengilroq ko'rinish */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover { background: var(--color-muted-foreground); }
