@@ -56,6 +56,11 @@ INSTALLED_APPS = [
 
     # Local apps
     'accounts',
+    'content',
+    'vocabulary',
+    'grammar',
+    'exercises',
+    'progress',
 ]
 
 MIDDLEWARE = [
