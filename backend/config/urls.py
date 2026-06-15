@@ -22,6 +22,11 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/auth/', include('accounts.urls')),
+    path('api/content/', include('content.urls')),
+    path('api/vocabulary/', include('vocabulary.urls')),
+    path('api/grammar/', include('grammar.urls')),
+    path('api/exercises/', include('exercises.urls')),
+    path('api/progress/', include('progress.urls')),
 ]
 
 if settings.DEBUG:
