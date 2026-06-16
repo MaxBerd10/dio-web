@@ -1,9 +1,10 @@
 import type { Metadata, Viewport } from 'next';
 import './globals.css';
+import { QueryProvider } from '@/lib/query-client';
 
 export const metadata: Metadata = {
   title: 'Dio English Tutor',
-  description: 'CEFR A1–C2 va IELTS uchun ingliz tili o\'rganish platformasi',
+  description: "CEFR A1–C2 va IELTS uchun ingliz tili o'rganish platformasi",
 };
 
 export const viewport: Viewport = {
@@ -19,7 +20,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="uz">
-      <body className="antialiased">{children}</body>
+      <body className="antialiased">
+        <QueryProvider>{children}</QueryProvider>
+      </body>
     </html>
   );
 }
