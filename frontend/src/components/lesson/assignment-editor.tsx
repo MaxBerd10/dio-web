@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useMemo } from 'react';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import {
   ClipboardCheck,
   Clock,
@@ -9,14 +9,21 @@ import {
   AlertCircle,
   CheckCircle2,
   FileText,
+  Hourglass,
   X,
 } from 'lucide-react';
 
-import { assignmentsApi, type Assignment } from '@/lib/api/assignments';
+import {
+  assignmentsApi,
+  type Assignment,
+  type SubmissionDetail,
+} from '@/lib/api/assignments';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
+import { Skeleton } from '@/components/ui/skeleton';
 import { renderMarkdown } from '@/lib/markdown';
 import { cn } from '@/lib/utils';
+import { SubmissionFeedback } from './submission-feedback';
 
 interface AssignmentEditorProps {
   assignment: Assignment;
@@ -27,6 +34,19 @@ export function AssignmentEditor({ assignment, onClose }: AssignmentEditorProps)
   const queryClient = useQueryClient();
   const [content, setContent] = useState('');
   const [submitted, setSubmitted] = useState(false);
+
+  // Mavjud submission detail (agar bor bo'lsa)
+  const existingSubId = assignment.user_submission?.id;
+  const { data: submission, isLoading: isLoadingSub } = useQuery({
+    queryKey: ['submission', existingSubId],
+    queryFn: () => assignmentsApi.getSubmission(existingSubId!),
+    enabled: !!existingSubId,
+  });
+
+  const isIELTS =
+    assignment.title.includes('Task 1') ||
+    assignment.title.includes('Task 2') ||
+    assignment.title.toLowerCase().includes('ielts');
 
   const wordCount = useMemo(() => {
     const trimmed = content.trim();
@@ -45,12 +65,134 @@ export function AssignmentEditor({ assignment, onClose }: AssignmentEditorProps)
       assignmentsApi.submitAssignment(assignment.id, { content }),
     onSuccess: () => {
       setSubmitted(true);
-      queryClient.invalidateQueries({
-        queryKey: ['lesson-assignments'],
-      });
+      queryClient.invalidateQueries({ queryKey: ['lesson-assignments'] });
+      queryClient.invalidateQueries({ queryKey: ['submission'] });
     },
   });
 
+  // Loading state
+  if (existingSubId && isLoadingSub) {
+    return (
+      <div className="space-y-4">
+        <Skeleton className="h-24" />
+        <Skeleton className="h-64" />
+      </div>
+    );
+  }
+
+  // Submission graded yoki returned — feedback ko'rsatamiz
+  if (
+    submission &&
+    (submission.status === 'graded' || submission.status === 'returned')
+  ) {
+    return (
+      <div className="space-y-4">
+        <div className="flex items-center gap-2">
+          <button
+            onClick={onClose}
+            className="h-9 w-9 rounded-lg hover:bg-[var(--color-muted)] flex items-center justify-center"
+            aria-label="Yopish"
+          >
+            <X className="h-4 w-4" />
+          </button>
+          <h2 className="font-semibold text-base md:text-lg truncate">
+            {assignment.title}
+          </h2>
+        </div>
+
+        <SubmissionFeedback submission={submission} isIELTS={isIELTS} />
+
+        {/* Qaytarilgan bo'lsa — qayta urinish */}
+        {submission.status === 'returned' && (
+          <Card className="border-[var(--color-primary)]/30 bg-[var(--color-primary)]/5">
+            <CardContent className="p-5">
+              <p className="font-semibold text-sm mb-1">
+                Vazifa qaytarildi
+              </p>
+              <p className="text-xs text-[var(--color-muted-foreground)] mb-4">
+                O'qituvchining tavsiyalarini hisobga olib, vazifani qayta yozing.
+              </p>
+              <Button
+                fullWidth
+                onClick={() => {
+                  // submission state'ini tozalaymiz, editor ochiladi
+                  setContent(submission.content);
+                  // bu re-render qilish uchun — submission undefined emas, lekin status draftga aylandi deb hisoblaymiz
+                  // Aslida API'da yangi submission yaratadi (chunki POST submit endpoint)
+                  queryClient.setQueryData(
+                    ['submission', existingSubId],
+                    null,
+                  );
+                }}
+              >
+                Qayta yozish
+              </Button>
+            </CardContent>
+          </Card>
+        )}
+      </div>
+    );
+  }
+
+  // Submission submitted yoki in_review — kutish ekrani
+  if (
+    submission &&
+    (submission.status === 'submitted' || submission.status === 'in_review')
+  ) {
+    return (
+      <div className="space-y-4">
+        <div className="flex items-center gap-2">
+          <button
+            onClick={onClose}
+            className="h-9 w-9 rounded-lg hover:bg-[var(--color-muted)] flex items-center justify-center"
+            aria-label="Yopish"
+          >
+            <X className="h-4 w-4" />
+          </button>
+          <h2 className="font-semibold text-base md:text-lg truncate">
+            {assignment.title}
+          </h2>
+        </div>
+
+        <Card className="border-amber-500/30 bg-gradient-to-br from-amber-500/5 to-amber-500/0">
+          <CardContent className="p-6 md:p-8 text-center">
+            <div className="text-4xl mb-2">⏳</div>
+            <h2 className="text-xl font-bold tracking-tight mb-2">
+              {submission.status === 'in_review'
+                ? "O'qituvchi tekshirmoqda"
+                : "Tekshirishni kutmoqda"}
+            </h2>
+            <p className="text-sm text-[var(--color-muted-foreground)] max-w-md mx-auto">
+              Vazifangiz topshirildi. O'qituvchi tez orada baho va izoh
+              qoldiradi. Tekshirish odatda 24-48 soat oladi.
+            </p>
+            <div className="mt-4 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-amber-500/15 text-amber-600 dark:text-amber-400">
+              <Hourglass className="h-3 w-3" />
+              {submission.status === 'in_review'
+                ? 'Tekshirilmoqda'
+                : 'Topshirildi'}
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Topshirgan matn (collapsed) */}
+        <Card>
+          <CardContent className="p-5">
+            <p className="text-xs font-semibold uppercase tracking-wider text-[var(--color-muted-foreground)] mb-2">
+              Sizning javobingiz ({submission.word_count} so'z)
+            </p>
+            <div className="rounded-lg bg-[var(--color-muted)]/30 px-4 py-3 max-h-60 overflow-y-auto">
+              <div className="whitespace-pre-wrap text-sm leading-relaxed">
+                {submission.content}
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+    );
+  }
+
+  // Yangi topshirish — success ekran
   if (submitted) {
     return (
       <div className="space-y-4">
@@ -76,6 +218,7 @@ export function AssignmentEditor({ assignment, onClose }: AssignmentEditorProps)
     );
   }
 
+  // Default — editor (yangi yozish yoki qayta yozish)
   return (
     <div className="space-y-4">
       {/* Top bar */}
@@ -165,10 +308,7 @@ export function AssignmentEditor({ assignment, onClose }: AssignmentEditorProps)
                 <>Kamida {assignment.min_words} ta so'z yozing.</>
               )}
               {assignment.max_words && wordCount > assignment.max_words && (
-                <>
-                  Maksimum {assignment.max_words} ta so'z (siz {wordCount}{' '}
-                  yozdingiz).
-                </>
+                <>Maksimum {assignment.max_words} ta so'z (siz {wordCount} yozdingiz).</>
               )}
             </p>
           </div>
@@ -177,9 +317,7 @@ export function AssignmentEditor({ assignment, onClose }: AssignmentEditorProps)
         <Button
           fullWidth
           onClick={() => submitMutation.mutate()}
-          disabled={
-            wordCount === 0 || !wordsOk || submitMutation.isPending
-          }
+          disabled={wordCount === 0 || !wordsOk || submitMutation.isPending}
           loading={submitMutation.isPending}
         >
           {submitMutation.isPending ? 'Yuborilmoqda...' : 'Topshirish'}
@@ -204,13 +342,7 @@ function WordCountBadge({
   ok: boolean;
 }) {
   const targetText =
-    min && max
-      ? `${min}–${max} so'z`
-      : min
-        ? `≥${min} so'z`
-        : max
-          ? `≤${max} so'z`
-          : null;
+    min && max ? `${min}–${max} so'z` : min ? `≥${min} so'z` : max ? `≤${max} so'z` : null;
 
   return (
     <div className="flex items-center gap-2">

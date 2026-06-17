@@ -155,7 +155,13 @@ function AssignmentCard({
               ? 'Vazifani boshlash'
               : status === 'draft'
                 ? 'Davom etish'
-                : 'Yana topshirish'}
+                : status === 'graded'
+                  ? "Natijani ko'rish"
+                  : status === 'returned'
+                    ? 'Tavsiyalarni ko\'rish'
+                    : status === 'submitted' || status === 'in_review'
+                      ? 'Topshirilgan matnni ko\'rish'
+                      : 'Yana topshirish'}
           </Button>
         </div>
       </CardContent>

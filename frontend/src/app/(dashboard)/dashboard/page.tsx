@@ -1,6 +1,8 @@
 'use client';
 
+import { useEffect } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { GraduationCap, ArrowRight } from 'lucide-react';
 
 import { useAuthStore } from '@/store/auth';
@@ -13,10 +15,26 @@ import { VocabularyCTA } from '@/components/dashboard/vocabulary-cta';
 import { LeaderboardPreview } from '@/components/dashboard/leaderboard-preview';
 
 export default function DashboardPage() {
+  const router = useRouter();
   const { user } = useAuthStore();
   const greeting = getGreeting();
 
-  // Teacher uchun alohida sahifa keyin yasaymiz; hozircha hammaga shu
+  // Teacher/admin /dashboard ga kelsa, darrov /teacher/submissions ga yo'naltir
+  useEffect(() => {
+    if (user && (user.role === 'teacher' || user.role === 'admin')) {
+      router.replace('/teacher/submissions');
+    }
+  }, [user, router]);
+
+  // Teacher redirect bo'lguncha bo'sh ekran ko'rsatmaslik uchun
+  if (user && (user.role === 'teacher' || user.role === 'admin')) {
+    return (
+      <div className="p-8 max-w-2xl mx-auto text-center text-sm text-[var(--color-muted-foreground)]">
+        Vazifalar sahifasiga o'tilmoqda...
+      </div>
+    );
+  }
+
   return (
     <div className="p-4 md:p-8 max-w-6xl mx-auto space-y-6">
       {/* Salomlashish */}
@@ -59,20 +77,11 @@ export default function DashboardPage() {
           </div>
         </>
       )}
-
-      {/* Teacher uchun keyin alohida widget'lar qo'shamiz */}
-      {user?.role !== 'student' && (
-        <div className="rounded-xl border border-dashed border-[var(--color-border)] p-12 text-center">
-          <p className="text-[var(--color-muted-foreground)]">
-            Teacher dashboard keyingi qadamlarda quriladi.
-          </p>
-        </div>
-      )}
     </div>
   );
 }
 
-// Continue learning placeholder — keyin Step 13.5'da real data bilan to'ldiramiz
+// Continue learning placeholder — keyin real data bilan to'ldiramiz
 function ContinueLearningCard() {
   return (
     <div className="rounded-xl border border-[var(--color-border)] bg-[var(--color-surface-elevated)] p-6">
