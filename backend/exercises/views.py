@@ -40,7 +40,6 @@ class LessonQuizzesView(APIView):
         quizzes = (
             lesson.quizzes
             .filter(is_published=True)
-            .annotate(question_count=Count('questions'))
             .order_by('order')
         )
         serializer = QuizListSerializer(

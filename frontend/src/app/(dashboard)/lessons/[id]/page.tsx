@@ -1,6 +1,9 @@
 'use client';
 
-import { use } from 'react';
+import { LessonQuiz } from '@/components/lesson/lesson-quiz';
+import { LessonAssignment } from '@/components/lesson/lesson-assignment';
+import { LessonCompleteButton } from '@/components/lesson/lesson-complete-button';
+import { use, useState } from 'react';
 import Link from 'next/link';
 import {
   ChevronLeft,
@@ -15,6 +18,17 @@ import {
 import { useLesson } from '@/lib/hooks/use-courses';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Card, CardContent } from '@/components/ui/card';
+import {
+  Tabs,
+  TabsList,
+  TabsTrigger,
+  TabsContent,
+} from '@/components/ui/tabs';
+
+import { LessonWords } from '@/components/lesson/lesson-words';
+import { LessonGrammar } from '@/components/lesson/lesson-grammar';
+
+type TabValue = 'overview' | 'words' | 'grammar' | 'quiz' | 'assignment';
 
 export default function LessonPage({
   params,
@@ -25,6 +39,7 @@ export default function LessonPage({
   const lessonId = parseInt(id, 10);
 
   const { data: lesson, isLoading, error } = useLesson(lessonId);
+  const [activeTab, setActiveTab] = useState<TabValue>('overview');
 
   return (
     <div className="p-4 md:p-8 max-w-4xl mx-auto">
@@ -78,55 +93,140 @@ export default function LessonPage({
             )}
           </div>
 
-          {/* Description */}
-          {lesson.description && (
-            <Card className="mb-6">
-              <CardContent className="p-5">
-                <p className="text-sm md:text-base text-[var(--color-foreground)] leading-relaxed">
-                  {lesson.description}
-                </p>
-              </CardContent>
-            </Card>
-          )}
+          {/* Tabs */}
+          <Tabs
+            value={activeTab}
+            onValueChange={(v) => setActiveTab(v as TabValue)}
+          >
+            <TabsList className="w-full md:w-auto">
+              <TabsTrigger value="overview">Umumiy</TabsTrigger>
+              <TabsTrigger
+                value="words"
+                icon={<BookOpen className="h-3.5 w-3.5" />}
+                count={lesson.word_count}
+              >
+                So'zlar
+              </TabsTrigger>
+              <TabsTrigger
+                value="grammar"
+                icon={<Brain className="h-3.5 w-3.5" />}
+                count={lesson.grammar_topic_count}
+              >
+                Grammar
+              </TabsTrigger>
+              <TabsTrigger
+                value="quiz"
+                icon={<CircleCheck className="h-3.5 w-3.5" />}
+                count={lesson.quiz_count}
+              >
+                Test
+              </TabsTrigger>
+              <TabsTrigger
+                value="assignment"
+                icon={<ClipboardCheck className="h-3.5 w-3.5" />}
+                count={lesson.assignment_count}
+              >
+                Vazifa
+              </TabsTrigger>
+            </TabsList>
 
-          {/* Content blocks overview */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-8">
-            <ContentBlock
-              icon={BookOpen}
-              label="So'zlar"
-              count={lesson.word_count}
-              color="#3b82f6"
-            />
-            <ContentBlock
-              icon={Brain}
-              label="Grammar"
-              count={lesson.grammar_topic_count}
-              color="#8b5cf6"
-            />
-            <ContentBlock
-              icon={CircleCheck}
-              label="Testlar"
-              count={lesson.quiz_count}
-              color="#10b981"
-            />
-            <ContentBlock
-              icon={ClipboardCheck}
-              label="Vazifalar"
-              count={lesson.assignment_count}
-              color="#f59e0b"
-            />
-          </div>
+            <TabsContent value="overview">
+              <LessonOverview lesson={lesson} onJumpTab={setActiveTab} />
+            </TabsContent>
 
-          {/* Placeholder bo'lim — keyin to'liq qilamiz */}
-          <div className="rounded-xl border border-dashed border-[var(--color-border)] py-12 px-6 text-center">
-            <p className="text-lg font-semibold mb-1">🚧 Dars yuklanmoqda</p>
-            <p className="text-sm text-[var(--color-muted-foreground)] max-w-md mx-auto">
-              Dars ichi (so'zlar, grammar, testlar, vazifalar) keyingi qadamda
-              to'liq qilinadi.
-            </p>
-          </div>
+            <TabsContent value="words">
+              <LessonWords lessonId={lesson.id} />
+            </TabsContent>
+
+            <TabsContent value="grammar">
+                <LessonGrammar lessonId={lesson.id} />
+            </TabsContent>
+
+            <TabsContent value="quiz">
+                <LessonQuiz lessonId={lesson.id} />
+            </TabsContent>
+
+            <TabsContent value="assignment">
+                <LessonAssignment lessonId={lesson.id} />
+            </TabsContent>
+          </Tabs>
         </>
       ) : null}
+    </div>
+  );
+}
+
+function LessonOverview({
+  lesson,
+  onJumpTab,
+}: {
+  lesson: import('@/lib/api/content').LessonDetail;
+  onJumpTab: (t: TabValue) => void;
+}) {
+  return (
+    <div className="space-y-4">
+      {/* Description */}
+      {lesson.description && (
+        <Card>
+          <CardContent className="p-5">
+            <p className="text-sm md:text-base leading-relaxed">
+              {lesson.description}
+            </p>
+          </CardContent>
+        </Card>
+      )}
+
+      {/* Content (markdown text) */}
+      {lesson.content && (
+        <Card>
+          <CardContent className="p-5">
+            <h3 className="text-sm font-semibold text-[var(--color-muted-foreground)] uppercase tracking-wider mb-2">
+              Dars matni
+            </h3>
+            <div className="prose prose-sm max-w-none whitespace-pre-wrap text-sm md:text-base leading-relaxed">
+              {lesson.content}
+            </div>
+          </CardContent>
+        </Card>
+      )}
+
+      {/* Content blocks */}
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+        <ContentBlock
+          icon={BookOpen}
+          label="So'zlar"
+          count={lesson.word_count}
+          color="#3b82f6"
+          onClick={() => onJumpTab('words')}
+        />
+        <ContentBlock
+          icon={Brain}
+          label="Grammar"
+          count={lesson.grammar_topic_count}
+          color="#8b5cf6"
+          onClick={() => onJumpTab('grammar')}
+        />
+        <ContentBlock
+          icon={CircleCheck}
+          label="Testlar"
+          count={lesson.quiz_count}
+          color="#10b981"
+          onClick={() => onJumpTab('quiz')}
+        />
+        <ContentBlock
+          icon={ClipboardCheck}
+          label="Vazifalar"
+          count={lesson.assignment_count}
+          color="#f59e0b"
+          onClick={() => onJumpTab('assignment')}
+        />
+      </div>
+
+       {/* ← YANGI QATOR: Complete tugmasi */}
+      <LessonCompleteButton
+        lessonId={lesson.id}
+        xpReward={lesson.xp_reward}
+      />
     </div>
   );
 }
@@ -136,24 +236,50 @@ function ContentBlock({
   label,
   count,
   color,
+  onClick,
 }: {
   icon: React.ElementType;
   label: string;
   count: number;
   color: string;
+  onClick: () => void;
 }) {
   return (
-    <Card>
-      <CardContent className="p-3 md:p-4 text-center">
-        <div
-          className="h-9 w-9 mx-auto rounded-lg flex items-center justify-center mb-2"
-          style={{ backgroundColor: `${color}20` }}
-        >
-          <Icon className="h-4 w-4" style={{ color }} />
-        </div>
-        <p className="text-xl font-bold">{count}</p>
-        <p className="text-xs text-[var(--color-muted-foreground)]">{label}</p>
-      </CardContent>
-    </Card>
+    <button
+      type="button"
+      onClick={onClick}
+      disabled={count === 0}
+      className="text-left"
+    >
+      <Card
+        className={
+          'transition-all ' +
+          (count > 0
+            ? 'hover:border-[var(--color-primary)] hover:shadow-sm cursor-pointer active:scale-[0.99]'
+            : 'opacity-50 cursor-not-allowed')
+        }
+      >
+        <CardContent className="p-3 md:p-4 text-center">
+          <div
+            className="h-9 w-9 mx-auto rounded-lg flex items-center justify-center mb-2"
+            style={{ backgroundColor: `${color}20` }}
+          >
+            <Icon className="h-4 w-4" style={{ color }} />
+          </div>
+          <p className="text-xl font-bold">{count}</p>
+          <p className="text-xs text-[var(--color-muted-foreground)]">{label}</p>
+        </CardContent>
+      </Card>
+    </button>
+  );
+}
+
+function ComingSoonTab({ name }: { name: string }) {
+  return (
+    <div className="rounded-xl border border-dashed border-[var(--color-border)] py-12 px-6 text-center">
+      <p className="text-sm text-[var(--color-muted-foreground)]">
+        {name} bo'limi keyingi qadamda quriladi.
+      </p>
+    </div>
   );
 }

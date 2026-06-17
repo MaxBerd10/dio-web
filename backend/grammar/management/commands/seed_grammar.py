@@ -469,6 +469,11 @@ GRAMMAR_TOPICS = [
 # ============================================================
 
 LESSON_GRAMMAR_MAP = {
+    'Saying Hello': ['Present Simple'],
+    'Hello and Hi': ['Present Simple'],
+    'Asking names': ['Present Simple'],
+    'Where are you from?': ['Present Simple'],
+
     'To be': ['Present Simple'],
     'To have': ['Present Simple'],
     'Action verbs': ['Present Simple'],

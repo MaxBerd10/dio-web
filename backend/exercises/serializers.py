@@ -51,10 +51,9 @@ class QuestionWithAnswerSerializer(serializers.ModelSerializer):
             'points', 'order', 'choices',
         )
 
-
 class QuizListSerializer(serializers.ModelSerializer):
     """Lesson sahifasida quiz ro'yxati uchun."""
-    question_count = serializers.IntegerField(read_only=True)
+    question_count = serializers.SerializerMethodField()
     user_attempts = serializers.SerializerMethodField()
     best_score = serializers.SerializerMethodField()
 
@@ -74,6 +73,10 @@ class QuizListSerializer(serializers.ModelSerializer):
         from progress.models import QuizAttempt
         return QuizAttempt.objects.filter(student=user, quiz=obj).count()
 
+    def get_question_count(self, obj):
+        return obj.question_count
+
+
     def get_best_score(self, obj):
         user = self.context.get('request').user
         if not user or not user.is_authenticated:
@@ -87,11 +90,13 @@ class QuizListSerializer(serializers.ModelSerializer):
         )
         return float(best.percentage) if best else None
 
-
 class QuizDetailSerializer(serializers.ModelSerializer):
     """Quiz boshlanishidan oldin to'liq ma'lumot."""
     questions = QuestionForAttemptSerializer(many=True, read_only=True)
-    question_count = serializers.IntegerField(read_only=True, source='question_count')
+    question_count = serializers.SerializerMethodField()
+
+    def get_question_count(self, obj):
+        return obj.question_count
 
     class Meta:
         model = Quiz
