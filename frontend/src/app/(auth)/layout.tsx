@@ -13,8 +13,8 @@ export default function AuthLayout({
           href="/"
           className="text-xl font-bold tracking-tight inline-flex items-center gap-1"
         >
-          Dio
-          <span className="text-[var(--color-primary)]">English Tutor</span>
+          English with
+          <span className="text-[var(--color-primary)]">Diyora</span>
         </Link>
       </header>
 
@@ -24,7 +24,7 @@ export default function AuthLayout({
       </main>
 
       <footer className="p-4 text-center text-xs text-[var(--color-muted-foreground)]">
-        © 2026 Dio English Tutor
+        © 2026 English with Diyora
       </footer>
     </div>
   );

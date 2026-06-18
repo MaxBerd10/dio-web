@@ -32,6 +32,8 @@ GENERAL_COURSES = [
                     ('Hello and Hi', 'vocabulary', 10),
                     ('Asking names', 'speaking', 12),
                     ('Where are you from?', 'mixed', 15),
+                    ('Talking about yourself', 'speaking', 15),
+                    ('Meeting new people', 'speaking', 18),
                 ],
             },
             {
@@ -41,15 +43,39 @@ GENERAL_COURSES = [
                     ('Morning routine', 'vocabulary', 12),
                     ('Time and schedule', 'grammar', 18),
                     ('Weekend activities', 'reading', 15),
+                    ('Daily habits', 'grammar', 15),
+                    ('Work and study routine', 'speaking', 18),
                 ],
             },
             {
                 'title': 'Food and Drinks',
                 'description': 'Restoran, oziq-ovqat, taom buyurtma qilish.',
                 'lessons': [
-                    ('Ordering at a cafe', 'speaking', 15),
                     ('Food vocabulary', 'vocabulary', 10),
+                    ('Ordering at a cafe', 'speaking', 15),
                     ('At the supermarket', 'listening', 12),
+                    ('Talking about food preferences', 'speaking', 15),
+                    ('Healthy eating', 'reading', 18),
+                ],
+            },
+            {
+                'title': 'People and Relationships',
+                'description': 'Odamlar, munosabatlar, ta\'riflash.',
+                'lessons': [
+                    ('Describing people', 'vocabulary', 12),
+                    ('Family relationships', 'vocabulary', 15),
+                    ('Talking about friends', 'speaking', 15),
+                    ('Personality adjectives', 'vocabulary', 18),
+                ],
+            },
+            {
+                'title': 'Home and Living',
+                'description': 'Uy, xonalar, mebel, joy ta\'riflash.',
+                'lessons': [
+                    ('Rooms in a house', 'vocabulary', 12),
+                    ('Furniture and objects', 'vocabulary', 12),
+                    ('Describing your home', 'speaking', 15),
+                    ('Renting a flat', 'speaking', 18),
                 ],
             },
         ],
@@ -67,6 +93,8 @@ GENERAL_COURSES = [
                     ('Check-in dialogue', 'speaking', 15),
                     ('Airport signs', 'vocabulary', 10),
                     ('Boarding announcements', 'listening', 12),
+                    ('Going through security', 'speaking', 15),
+                    ('Flight vocabulary', 'vocabulary', 12),
                 ],
             },
             {
@@ -75,6 +103,28 @@ GENERAL_COURSES = [
                 'lessons': [
                     ('Booking a room', 'speaking', 15),
                     ('Hotel facilities', 'vocabulary', 10),
+                    ('Checking in and out', 'speaking', 15),
+                    ('Solving problems at a hotel', 'speaking', 18),
+                ],
+            },
+            {
+                'title': 'Getting Around',
+                'description': 'Transport, yo\'nalish so\'rash.',
+                'lessons': [
+                    ('Types of transport', 'vocabulary', 12),
+                    ('Asking for directions', 'speaking', 15),
+                    ('Using public transport', 'listening', 15),
+                    ('Renting a car', 'speaking', 18),
+                ],
+            },
+            {
+                'title': 'Sightseeing and Culture',
+                'description': 'Diqqatga sazovor joylar, madaniyat.',
+                'lessons': [
+                    ('Tourist attractions', 'vocabulary', 12),
+                    ('Buying tickets', 'speaking', 12),
+                    ('Cultural differences', 'reading', 20),
+                    ('Talking about experiences', 'speaking', 18),
                 ],
             },
         ],
@@ -91,6 +141,8 @@ GENERAL_COURSES = [
                 'lessons': [
                     ('Formal vs informal', 'writing', 20),
                     ('Email phrases', 'vocabulary', 15),
+                    ('Writing a request email', 'writing', 20),
+                    ('Replying to emails', 'writing', 18),
                 ],
             },
             {
@@ -99,6 +151,28 @@ GENERAL_COURSES = [
                 'lessons': [
                     ('Making a call', 'speaking', 15),
                     ('Leaving a message', 'listening', 12),
+                    ('Conference calls', 'listening', 18),
+                    ('Ending a call politely', 'speaking', 12),
+                ],
+            },
+            {
+                'title': 'Meetings and Presentations',
+                'description': 'Yig\'ilish, taqdimot, muzokaralar.',
+                'lessons': [
+                    ('Meeting vocabulary', 'vocabulary', 15),
+                    ('Running a meeting', 'speaking', 20),
+                    ('Giving a presentation', 'speaking', 25),
+                    ('Discussing ideas', 'speaking', 18),
+                ],
+            },
+            {
+                'title': 'Job Applications',
+                'description': 'Ish qidirish, suhbat, CV.',
+                'lessons': [
+                    ('Writing a CV', 'writing', 25),
+                    ('Job interview phrases', 'speaking', 20),
+                    ('Talking about experience', 'speaking', 18),
+                    ('Salary negotiation', 'speaking', 20),
                 ],
             },
         ],
@@ -109,43 +183,95 @@ GENERAL_COURSES = [
 CEFR_COURSES = [
     {
         'title': 'A1 — Foundation',
-        'description': 'Boshlovchilar uchun. Alifbo, oddiy gaplar, asosiy so\'zlar.',
+        'description': 'Boshlovchilar uchun. Alifbo, oddiy gaplar, kundalik hayot so\'zlari.',
         'cefr_level': 'A1',
         'icon': '🌱',
         'order': 1,
         'modules': [
             {
                 'title': 'Alphabet and Numbers',
-                'description': 'Alifbo, raqamlar, ranglar.',
+                'description': 'Ingliz alifbosi, raqamlar, ranglar va kunlar.',
                 'lessons': [
                     ('The English alphabet', 'vocabulary', 10),
                     ('Numbers 1-100', 'vocabulary', 12),
                     ('Colors and shapes', 'vocabulary', 10),
+                    ('Days and months', 'vocabulary', 12),
                 ],
             },
             {
-                'title': 'Greetings & Introductions',
-                'description': "Salomlashish va tanishish.",
+                'title': 'Greetings and Introductions',
+                'description': 'Salomlashish, tanishish, o\'zini tanitish.',
                 'lessons': [
                     ('Saying Hello', 'vocabulary', 10),
                     ('My name is...', 'speaking', 12),
+                    ('Where are you from?', 'speaking', 12),
+                    ('Describing people', 'vocabulary', 15),
                     ('Family members', 'vocabulary', 15),
                 ],
             },
             {
                 'title': 'Basic Verbs',
-                'description': 'Eng muhim 30 ta fe\'l.',
+                'description': 'Eng muhim fe\'llar va ularning ishlatilishi.',
                 'lessons': [
                     ('To be', 'grammar', 15),
                     ('To have', 'grammar', 12),
                     ('Action verbs', 'vocabulary', 15),
+                    ('Everyday actions', 'vocabulary', 12),
+                    ('Like and want', 'grammar', 12),
+                ],
+            },
+            {
+                'title': 'My Home',
+                'description': 'Uy, xonalar, mebel va buyumlar.',
+                'lessons': [
+                    ('Rooms in a house', 'vocabulary', 12),
+                    ('Furniture and objects', 'vocabulary', 12),
+                    ('Describing your home', 'speaking', 15),
+                    ('In the kitchen', 'vocabulary', 10),
+                    ('My bedroom', 'speaking', 12),
+                ],
+            },
+            {
+                'title': 'Food and Drink',
+                'description': 'Taom, ichimlik, buyurtma qilish.',
+                'lessons': [
+                    ('Food vocabulary', 'vocabulary', 10),
+                    ('Drinks and snacks', 'vocabulary', 10),
+                    ('Ordering at a cafe', 'speaking', 15),
+                    ('At the supermarket', 'listening', 12),
+                    ('I like and I don\'t like', 'grammar', 12),
+                ],
+            },
+            {
+                'title': 'My Day',
+                'description': 'Kundalik hayot, vaqt, maktab kuni.',
+                'lessons': [
+                    ('Morning routine', 'vocabulary', 12),
+                    ('Time and the clock', 'vocabulary', 15),
+                    ('School day', 'reading', 15),
+                    ('After school activities', 'speaking', 12),
+                    ('Weekend activities', 'reading', 15),
+                    ('My typical day', 'reading', 20),
+                ],
+            },
+            {
+                'title': 'People and Places',
+                'description': 'Odam, joy, shahar, do\'kon.',
+                'lessons': [
+                    ('My family', 'reading', 15),
+                    ('My friends', 'speaking', 12),
+                    ('My school', 'reading', 15),
+                    ('My town', 'vocabulary', 12),
+                    ('Shops and places', 'vocabulary', 12),
+                    ('Getting around', 'speaking', 15),
+                    ('Uzbekistan', 'reading', 20),
                 ],
             },
         ],
     },
     {
         'title': 'A2 — Elementary',
-        'description': "Oddiy o'tgan va kelasi zamon, ko'p ishlatiladigan iboralar.",
+        'description': "Oddiy o'tgan va kelasi zamon, kundalik suhbatlar.",
         'cefr_level': 'A2',
         'icon': '🌿',
         'order': 2,
@@ -157,6 +283,8 @@ CEFR_COURSES = [
                     ('Regular verbs in past', 'grammar', 18),
                     ('Irregular verbs', 'grammar', 20),
                     ('Last weekend story', 'writing', 15),
+                    ('Famous people', 'reading', 20),
+                    ('My last holiday', 'speaking', 18),
                 ],
             },
             {
@@ -165,14 +293,61 @@ CEFR_COURSES = [
                 'lessons': [
                     ('Going to', 'grammar', 15),
                     ('Will vs going to', 'grammar', 18),
+                    ('My future plans', 'writing', 20),
+                    ('Weather forecast', 'listening', 15),
                 ],
             },
             {
-                'title': 'Comparatives',
-                'description': "Taqqoslash: bigger, smaller, the best.",
+                'title': 'Comparatives and Superlatives',
+                'description': "Taqqoslash: bigger, the biggest.",
                 'lessons': [
                     ('Comparative adjectives', 'grammar', 15),
                     ('Superlatives', 'grammar', 15),
+                    ('Cities of the world', 'reading', 20),
+                    ('The best and the worst', 'speaking', 15),
+                ],
+            },
+            {
+                'title': 'Daily Life',
+                'description': 'Kundalik hayot suhbatlari va holatlar.',
+                'lessons': [
+                    ('Shopping for clothes', 'speaking', 15),
+                    ('At the doctor', 'speaking', 18),
+                    ('Making phone calls', 'listening', 15),
+                    ('Writing emails', 'writing', 20),
+                    ('Giving directions', 'speaking', 15),
+                ],
+            },
+            {
+                'title': 'Health and Body',
+                'description': 'Salomatlik, tana, kasalliklar.',
+                'lessons': [
+                    ('Parts of the body', 'vocabulary', 12),
+                    ('Common illnesses', 'vocabulary', 15),
+                    ('At the pharmacy', 'speaking', 15),
+                    ('Healthy lifestyle', 'reading', 20),
+                ],
+            },
+            {
+                'title': 'Free Time',
+                'description': 'Xobbi, sport, bo\'sh vaqt.',
+                'lessons': [
+                    ('Hobbies and interests', 'vocabulary', 12),
+                    ('Sports and games', 'vocabulary', 15),
+                    ('I love watching movies', 'reading', 18),
+                    ('My favorite music', 'speaking', 15),
+                    ('Social media habits', 'reading', 18),
+                ],
+            },
+            {
+                'title': 'Travel and Transport',
+                'description': 'Sayohat, transport, mehmonxona.',
+                'lessons': [
+                    ('Types of transport', 'vocabulary', 12),
+                    ('Buying a ticket', 'speaking', 15),
+                    ('At the airport', 'listening', 18),
+                    ('Hotel check-in', 'speaking', 15),
+                    ('A trip to Samarkand', 'reading', 20),
                 ],
             },
         ],
@@ -190,6 +365,8 @@ CEFR_COURSES = [
                 'lessons': [
                     ('Zero and First conditional', 'grammar', 20),
                     ('Second conditional', 'grammar', 20),
+                    ('Third conditional', 'grammar', 22),
+                    ('Mixed conditionals', 'grammar', 25),
                 ],
             },
             {
@@ -198,6 +375,38 @@ CEFR_COURSES = [
                 'lessons': [
                     ('Should and must', 'grammar', 18),
                     ('May and might', 'grammar', 18),
+                    ('Have to and need to', 'grammar', 18),
+                    ('Modal verbs in past', 'grammar', 20),
+                ],
+            },
+            {
+                'title': 'Present Perfect',
+                'description': "Hozirgi mukammal zamon.",
+                'lessons': [
+                    ('Present perfect introduction', 'grammar', 20),
+                    ('For and since', 'grammar', 18),
+                    ('Present perfect vs past simple', 'grammar', 22),
+                    ('Life experiences', 'speaking', 20),
+                ],
+            },
+            {
+                'title': 'Reading Skills',
+                'description': 'Matn o\'qish va tushunish.',
+                'lessons': [
+                    ('Reading strategies', 'reading', 25),
+                    ('News articles', 'reading', 25),
+                    ('Opinion texts', 'reading', 25),
+                    ('Summarizing a text', 'writing', 25),
+                ],
+            },
+            {
+                'title': 'Speaking Fluency',
+                'description': 'Erkin gapirish va fikr bildirish.',
+                'lessons': [
+                    ('Expressing opinions', 'speaking', 20),
+                    ('Agreeing and disagreeing', 'speaking', 18),
+                    ('Telling stories', 'speaking', 20),
+                    ('Discussing problems', 'speaking', 22),
                 ],
             },
         ],
@@ -215,6 +424,8 @@ CEFR_COURSES = [
                 'lessons': [
                     ('Passive in present', 'grammar', 20),
                     ('Passive in past', 'grammar', 20),
+                    ('Passive with modals', 'grammar', 22),
+                    ('Passive in news', 'reading', 25),
                 ],
             },
             {
@@ -223,6 +434,28 @@ CEFR_COURSES = [
                 'lessons': [
                     ('Reported statements', 'grammar', 22),
                     ('Reported questions', 'grammar', 22),
+                    ('Reported commands', 'grammar', 20),
+                    ('Reporting in journalism', 'reading', 25),
+                ],
+            },
+            {
+                'title': 'Advanced Grammar',
+                'description': 'Murakkab grammatik tuzilmalar.',
+                'lessons': [
+                    ('Relative clauses', 'grammar', 22),
+                    ('Participle clauses', 'grammar', 25),
+                    ('Inversion', 'grammar', 25),
+                    ('Cleft sentences', 'grammar', 25),
+                ],
+            },
+            {
+                'title': 'Academic Writing',
+                'description': 'Akademik yozish ko\'nikmalari.',
+                'lessons': [
+                    ('Essay structure', 'writing', 30),
+                    ('Argument and counterargument', 'writing', 30),
+                    ('Cohesion and coherence', 'writing', 28),
+                    ('Formal vocabulary', 'vocabulary', 25),
                 ],
             },
         ],
@@ -239,6 +472,8 @@ CEFR_COURSES = [
                 'description': "Perfect continuous, mixed conditionals.",
                 'lessons': [
                     ('Present perfect continuous', 'grammar', 25),
+                    ('Past perfect continuous', 'grammar', 25),
+                    ('Future perfect', 'grammar', 25),
                     ('Mixed conditionals', 'grammar', 25),
                 ],
             },
@@ -248,6 +483,18 @@ CEFR_COURSES = [
                 'lessons': [
                     ('Academic word list intro', 'vocabulary', 20),
                     ('Formal vs informal vocab', 'vocabulary', 20),
+                    ('Collocations', 'vocabulary', 22),
+                    ('Idiomatic expressions', 'vocabulary', 22),
+                ],
+            },
+            {
+                'title': 'Advanced Reading',
+                'description': 'Murakkab matnlarni tahlil qilish.',
+                'lessons': [
+                    ('Critical reading', 'reading', 30),
+                    ('Scientific texts', 'reading', 30),
+                    ('Literary analysis', 'reading', 30),
+                    ('Inference and implication', 'reading', 28),
                 ],
             },
         ],
@@ -260,11 +507,23 @@ CEFR_COURSES = [
         'order': 6,
         'modules': [
             {
-                'title': 'Idioms & Expressions',
+                'title': 'Idioms and Expressions',
                 'description': "Native speaker iboralari.",
                 'lessons': [
                     ('Common idioms', 'vocabulary', 25),
                     ('Cultural expressions', 'reading', 25),
+                    ('Phrasal verbs advanced', 'vocabulary', 25),
+                    ('Slang and informal English', 'vocabulary', 22),
+                ],
+            },
+            {
+                'title': 'Mastery Skills',
+                'description': 'Native darajadagi ko\'nikmalar.',
+                'lessons': [
+                    ('Nuance and register', 'reading', 30),
+                    ('Humor in English', 'reading', 25),
+                    ('Debating skills', 'speaking', 30),
+                    ('Creative writing', 'writing', 30),
                 ],
             },
         ],
@@ -420,16 +679,10 @@ class Command(BaseCommand):
 
         self.stdout.write("📦 Content seed boshlandi...\n")
 
-        # General
         self._seed_track('general', GENERAL_COURSES)
-
-        # CEFR
         self._seed_track('cefr', CEFR_COURSES)
-
-        # IELTS
         self._seed_track('ielts', IELTS_COURSES)
 
-        # Hisobot
         total_courses = Course.objects.count()
         total_modules = Module.objects.count()
         total_lessons = Lesson.objects.count()
@@ -452,7 +705,6 @@ class Command(BaseCommand):
         for course_data in courses_data:
             modules_data = course_data.pop('modules')
 
-            # Course
             course_defaults = {
                 'description': course_data.get('description', ''),
                 'icon': course_data.get('icon', ''),
@@ -469,7 +721,6 @@ class Command(BaseCommand):
             marker = '+ yangi' if created else '✓ mavjud'
             self.stdout.write(f"  [{marker}] {course.title}")
 
-            # Modules
             for m_order, module_data in enumerate(modules_data, start=1):
                 lessons_data = module_data.pop('lessons')
 
@@ -485,7 +736,6 @@ class Command(BaseCommand):
                 if m_created:
                     self.stdout.write(f"     + {module.title}")
 
-                # Lessons
                 for l_order, lesson_tuple in enumerate(lessons_data, start=1):
                     title, lesson_type, minutes = lesson_tuple
                     Lesson.objects.get_or_create(
@@ -494,7 +744,7 @@ class Command(BaseCommand):
                         defaults={
                             'lesson_type': lesson_type,
                             'estimated_minutes': minutes,
-                            'xp_reward': 10 + (minutes // 5),  # uzunroq = ko'proq XP
+                            'xp_reward': 10 + (minutes // 5),
                             'order': l_order,
                             'is_published': True,
                             'description': f"{title} — bu darsda asosiy materiallar berilgan.",

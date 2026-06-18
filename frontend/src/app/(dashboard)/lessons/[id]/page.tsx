@@ -24,7 +24,7 @@ import {
   TabsTrigger,
   TabsContent,
 } from '@/components/ui/tabs';
-
+import { renderMarkdown } from '@/lib/markdown';
 import { LessonWords } from '@/components/lesson/lesson-words';
 import { LessonGrammar } from '@/components/lesson/lesson-grammar';
 
@@ -43,7 +43,6 @@ export default function LessonPage({
 
   return (
     <div className="p-4 md:p-8 max-w-4xl mx-auto">
-      {/* Breadcrumb */}
       <Link
         href="/tracks"
         className="inline-flex items-center gap-1 text-sm text-[var(--color-muted-foreground)] hover:text-[var(--color-foreground)] mb-4"
@@ -66,17 +65,14 @@ export default function LessonPage({
         </div>
       ) : lesson ? (
         <>
-          {/* Path */}
           <p className="text-xs text-[var(--color-muted-foreground)] mb-2">
             {lesson.course_title} → {lesson.module_title}
           </p>
 
-          {/* Title */}
           <h1 className="text-2xl md:text-3xl font-bold tracking-tight mb-3">
             {lesson.title}
           </h1>
 
-          {/* Meta */}
           <div className="flex items-center gap-4 text-sm text-[var(--color-muted-foreground)] mb-6 flex-wrap">
             <div className="flex items-center gap-1">
               <Clock className="h-4 w-4" />
@@ -93,7 +89,6 @@ export default function LessonPage({
             )}
           </div>
 
-          {/* Tabs */}
           <Tabs
             value={activeTab}
             onValueChange={(v) => setActiveTab(v as TabValue)}
@@ -139,15 +134,15 @@ export default function LessonPage({
             </TabsContent>
 
             <TabsContent value="grammar">
-                <LessonGrammar lessonId={lesson.id} />
+              <LessonGrammar lessonId={lesson.id} />
             </TabsContent>
 
             <TabsContent value="quiz">
-                <LessonQuiz lessonId={lesson.id} />
+              <LessonQuiz lessonId={lesson.id} />
             </TabsContent>
 
             <TabsContent value="assignment">
-                <LessonAssignment lessonId={lesson.id} />
+              <LessonAssignment lessonId={lesson.id} />
             </TabsContent>
           </Tabs>
         </>
@@ -169,22 +164,22 @@ function LessonOverview({
       {lesson.description && (
         <Card>
           <CardContent className="p-5">
-            <p className="text-sm md:text-base leading-relaxed">
+            <p className="text-sm md:text-base leading-relaxed text-[var(--color-muted-foreground)]">
               {lesson.description}
             </p>
           </CardContent>
         </Card>
       )}
 
-      {/* Content (markdown text) */}
+      {/* Content — markdown render */}
       {lesson.content && (
         <Card>
-          <CardContent className="p-5">
-            <h3 className="text-sm font-semibold text-[var(--color-muted-foreground)] uppercase tracking-wider mb-2">
+          <CardContent className="p-5 md:p-6">
+            <h3 className="text-xs font-semibold text-[var(--color-muted-foreground)] uppercase tracking-wider mb-4">
               Dars matni
             </h3>
-            <div className="prose prose-sm max-w-none whitespace-pre-wrap text-sm md:text-base leading-relaxed">
-              {lesson.content}
+            <div className="text-sm md:text-base leading-relaxed space-y-1">
+              {renderMarkdown(lesson.content)}
             </div>
           </CardContent>
         </Card>
@@ -222,7 +217,6 @@ function LessonOverview({
         />
       </div>
 
-       {/* ← YANGI QATOR: Complete tugmasi */}
       <LessonCompleteButton
         lessonId={lesson.id}
         xpReward={lesson.xp_reward}
@@ -271,15 +265,5 @@ function ContentBlock({
         </CardContent>
       </Card>
     </button>
-  );
-}
-
-function ComingSoonTab({ name }: { name: string }) {
-  return (
-    <div className="rounded-xl border border-dashed border-[var(--color-border)] py-12 px-6 text-center">
-      <p className="text-sm text-[var(--color-muted-foreground)]">
-        {name} bo'limi keyingi qadamda quriladi.
-      </p>
-    </div>
   );
 }

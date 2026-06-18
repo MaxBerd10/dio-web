@@ -3,7 +3,7 @@ import './globals.css';
 import { QueryProvider } from '@/lib/query-client';
 
 export const metadata: Metadata = {
-  title: 'Dio English Tutor',
+  title: 'English with Diyora',
   description: "CEFR A1–C2 va IELTS uchun ingliz tili o'rganish platformasi",
 };
 

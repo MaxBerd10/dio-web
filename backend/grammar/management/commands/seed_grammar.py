@@ -1,5 +1,5 @@
 """
-10 ta asosiy Grammar Topic + qoidalar + misollar seed.
+17 ta Grammar Topic + qoidalar + misollar seed.
 
 Foydalanish:
     python manage.py seed_grammar
@@ -310,7 +310,7 @@ GRAMMAR_TOPICS = [
         'title': 'Possessive Pronouns',
         'category': 'pronouns',
         'cefr_level': 'A1',
-        'icon': '👤',
+        'icon': '🔑',
         'short_description': "My, your, his, her, our, their.",
         'description': "Egalik olmoshlari va ulardan keyin keladigan ot.",
         'rules': [
@@ -461,6 +461,357 @@ GRAMMAR_TOPICS = [
             },
         ],
     },
+
+    # ============================================================
+    # YANGI A1 TOPICS
+    # ============================================================
+
+    {
+        'title': 'Personal Pronouns',
+        'category': 'pronouns',
+        'cefr_level': 'A1',
+        'icon': '👤',
+        'short_description': "I, you, he, she, it, we, they — shaxs olmoshlari.",
+        'description': (
+            "Inglizchada 7 ta shaxs olmoshi bor. Bu olmoshlar gap egasi sifatida ishlatiladi.\n\n"
+            "- **I** — men\n"
+            "- **You** — siz/sen (yakka va ko'plik bir xil!)\n"
+            "- **He** — u (erkak)\n"
+            "- **She** — u (ayol)\n"
+            "- **It** — u (jonsiz narsa, hayvon)\n"
+            "- **We** — biz\n"
+            "- **They** — ular"
+        ),
+        'rules': [
+            {
+                'title': 'Subject pronouns as gap egasi',
+                'formula': 'Pronoun + Verb + Object',
+                'explanation': (
+                    "Inglizcha gapda ega doim bo'lishi shart. O'zbek tilida ega tushib qolishi mumkin, "
+                    "lekin inglizchada yo'q."
+                ),
+                'tips': (
+                    "Eslatma:\n"
+                    "- 'You' yakka va ko'plik bir xil\n"
+                    "- 'It' faqat jonsiz narsalar va hayvonlar uchun\n"
+                    "- 'I' har doim bosh harf bilan yoziladi (gap o'rtasida ham)"
+                ),
+                'common_mistakes': (
+                    "❌ Am a student.\n"
+                    "✓ I am a student.\n\n"
+                    "❌ Is hot today.\n"
+                    "✓ It is hot today."
+                ),
+                'examples': [
+                    ('I am from Uzbekistan.', "Men O'zbekistondanman.", 'I', False),
+                    ('You are my friend.', "Sen mening do'stimsan.", 'You', False),
+                    ('He is a doctor.', "U shifokor.", 'He', False),
+                    ('She is my sister.', "U mening opam.", 'She', False),
+                    ('It is a big city.', "U katta shahar.", 'It', False),
+                    ('We are happy.', "Biz baxtlimiz.", 'We', False),
+                    ('They are students.', "Ular o'quvchilar.", 'They', False),
+                    ('Am a teacher.', "(noto'g'ri — ega yo'q)", 'Am', True),
+                ],
+            },
+        ],
+    },
+
+    {
+        'title': 'Demonstratives: this, that, these, those',
+        'category': 'pronouns',
+        'cefr_level': 'A1',
+        'icon': '👉',
+        'short_description': "this/that/these/those — bu, anavi, bular, anavilar.",
+        'description': (
+            "Demonstrative olmoshlar — biror narsani ko'rsatish uchun ishlatiladi.\n\n"
+            "Yaqindagi narsalar uchun: **this** (yakka), **these** (ko'plik)\n\n"
+            "Uzoqdagi narsalar uchun: **that** (yakka), **those** (ko'plik)"
+        ),
+        'rules': [
+            {
+                'title': 'Yaqin va uzoqdagi narsalar',
+                'formula': 'this/that + Singular Noun  /  these/those + Plural Noun',
+                'explanation': (
+                    "this/that — bitta narsa uchun. "
+                    "these/those — bir nechta narsa uchun. "
+                    "this/these — yaqindagi narsalar. "
+                    "that/those — uzoqdagi narsalar."
+                ),
+                'tips': (
+                    "Vizual yodlash:\n"
+                    "- this 👉 (men yonidagi bitta narsa)\n"
+                    "- that 👈 (uzoqdagi bitta narsa)\n"
+                    "- these 👇 (men yonidagi ko'p narsa)\n"
+                    "- those ↗️ (uzoqdagi ko'p narsa)"
+                ),
+                'common_mistakes': (
+                    "❌ This are my books.\n"
+                    "✓ These are my books. (ko'plik — these)\n\n"
+                    "❌ That books are interesting.\n"
+                    "✓ Those books are interesting."
+                ),
+                'examples': [
+                    ('This is my book.', "Bu mening kitobim.", 'This', False),
+                    ('That is your car.', "Anavi sizning mashinangiz.", 'That', False),
+                    ('These are my friends.', "Bular mening do'stlarim.", 'These', False),
+                    ('Those are her shoes.', "Anavilar uning tuflilari.", 'Those', False),
+                    ('This are my pens.', "(noto'g'ri)", 'This', True),
+                ],
+            },
+        ],
+    },
+
+    {
+        'title': 'There is / There are',
+        'category': 'other',
+        'cefr_level': 'A1',
+        'icon': '📍',
+        'short_description': "Bor / Mavjud — biror narsa borligini bildirish.",
+        'description': (
+            "**There is** va **there are** — biror joyda nimadir borligini aytish uchun "
+            "ishlatiladi. O'zbekchada 'bor' ma'nosida.\n\n"
+            "- **There is** + yakka ot (bitta narsa)\n"
+            "- **There are** + ko'plik ot (bir nechta narsa)"
+        ),
+        'rules': [
+            {
+                'title': 'Affirmative (tasdiq)',
+                'formula': 'There is + singular  /  There are + plural',
+                'explanation': (
+                    "'There is' qisqa shakli — there's. 'There are' qisqa shakli yo'q "
+                    "(faqat yozma matnda 'there're ko'rinishi mumkin)."
+                ),
+                'tips': (
+                    "Joy belgilari bilan ishlatiladi:\n"
+                    "- in the room — xonada\n"
+                    "- on the table — stolda\n"
+                    "- under the chair — stul ostida\n"
+                    "- next to the door — eshik yonida"
+                ),
+                'examples': [
+                    ('There is a book on the table.', "Stol ustida kitob bor.", 'There is', False),
+                    ('There are five chairs in the room.', "Xonada beshta stul bor.", 'There are', False),
+                    ("There's a cat in the garden.", "Bog'da mushuk bor.", "There's", False),
+                ],
+            },
+            {
+                'title': 'Negative and questions',
+                'formula': "There isn't + singular  /  Is there + singular?",
+                'explanation': "Inkor: there is not (isn't), there are not (aren't). Savol: Is/Are there...?",
+                'examples': [
+                    ("There isn't any milk.", "Sut yo'q.", "isn't", False),
+                    ("There aren't any students here.", "Bu yerda o'quvchilar yo'q.", "aren't", False),
+                    ('Is there a hotel near here?', "Yaqin atrofda mehmonxona bormi?", 'Is there', False),
+                    ('Are there any questions?', "Savollar bormi?", 'Are there', False),
+                ],
+            },
+        ],
+    },
+
+    {
+        'title': 'Have got',
+        'category': 'tenses',
+        'cefr_level': 'A1',
+        'icon': '🎒',
+        'short_description': "Egalik bildirish: I have got = I have.",
+        'description': (
+            "**Have got** — egalik bildirish uchun ishlatiladi. "
+            "Britaniya inglizchasida ko'p, Amerika inglizchasida kamroq.\n\n"
+            "**Have got** = **have** ma'nosi bir xil, lekin 'have got' ko'pincha hozirgi "
+            "vaqtdagi egalik uchun ishlatiladi."
+        ),
+        'rules': [
+            {
+                'title': 'Have/Has got',
+                'formula': "Subject + have/has + got + Object",
+                'explanation': (
+                    "He/she/it bilan 'has got'. Boshqa ega bilan 'have got'. "
+                    "Qisqa shakl: I've got, He's got, She's got."
+                ),
+                'tips': (
+                    "Qachon ishlatish:\n"
+                    "- Hozirgi egalik: I've got a car.\n"
+                    "- Oilaviy aloqalar: She's got two brothers.\n"
+                    "- Tana qismlari: He's got blue eyes.\n"
+                    "- Kasalliklar: I've got a headache."
+                ),
+                'common_mistakes': (
+                    "❌ He have got a dog.\n"
+                    "✓ He has got a dog.\n\n"
+                    "❌ I got a problem.\n"
+                    "✓ I've got a problem."
+                ),
+                'examples': [
+                    ("I've got a new phone.", "Mening yangi telefonim bor.", "I've got", False),
+                    ("She's got long hair.", "Uning sochi uzun.", "She's got", False),
+                    ("We've got two children.", "Bizning ikkita bolamiz bor.", "We've got", False),
+                    ("Have you got a pen?", "Sizning ruchkangiz bormi?", 'Have you got', False),
+                    ("He haven't got a car.", "(noto'g'ri)", "haven't", True),
+                ],
+            },
+        ],
+    },
+
+    {
+        'title': 'Prepositions of Place',
+        'category': 'other',
+        'cefr_level': 'A1',
+        'icon': '📦',
+        'short_description': "in, on, under, at — joy bildiruvchi predloglar.",
+        'description': (
+            "Predloglar — narsalarning joylashishini bildirish uchun ishlatiladi. "
+            "Eng asosiy 3 tasi: **in**, **on**, **at**."
+        ),
+        'rules': [
+            {
+                'title': 'In / On / At',
+                'formula': "in (ichida)  /  on (ustida)  /  at (yonida)",
+                'explanation': (
+                    "- **in** — yopiq joy ichida (in the room, in the box)\n"
+                    "- **on** — yuza ustida (on the table, on the wall)\n"
+                    "- **at** — aniq nuqta (at home, at school, at the door)"
+                ),
+                'tips': (
+                    "Maxsus joylar:\n"
+                    "- at home (uyda — predlog yo'q!)\n"
+                    "- at work (ishda)\n"
+                    "- at school (maktabda)\n"
+                    "- in bed (yotoqda)\n"
+                    "- in hospital (kasalxonada)"
+                ),
+                'examples': [
+                    ('The book is on the table.', "Kitob stol ustida.", 'on', False),
+                    ('The cat is in the box.', "Mushuk quti ichida.", 'in', False),
+                    ('I am at home.', "Men uydaman.", 'at', False),
+                    ('She is in the kitchen.', "U oshxonada.", 'in', False),
+                ],
+            },
+            {
+                'title': 'Other place prepositions',
+                'formula': "under / next to / behind / in front of / between",
+                'explanation': "Boshqa muhim predloglar joylashishni aniqroq bildiradi.",
+                'examples': [
+                    ('The ball is under the chair.', "To'p stul ostida.", 'under', False),
+                    ('My car is next to the house.', "Mening mashinam uy yonida.", 'next to', False),
+                    ('The garden is behind the house.', "Bog' uy orqasida.", 'behind', False),
+                    ('A man is in front of the door.', "Eshik oldida bir kishi.", 'in front of', False),
+                    ('The bank is between the shop and the cafe.', "Bank do'kon va kafe orasida.", 'between', False),
+                ],
+            },
+        ],
+    },
+
+    {
+        'title': 'Question Words',
+        'category': 'other',
+        'cefr_level': 'A1',
+        'icon': '❓',
+        'short_description': "What, where, when, who, why, how — savol so'zlari.",
+        'description': (
+            "Savol so'zlari (Wh-questions) — gap boshida keladi va aniq ma'lumot so'raydi. "
+            "'Yes/No' javob talab qilmaydi.\n\n"
+            "Eng muhim 6 ta: What, Where, When, Who, Why, How"
+        ),
+        'rules': [
+            {
+                'title': 'Basic question words',
+                'formula': 'Question word + auxiliary + Subject + Verb?',
+                'explanation': (
+                    "Savol so'zi doim gap boshida. Keyin yordamchi fe'l (do/does/is/are), "
+                    "keyin ega, keyin asosiy fe'l."
+                ),
+                'tips': (
+                    "Har biri nima so'raydi:\n"
+                    "- **What** — nima? (narsa)\n"
+                    "- **Where** — qayerda? (joy)\n"
+                    "- **When** — qachon? (vaqt)\n"
+                    "- **Who** — kim? (odam)\n"
+                    "- **Why** — nega? (sabab)\n"
+                    "- **How** — qanday? (usul, holat)"
+                ),
+                'examples': [
+                    ('What is your name?', "Ismingiz nima?", 'What', False),
+                    ('Where do you live?', "Qayerda yashaysiz?", 'Where', False),
+                    ('When is your birthday?', "Tug'ilgan kuningiz qachon?", 'When', False),
+                    ('Who is that man?', "Anavi kishi kim?", 'Who', False),
+                    ('Why are you sad?', "Nega g'amginsiz?", 'Why', False),
+                    ('How are you?', "Qalaysiz?", 'How', False),
+                ],
+            },
+            {
+                'title': 'How + adjective/adverb',
+                'formula': "How + adj/adv + ...?",
+                'explanation': "How so'zi sifat yoki ravish bilan birikib, aniq miqdor yoki daraja so'raydi.",
+                'tips': (
+                    "Foydali iboralar:\n"
+                    "- How much? — qancha? (sanab bo'lmaydigan)\n"
+                    "- How many? — qancha? (sanab bo'ladigan)\n"
+                    "- How old? — necha yoshda?\n"
+                    "- How long? — qancha uzun/vaqt?\n"
+                    "- How often? — qanchalik tez-tez?"
+                ),
+                'examples': [
+                    ('How old are you?', "Necha yoshdasiz?", 'How old', False),
+                    ('How much is this?', "Buning narxi qancha?", 'How much', False),
+                    ('How many books do you have?', "Nechta kitobingiz bor?", 'How many', False),
+                    ('How long does it take?', "Qancha vaqt oladi?", 'How long', False),
+                ],
+            },
+        ],
+    },
+
+    # ============================================================
+    # YANGI A2 TOPIC
+    # ============================================================
+
+    {
+        'title': 'Adverbs of Frequency',
+        'category': 'other',
+        'cefr_level': 'A2',
+        'icon': '⏰',
+        'short_description': "always, usually, often, sometimes, never — tez-tezlik ravishlari.",
+        'description': (
+            "Tez-tezlik ravishlari — qancha tez-tez biror narsa qilinishini bildiradi. "
+            "Asosan Present Simple bilan ishlatiladi.\n\n"
+            "Tarkibi (yuqoridan pastga — eng tez-tezdan eng kamigacha):\n"
+            "- **always** — har doim (100%)\n"
+            "- **usually** — odatda (90%)\n"
+            "- **often** — ko'pincha (70%)\n"
+            "- **sometimes** — ba'zan (50%)\n"
+            "- **rarely** — kamdan-kam (20%)\n"
+            "- **never** — hech qachon (0%)"
+        ),
+        'rules': [
+            {
+                'title': 'Position in sentence',
+                'formula': 'Subject + frequency adverb + Verb  (be bilan: Subject + be + frequency)',
+                'explanation': (
+                    "Asosiy fe'l bilan: ravish fe'ldan oldin keladi.\n"
+                    "'Be' fe'li bilan: ravish 'be' dan keyin keladi."
+                ),
+                'tips': (
+                    "Gap boshida bo'lishi mumkin (asosan 'sometimes', 'usually', 'often'):\n"
+                    "- Sometimes I go to the park.\n"
+                    "- Usually we eat at 7."
+                ),
+                'common_mistakes': (
+                    "❌ I go always to school by bus.\n"
+                    "✓ I always go to school by bus.\n\n"
+                    "❌ She is never late.\n"
+                    "✓ She is never late. (be bilan to'g'ri)"
+                ),
+                'examples': [
+                    ('I always drink coffee in the morning.', "Men ertalab har doim qahva ichaman.", 'always', False),
+                    ('She usually goes to bed at 11.', "U odatda 11 da yotadi.", 'usually', False),
+                    ('We often eat at restaurants.', "Biz ko'pincha restoranda ovqat yeymiz.", 'often', False),
+                    ('They sometimes visit us.', "Ular ba'zan bizga kelishadi.", 'sometimes', False),
+                    ('He never smokes.', "U hech qachon chekmaydi.", 'never', False),
+                    ('She is always happy.', "U doim baxtli.", 'is always', False),
+                    ('I go always to school.', "(noto'g'ri — tartib xato)", 'go always', True),
+                ],
+            },
+        ],
+    },
 ]
 
 
@@ -469,36 +820,61 @@ GRAMMAR_TOPICS = [
 # ============================================================
 
 LESSON_GRAMMAR_MAP = {
-    'Saying Hello': ['Present Simple'],
-    'Hello and Hi': ['Present Simple'],
-    'Asking names': ['Present Simple'],
-    'Where are you from?': ['Present Simple'],
+    # Salomlashish
+    'Saying Hello': ['Present Simple', 'Personal Pronouns'],
+    'Hello and Hi': ['Personal Pronouns'],
+    'Asking names': ['Question Words', 'Personal Pronouns'],
+    'Where are you from?': ['Question Words', 'Personal Pronouns'],
+    'My name is...': ['Personal Pronouns', 'Possessive Pronouns'],
 
-    'To be': ['Present Simple'],
-    'To have': ['Present Simple'],
+    # Asoslar
+    'To be': ['Present Simple', 'Personal Pronouns'],
+    'To have': ['Have got'],
     'Action verbs': ['Present Simple'],
     'The English alphabet': ['Articles (a / an / the)'],
     'Numbers 1-100': ['Plural Nouns'],
-    'My name is...': ['Possessive Pronouns'],
-    'Family members': ['Possessive Pronouns'],
-    'Time and schedule': ['Present Simple'],
-    'Morning routine': ['Present Simple'],
+
+    # Oila va kun
+    'Family members': ['Possessive Pronouns', 'Have got'],
+    'Time and schedule': ['Present Simple', 'Adverbs of Frequency'],
+    'Morning routine': ['Adverbs of Frequency', 'Present Simple'],
+    'Weekend activities': ['Adverbs of Frequency'],
+    'Daily Routines': ['Adverbs of Frequency'],
+
+    # Ranglar va narsalar
+    'Colors and shapes': ['Demonstratives: this, that, these, those'],
+
+    # Past zamon
     'Regular verbs in past': ['Past Simple'],
     'Irregular verbs': ['Past Simple'],
     'Last weekend story': ['Past Simple'],
+
+    # Kelajak
     'Going to': ['First Conditional'],
     'Will vs going to': ['First Conditional'],
+
+    # Taqqoslash
     'Comparative adjectives': ['Comparatives and Superlatives'],
     'Superlatives': ['Comparatives and Superlatives'],
+
+    # Modallar
     'Should and must': ['Modal Verbs: can / could'],
     'May and might': ['Modal Verbs: can / could'],
+
+    # Passiv
     'Passive in present': ['Passive Voice'],
     'Passive in past': ['Passive Voice'],
+
+    # Sayohat
+    'Check-in dialogue': ['Question Words'],
+    'Airport signs': ['Prepositions of Place'],
+    'Booking a room': ['There is / There are', 'Question Words'],
+    'Hotel facilities': ['There is / There are', 'Prepositions of Place'],
 }
 
 
 class Command(BaseCommand):
-    help = "10 ta Grammar Topic + qoidalar + misollar seed (idempotent)."
+    help = "17 ta Grammar Topic + qoidalar + misollar seed (idempotent)."
 
     def add_arguments(self, parser):
         parser.add_argument('--reset', action='store_true')

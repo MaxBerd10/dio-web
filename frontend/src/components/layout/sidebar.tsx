@@ -28,30 +28,34 @@ export function Sidebar() {
       {/* Logo */}
       <div className="h-16 px-6 flex items-center border-b border-[var(--color-border)]">
         <Link href="/dashboard" className="text-lg font-bold tracking-tight">
-          Dio <span className="text-[var(--color-primary)]">English</span>
+          English with <span className="text-[var(--color-primary)]">Diyora</span>
         </Link>
       </div>
 
       {/* Nav */}
-      <nav className="flex-1 px-3 py-4 space-y-1 overflow-y-auto">
+      <nav className="flex-1 px-3 py-4 overflow-y-auto">
         {visibleItems.map((item) => {
           const isActive =
             pathname === item.href || pathname?.startsWith(item.href + '/');
           const Icon = item.icon;
           return (
-            <Link
-              key={item.href}
-              href={item.href}
-              className={cn(
-                'flex items-center gap-3 px-3 py-2.5 rounded-md text-sm font-medium transition-colors',
-                isActive
-                  ? 'bg-[var(--color-primary)] text-[var(--color-primary-foreground)]'
-                  : 'text-[var(--color-foreground)] hover:bg-[var(--color-muted)]',
+            <div key={item.href}>
+              {item.dividerBefore && (
+                <div className="my-2 border-t border-[var(--color-border)]" />
               )}
-            >
-              <Icon className="h-4 w-4 shrink-0" />
-              <span>{item.label}</span>
-            </Link>
+              <Link
+                href={item.href}
+                className={cn(
+                  'flex items-center gap-3 px-3 py-2.5 rounded-md text-sm font-medium transition-colors mb-0.5',
+                  isActive
+                    ? 'bg-[var(--color-primary)] text-[var(--color-primary-foreground)]'
+                    : 'text-[var(--color-foreground)] hover:bg-[var(--color-muted)]',
+                )}
+              >
+                <Icon className="h-4 w-4 shrink-0" />
+                <span>{item.label}</span>
+              </Link>
+            </div>
           );
         })}
       </nav>

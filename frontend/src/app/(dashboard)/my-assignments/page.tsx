@@ -19,6 +19,7 @@ import { useAuthStore } from '@/store/auth';
 import { useDashboard } from '@/lib/hooks/use-dashboard';
 import { useReviewQueue } from '@/lib/hooks/use-vocabulary';
 import { Card, CardContent } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
 import { LeaderboardPreview } from '@/components/dashboard/leaderboard-preview';
 import { cn } from '@/lib/utils';
 
@@ -55,27 +56,31 @@ export default function DashboardPage() {
 
   return (
     <div className="p-4 md:p-8 max-w-5xl mx-auto space-y-5">
+
+      {/* Salomlashish */}
       <div>
         <h1 className="text-2xl md:text-3xl font-bold tracking-tight">
           {greeting}, {user?.full_name?.split(' ')[0] || user?.username}! 👋
         </h1>
         <p className="text-[var(--color-muted-foreground)] mt-1 text-sm md:text-base">
           {dailyDone
-            ? "✅ Bugungi maqsad bajarildi! Davom eting."
-            : "Bugun yangi narsa o'rganaylik."}
+            ? '✅ Bugungi maqsad bajarildi! Davom eting.'
+            : `Bugungi maqsad: ${dailyEarned}/${dailyTarget} XP`}
         </p>
       </div>
 
+      {/* Kunlik progress bar */}
       <div className="h-2 bg-[var(--color-muted)] rounded-full overflow-hidden">
         <div
           className={cn(
             'h-full rounded-full transition-all',
             dailyDone ? 'bg-green-500' : 'bg-[var(--color-primary)]',
           )}
-          style={{ width: dailyPct + '%' }}
+          style={{ width: `${dailyPct}%` }}
         />
       </div>
 
+      {/* 3 ta tezkor stat */}
       <div className="grid grid-cols-3 gap-3">
         <Card>
           <CardContent className="p-3 md:p-4 text-center">
@@ -100,7 +105,10 @@ export default function DashboardPage() {
         </Card>
       </div>
 
+      {/* Asosiy CTAlar */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+        {/* Darslarni davom ettirish */}
         <Link href="/tracks" className="block">
           <Card className="h-full border-[var(--color-primary)]/20 bg-gradient-to-br from-[var(--color-primary)]/8 to-transparent hover:border-[var(--color-primary)]/40 transition-all hover:shadow-md active:scale-[0.99]">
             <CardContent className="p-5 flex items-center gap-4">
@@ -118,6 +126,7 @@ export default function DashboardPage() {
           </Card>
         </Link>
 
+        {/* Lug'at takrorlash */}
         <Link href="/vocabulary/review" className="block">
           <Card className={cn(
             'h-full transition-all hover:shadow-md active:scale-[0.99]',
@@ -133,8 +142,8 @@ export default function DashboardPage() {
                 <p className="font-bold text-base">Lug'at takrorlash</p>
                 <p className="text-xs text-[var(--color-muted-foreground)] mt-0.5">
                   {wordsToReview > 0
-                    ? wordsToReview + " ta so'z tayyor"
-                    : "Hozircha takrorlash yo'q"}
+                    ? `${wordsToReview} ta so'z tayyor`
+                    : 'Hozircha takrorlash yo\'q'}
                 </p>
               </div>
               {wordsToReview > 0 && (
@@ -146,6 +155,7 @@ export default function DashboardPage() {
           </Card>
         </Link>
 
+        {/* Grammar */}
         <Link href="/grammar" className="block">
           <Card className="h-full border-purple-500/20 bg-gradient-to-br from-purple-500/8 to-transparent hover:border-purple-500/40 transition-all hover:shadow-md active:scale-[0.99]">
             <CardContent className="p-5 flex items-center gap-4">
@@ -163,6 +173,7 @@ export default function DashboardPage() {
           </Card>
         </Link>
 
+        {/* Natijalarim */}
         <Link href="/my-progress" className="block">
           <Card className="h-full border-green-500/20 bg-gradient-to-br from-green-500/8 to-transparent hover:border-green-500/40 transition-all hover:shadow-md active:scale-[0.99]">
             <CardContent className="p-5 flex items-center gap-4">
@@ -181,9 +192,11 @@ export default function DashboardPage() {
         </Link>
       </div>
 
+      {/* Leaderboard + Achievements */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
         <LeaderboardPreview />
 
+        {/* Achievements mini */}
         <Card>
           <CardContent className="p-5">
             <div className="flex items-center justify-between mb-4">
@@ -199,7 +212,7 @@ export default function DashboardPage() {
               </Link>
             </div>
             <div className="grid grid-cols-4 gap-2">
-              {['🔥','📖','✅','⚡','🏅','📚','💯','👑'].map((emoji, i) => (
+              {['🔥', '📖', '✅', '⚡', '🏅', '📚', '💯', '👑'].map((emoji, i) => (
                 <div
                   key={i}
                   className={cn(
