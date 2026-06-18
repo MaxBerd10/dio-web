@@ -68,13 +68,7 @@ export const NAV_ITEMS: NavItem[] = [
     forRoles: ['student'],
     mobileShow: false,
   },
-  {
-    label: 'Vazifalarim',
-    href: '/my-assignments',
-    icon: FileText,
-    forRoles: ['student'],
-    mobileShow: true,
-  },
+
   {
     label: 'Reytinglar',
     href: '/leaderboard',
