@@ -1,6 +1,6 @@
 export type UserRole = 'student' | 'teacher' | 'admin';
 export type CEFRLevel = 'A1' | 'A2' | 'B1' | 'B2' | 'C1' | 'C2';
-export type LearningGoal = 'general' | 'ielts' | 'both';
+export type LearningGoal = 'general' | 'ielts' | 'cefr' | 'both';
 
 export interface User {
   id: number;
