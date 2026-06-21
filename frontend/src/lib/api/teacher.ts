@@ -27,6 +27,40 @@ interface PaginatedResponse<T> {
   results: T[];
 }
 
+// ============================================================
+// Teacher Dashboard
+// ============================================================
+
+export type ActivityStatus = 'active' | 'recent' | 'inactive' | 'never';
+
+export interface TeacherDashboardStats {
+  total_students: number;
+  active_today: number;
+  active_this_week: number;
+  pending_submissions: number;
+  average_streak: number;
+}
+
+export interface TeacherStudentItem {
+  id: number;
+  username: string;
+  full_name: string;
+  cefr_level: string;
+  xp: number;
+  level: number;
+  current_streak: number;
+  longest_streak: number;
+  last_active: string | null;
+  activity_status: ActivityStatus;
+  pending_submissions: number;
+  completed_lessons: number;
+}
+
+export interface TeacherDashboardResponse {
+  stats: TeacherDashboardStats;
+  students: TeacherStudentItem[];
+}
+
 export const teacherApi = {
   getSubmissions: async (params?: {
     status?: SubmissionStatus;
@@ -38,8 +72,18 @@ export const teacherApi = {
     );
     return data;
   },
-};
 
+  getDashboard: async (params?: {
+    level?: string;
+    status?: 'active' | 'inactive' | 'pending';
+  }): Promise<TeacherDashboardResponse> => {
+    const { data } = await api.get<TeacherDashboardResponse>(
+      '/progress/teacher/dashboard/',
+      { params },
+    );
+    return data;
+  },
+};
 
 import type {
   SubmissionDetail,

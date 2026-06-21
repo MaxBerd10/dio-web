@@ -18,6 +18,8 @@ export function Sidebar() {
     (item) => !item.forRoles || item.forRoles.includes(user.role),
   );
 
+  const homeHref = user.role === 'student' ? '/dashboard' : '/teacher/students';
+
   const handleLogout = async () => {
     await logout();
     window.location.href = '/login';
@@ -27,7 +29,7 @@ export function Sidebar() {
     <aside className="hidden md:flex md:flex-col md:w-64 md:fixed md:inset-y-0 border-r border-[var(--color-border)] bg-[var(--color-surface)]">
       {/* Logo */}
       <div className="h-16 px-6 flex items-center border-b border-[var(--color-border)]">
-        <Link href="/dashboard" className="text-lg font-bold tracking-tight">
+        <Link href={homeHref} className="text-lg font-bold tracking-tight">
           English with <span className="text-[var(--color-primary)]">Diyora</span>
         </Link>
       </div>

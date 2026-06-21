@@ -31,14 +31,14 @@ export default function DashboardPage() {
 
   useEffect(() => {
     if (user && (user.role === 'teacher' || user.role === 'admin')) {
-      router.replace('/teacher/submissions');
+      router.replace('/teacher/students');
     }
   }, [user, router]);
 
   if (user && (user.role === 'teacher' || user.role === 'admin')) {
     return (
       <div className="p-8 max-w-2xl mx-auto text-center text-sm text-[var(--color-muted-foreground)]">
-        Vazifalar sahifasiga o'tilmoqda...
+        Studentlar sahifasiga o'tilmoqda...
       </div>
     );
   }

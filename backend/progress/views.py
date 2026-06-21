@@ -1,6 +1,15 @@
-from django.db.models import Count, Q, Sum
+from django.db.models import Count, Q, Sum, Avg
 from django.shortcuts import get_object_or_404
 from django.utils import timezone
+
+from accounts.models import User
+from .models import LessonProgress, Streak
+
+
+from datetime import timedelta
+from accounts.permissions import IsTeacherOrAdmin
+from exercises.models import AssignmentSubmission
+
 
 from rest_framework import generics, status
 from rest_framework.permissions import IsAuthenticated
@@ -295,3 +304,111 @@ class DashboardSummaryView(APIView):
             'daily_goal_met': daily_goal_met,
         }
         return Response(data)
+
+
+# ============================================================
+# TEACHER DASHBOARD
+# ============================================================
+
+class TeacherDashboardView(APIView):
+    """
+    GET /api/progress/teacher/dashboard/
+    O'qituvchi uchun: umumiy statistika + studentlar ro'yxati.
+    """
+    permission_classes = [IsTeacherOrAdmin]
+
+    def get(self, request):
+        now = timezone.now()
+        today = now.date()
+        week_ago = today - timedelta(days=7)
+
+        students = User.objects.filter(role=User.Role.STUDENT)
+
+        # Filtrlar (query params)
+        level_filter = request.query_params.get('level')      # masalan ?level=A2
+        status_filter = request.query_params.get('status')    # active / inactive / pending
+
+        if level_filter:
+            students = students.filter(cefr_level=level_filter)
+
+        # === Umumiy statistika ===
+        stats = {
+            'total_students': students.count(),
+            'active_today': Streak.objects.filter(
+                student__role=User.Role.STUDENT, last_activity_date=today,
+            ).count(),
+            'active_this_week': Streak.objects.filter(
+                student__role=User.Role.STUDENT, last_activity_date__gte=week_ago,
+            ).count(),
+            'pending_submissions': AssignmentSubmission.objects.filter(
+                student__role=User.Role.STUDENT,
+                status__in=[AssignmentSubmission.Status.SUBMITTED, AssignmentSubmission.Status.IN_REVIEW],
+            ).count(),
+            'average_streak': round(
+                Streak.objects.filter(student__role=User.Role.STUDENT)
+                .aggregate(avg=Avg('current_streak'))['avg'] or 0, 1,
+            ),
+        }
+
+        # === Studentlar ro'yxati ===
+        students = students.select_related('xp_profile', 'streak').annotate(
+            pending_count=Count(
+                'assignment_submissions',
+                filter=Q(assignment_submissions__status__in=[
+                    AssignmentSubmission.Status.SUBMITTED,
+                    AssignmentSubmission.Status.IN_REVIEW,
+                ]),
+            ),
+            completed_lessons=Count(
+                'lesson_progress',
+                filter=Q(lesson_progress__status=LessonProgress.Status.COMPLETED),
+            ),
+        )
+
+        if status_filter == 'pending':
+            students = students.filter(pending_count__gt=0)
+
+        student_list = []
+        for s in students:
+            streak = getattr(s, 'streak', None)
+            xp_profile = getattr(s, 'xp_profile', None)
+
+            last_active = streak.last_activity_date if streak else None
+
+            if last_active == today:
+                activity_status = 'active'
+            elif last_active and last_active >= week_ago:
+                activity_status = 'recent'
+            elif last_active:
+                activity_status = 'inactive'
+            else:
+                activity_status = 'never'
+
+            # Status filter (faollikka qarab) — annotate'dan keyin Python darajasida
+            if status_filter == 'active' and activity_status != 'active':
+                continue
+            if status_filter == 'inactive' and activity_status not in ('inactive', 'never'):
+                continue
+
+            student_list.append({
+                'id': s.id,
+                'username': s.username,
+                'full_name': s.full_name or s.username,
+                'cefr_level': s.cefr_level,
+                'xp': xp_profile.total_xp if xp_profile else 0,
+                'level': xp_profile.level if xp_profile else 1,
+                'current_streak': streak.current_streak if streak else 0,
+                'longest_streak': streak.longest_streak if streak else 0,
+                'last_active': last_active.isoformat() if last_active else None,
+                'activity_status': activity_status,
+                'pending_submissions': s.pending_count,
+                'completed_lessons': s.completed_lessons,
+            })
+
+        # Eng faolsizlarni tepaga chiqaramiz (e'tibor talab qiladiganlar)
+        student_list.sort(key=lambda x: (x['pending_submissions'] == 0, x['last_active'] or ''))
+
+        return Response({
+            'stats': stats,
+            'students': student_list,
+        })

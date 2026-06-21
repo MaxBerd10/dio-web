@@ -1,5 +1,9 @@
 import { useQuery } from '@tanstack/react-query';
-import { teacherApi, type SubmissionStatus } from '@/lib/api/teacher';
+import {
+  teacherApi,
+  teacherSubmissionApi,
+  type SubmissionStatus,
+} from '@/lib/api/teacher';
 
 export function useTeacherSubmissions(status?: SubmissionStatus) {
   return useQuery({
@@ -8,13 +12,20 @@ export function useTeacherSubmissions(status?: SubmissionStatus) {
   });
 }
 
-
-import { teacherSubmissionApi } from '@/lib/api/teacher';
-
 export function useSubmissionForReview(submissionId: number | null) {
   return useQuery({
     queryKey: ['teacher-submission', submissionId],
     queryFn: () => teacherSubmissionApi.getSubmission(submissionId!),
     enabled: submissionId !== null,
+  });
+}
+
+export function useTeacherDashboard(params?: {
+  level?: string;
+  status?: 'active' | 'inactive' | 'pending';
+}) {
+  return useQuery({
+    queryKey: ['teacher-dashboard', params?.level, params?.status],
+    queryFn: () => teacherApi.getDashboard(params),
   });
 }

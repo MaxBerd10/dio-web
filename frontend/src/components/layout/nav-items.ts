@@ -23,14 +23,21 @@ export interface NavItem {
 }
 
 export const NAV_ITEMS: NavItem[] = [
-  // ── Student & Teacher ──────────────────────────────
+  // ── Bosh sahifa (rolega qarab manzili boshqacha) ────
   {
     label: 'Bosh sahifa',
     href: '/dashboard',
     icon: LayoutDashboard,
+    forRoles: ['student'],
     mobileShow: true,
   },
-
+  {
+    label: 'Bosh sahifa',
+    href: '/teacher/students',
+    icon: LayoutDashboard,
+    forRoles: ['teacher', 'admin'],
+    mobileShow: true,
+  },
   // ── Student only ───────────────────────────────────
   {
     label: 'Darslar',
@@ -68,7 +75,6 @@ export const NAV_ITEMS: NavItem[] = [
     forRoles: ['student'],
     mobileShow: false,
   },
-
   {
     label: 'Reytinglar',
     href: '/leaderboard',
@@ -76,7 +82,6 @@ export const NAV_ITEMS: NavItem[] = [
     forRoles: ['student'],
     mobileShow: false,
   },
-
   // ── Teacher & Admin only ───────────────────────────
   {
     label: 'Vazifalar',
@@ -84,13 +89,6 @@ export const NAV_ITEMS: NavItem[] = [
     icon: Inbox,
     forRoles: ['teacher', 'admin'],
     mobileShow: true,
-  },
-  {
-    label: "O'quvchilar",
-    href: '/teacher/students',
-    icon: Users,
-    forRoles: ['teacher', 'admin'],
-    mobileShow: false,
   },
   {
     label: 'Materiallar',
