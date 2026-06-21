@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Link from 'next/link';
 import {
   Users,
   Flame,
@@ -9,6 +10,7 @@ import {
   Search,
   Award,
   BookOpenCheck,
+  ChevronRight,
 } from 'lucide-react';
 
 import { useTeacherDashboard } from '@/lib/hooks/use-teacher';
@@ -42,6 +44,14 @@ const ACTIVITY_LABELS: Record<ActivityStatus, string> = {
   inactive: 'Nofaol',
   never: 'Hali boshlamagan',
 };
+
+// Progress foiziga qarab rang — past% qizil/sariq, yuqori% yashil
+function progressColor(pct: number): string {
+  if (pct >= 70) return 'bg-[var(--color-success)]';
+  if (pct >= 35) return 'bg-amber-500';
+  if (pct > 0) return 'bg-orange-500';
+  return 'bg-[var(--color-muted-foreground)]/30';
+}
 
 function formatLastActive(dateStr: string | null): string {
   if (!dateStr) return "Hali faollik yo'q";
@@ -89,73 +99,90 @@ function StudentRow({ student }: { student: TeacherStudentItem }) {
     .toUpperCase();
 
   return (
-    <Card>
-      <CardContent className="flex flex-wrap items-center gap-4 p-4">
-        {/* Avatar */}
-        <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[var(--color-primary)]/10 text-base font-semibold text-[var(--color-primary)]">
-          {initial}
-        </div>
+    <Link href={`/teacher/students/${student.id}`} className="block">
+      <Card className="transition-all hover:shadow-md hover:border-[var(--color-primary)]/30 active:scale-[0.99]">
+        <CardContent className="p-4">
+          <div className="flex flex-wrap items-center gap-4">
+            {/* Avatar */}
+            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[var(--color-primary)]/10 text-base font-semibold text-[var(--color-primary)]">
+              {initial}
+            </div>
 
-        {/* Ism va username */}
-        <div className="min-w-[140px] flex-1">
-          <p className="font-semibold leading-tight">{student.full_name}</p>
-          <p className="text-xs text-[var(--color-muted-foreground)]">
-            @{student.username}
-            {student.cefr_level && ` · ${student.cefr_level}`}
-          </p>
-        </div>
+            {/* Ism va username */}
+            <div className="min-w-[140px] flex-1">
+              <p className="font-semibold leading-tight">{student.full_name}</p>
+              <p className="text-xs text-[var(--color-muted-foreground)]">
+                @{student.username}
+                {student.cefr_level && ` · ${student.cefr_level}`}
+              </p>
+            </div>
 
-        {/* XP / Level */}
-        <div className="flex items-center gap-1.5 text-sm">
-          <Award className="h-4 w-4 text-[var(--color-primary)]" />
-          <span className="font-medium">Lv{student.level}</span>
-          <span className="text-[var(--color-muted-foreground)]">
-            · {student.xp} XP
-          </span>
-        </div>
+            {/* XP / Level */}
+            <div className="flex items-center gap-1.5 text-sm">
+              <Award className="h-4 w-4 text-[var(--color-primary)]" />
+              <span className="font-medium">Lv{student.level}</span>
+              <span className="text-[var(--color-muted-foreground)]">
+                · {student.xp} XP
+              </span>
+            </div>
 
-        {/* Streak */}
-        <div className="flex items-center gap-1.5 text-sm">
-          <Flame
-            className={cn(
-              'h-4 w-4',
-              student.current_streak > 0
-                ? 'text-orange-500'
-                : 'text-[var(--color-muted-foreground)]',
+            {/* Streak */}
+            <div className="flex items-center gap-1.5 text-sm">
+              <Flame
+                className={cn(
+                  'h-4 w-4',
+                  student.current_streak > 0
+                    ? 'text-orange-500'
+                    : 'text-[var(--color-muted-foreground)]',
+                )}
+              />
+              <span className="font-medium">{student.current_streak}</span>
+            </div>
+
+            {/* Oxirgi faollik */}
+            <div className="min-w-[90px] text-xs text-[var(--color-muted-foreground)]">
+              {formatLastActive(student.last_active)}
+            </div>
+
+            {/* Activity badge */}
+            <span
+              className={cn(
+                'rounded-full px-2.5 py-1 text-xs font-medium',
+                ACTIVITY_STYLES[student.activity_status],
+              )}
+            >
+              {ACTIVITY_LABELS[student.activity_status]}
+            </span>
+
+            {/* Kutilayotgan vazifa */}
+            {student.pending_submissions > 0 && (
+              <span className="rounded-full bg-[var(--color-primary)]/10 px-2.5 py-1 text-xs font-medium text-[var(--color-primary)]">
+                {student.pending_submissions} vazifa kutmoqda
+              </span>
             )}
-          />
-          <span className="font-medium">{student.current_streak}</span>
-        </div>
 
-        {/* Tugatilgan darslar */}
-        <div className="flex items-center gap-1.5 text-sm">
-          <BookOpenCheck className="h-4 w-4 text-[var(--color-muted-foreground)]" />
-          <span>{student.completed_lessons}</span>
-        </div>
+            <ChevronRight className="h-4 w-4 text-[var(--color-muted-foreground)] ml-auto shrink-0" />
+          </div>
 
-        {/* Oxirgi faollik */}
-        <div className="min-w-[90px] text-xs text-[var(--color-muted-foreground)]">
-          {formatLastActive(student.last_active)}
-        </div>
-
-        {/* Activity badge */}
-        <span
-          className={cn(
-            'rounded-full px-2.5 py-1 text-xs font-medium',
-            ACTIVITY_STYLES[student.activity_status],
-          )}
-        >
-          {ACTIVITY_LABELS[student.activity_status]}
-        </span>
-
-        {/* Kutilayotgan vazifa */}
-        {student.pending_submissions > 0 && (
-          <span className="rounded-full bg-[var(--color-primary)]/10 px-2.5 py-1 text-xs font-medium text-[var(--color-primary)]">
-            {student.pending_submissions} vazifa kutmoqda
-          </span>
-        )}
-      </CardContent>
-    </Card>
+          {/* Progress bar */}
+          <div className="mt-3 flex items-center gap-2">
+            <div className="h-2 flex-1 rounded-full bg-[var(--color-muted)] overflow-hidden">
+              <div
+                className={cn(
+                  'h-full rounded-full transition-all',
+                  progressColor(student.lesson_progress_pct),
+                )}
+                style={{ width: `${student.lesson_progress_pct}%` }}
+              />
+            </div>
+            <span className="text-xs text-[var(--color-muted-foreground)] shrink-0 flex items-center gap-1">
+              <BookOpenCheck className="h-3.5 w-3.5" />
+              {student.completed_lessons} dars · {student.lesson_progress_pct}%
+            </span>
+          </div>
+        </CardContent>
+      </Card>
+    </Link>
   );
 }
 
@@ -285,7 +312,7 @@ export default function TeacherStudentsPage() {
       {isLoading ? (
         <div className="space-y-3">
           {Array.from({ length: 4 }).map((_, i) => (
-            <Skeleton key={i} className="h-20 rounded-xl" />
+            <Skeleton key={i} className="h-24 rounded-xl" />
           ))}
         </div>
       ) : students.length === 0 ? (

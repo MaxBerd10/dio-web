@@ -22,7 +22,6 @@ class ChoiceWithAnswerSerializer(serializers.ModelSerializer):
         model = Choice
         fields = ('id', 'text', 'is_correct', 'match_pair', 'order')
 
-
 class QuestionForAttemptSerializer(serializers.ModelSerializer):
     """Quiz boshlanganda savollar — to'g'ri javobsiz."""
     choices = ChoiceSerializer(many=True, read_only=True)
@@ -34,7 +33,7 @@ class QuestionForAttemptSerializer(serializers.ModelSerializer):
         model = Question
         fields = (
             'id', 'question_type', 'question_type_display',
-            'text', 'image', 'audio_url',
+            'text', 'image', 'audio_url', 'hint',
             'points', 'order', 'choices',
         )
 
@@ -241,3 +240,47 @@ class SubmissionGradeSerializer(serializers.ModelSerializer):
     class Meta:
         model = AssignmentSubmission
         fields = ('score', 'feedback', 'strengths', 'improvements', 'status')
+
+
+class QuizListAllSerializer(serializers.ModelSerializer):
+    """Umumiy 'Testlar' sahifasi uchun — lesson/module/course kontekst bilan."""
+    question_count = serializers.SerializerMethodField()
+    user_attempts = serializers.SerializerMethodField()
+    best_score = serializers.SerializerMethodField()
+    lesson_title = serializers.CharField(source='lesson.title')
+    module_title = serializers.CharField(source='lesson.module.title')
+    course_title = serializers.CharField(source='lesson.module.course.title')
+    track = serializers.CharField(source='lesson.module.course.track')
+    cefr_level = serializers.CharField(source='lesson.module.course.cefr_level')
+
+    class Meta:
+        model = Quiz
+        fields = (
+            'id', 'title', 'description',
+            'passing_score', 'time_limit_seconds', 'max_attempts',
+            'xp_reward', 'question_count', 'user_attempts', 'best_score',
+            'lesson_title', 'module_title', 'course_title', 'track', 'cefr_level',
+        )
+
+    def get_user_attempts(self, obj):
+        user = self.context.get('request').user
+        if not user or not user.is_authenticated:
+            return 0
+        from progress.models import QuizAttempt
+        return QuizAttempt.objects.filter(student=user, quiz=obj).count()
+
+    def get_question_count(self, obj):
+        return obj.question_count
+
+    def get_best_score(self, obj):
+        user = self.context.get('request').user
+        if not user or not user.is_authenticated:
+            return None
+        from progress.models import QuizAttempt
+        best = (
+            QuizAttempt.objects
+            .filter(student=user, quiz=obj, status='completed')
+            .order_by('-percentage')
+            .first()
+        )
+        return float(best.percentage) if best else None

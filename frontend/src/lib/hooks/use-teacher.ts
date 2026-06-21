@@ -29,3 +29,11 @@ export function useTeacherDashboard(params?: {
     queryFn: () => teacherApi.getDashboard(params),
   });
 }
+
+export function useTeacherStudentDetail(studentId: number | null) {
+  return useQuery({
+    queryKey: ['teacher-student-detail', studentId],
+    queryFn: () => teacherApi.getStudentDetail(studentId!),
+    enabled: studentId !== null,
+  });
+}

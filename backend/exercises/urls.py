@@ -2,11 +2,20 @@ from django.urls import path
 
 from .views import (
     LessonQuizzesView,
-    QuizStartView, AttemptAnswerView, AttemptSubmitView,
-    LessonAssignmentsView, AssignmentDetailView, AssignmentSubmitView,
-    MySubmissionsView, SubmissionDetailView,
-    TeacherSubmissionListView, SubmissionClaimView, SubmissionGradeView,
-    FeedbackCommentCreateView, FeedbackCommentDeleteView,
+    AllQuizzesListView,
+    QuizStartView,
+    AttemptAnswerView,
+    AttemptSubmitView,
+    LessonAssignmentsView,
+    AssignmentDetailView,
+    AssignmentSubmitView,
+    MySubmissionsView,
+    SubmissionDetailView,
+    TeacherSubmissionListView,
+    SubmissionClaimView,
+    SubmissionGradeView,
+    FeedbackCommentCreateView,
+    FeedbackCommentDeleteView,
 )
 
 app_name = 'exercises'
@@ -35,4 +44,7 @@ urlpatterns = [
     # Feedback comments
     path('submissions/<int:submission_id>/comments/', FeedbackCommentCreateView.as_view(), name='comment-create'),
     path('comments/<int:pk>/', FeedbackCommentDeleteView.as_view(), name='comment-delete'),
+
+
+    path('quizzes/', AllQuizzesListView.as_view(), name='all-quizzes'),
 ]

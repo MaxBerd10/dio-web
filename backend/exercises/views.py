@@ -18,6 +18,7 @@ from .models import (
 )
 from .serializers import (
     QuizListSerializer, QuizDetailSerializer,
+    QuizListAllSerializer,
     QuestionWithAnswerSerializer,
     AnswerSubmitSerializer,
     AssignmentSerializer,
@@ -30,6 +31,41 @@ from .serializers import (
 # ============================================================
 # A. QUIZ FLOW
 # ============================================================
+class AllQuizzesListView(generics.ListAPIView):
+    """
+    GET /api/exercises/quizzes/?track=ielts&level=B1&search=conditional
+    Barcha published testlar — track/level/qidiruv filtrlari bilan.
+    """
+    permission_classes = [IsAuthenticated]
+    serializer_class = QuizListAllSerializer
+    pagination_class = None
+
+    def get_queryset(self):
+        qs = (
+            Quiz.objects.filter(
+                is_published=True,
+                lesson__is_published=True,
+                lesson__module__is_published=True,
+                lesson__module__course__is_published=True,
+            )
+            .select_related('lesson__module__course')
+            .order_by('lesson__module__course__track', 'lesson__module__course__order', 'order')
+        )
+
+        track = self.request.query_params.get('track')
+        if track:
+            qs = qs.filter(lesson__module__course__track=track)
+
+        level = self.request.query_params.get('level')
+        if level:
+            qs = qs.filter(lesson__module__course__cefr_level=level)
+
+        search = self.request.query_params.get('search')
+        if search:
+            qs = qs.filter(title__icontains=search)
+
+        return qs
+
 
 class LessonQuizzesView(APIView):
     """GET /api/exercises/lessons/{lesson_id}/quizzes/"""
@@ -178,11 +214,19 @@ class AttemptAnswerView(APIView):
             expected = (question.correct_answer_text or '').strip().lower()
             is_correct = text.lower() == expected
         elif qt in (Question.QuestionType.FILL_BLANK, Question.QuestionType.SHORT_ANSWER):
-            expected = question.correct_answer_text or ''
-            if question.case_sensitive:
-                is_correct = text == expected
+            if question.choices.exists():
+                # So'z banki rejimi — variant tanlangan
+                correct = set(
+                    question.choices.filter(is_correct=True).values_list('id', flat=True)
+                )
+                is_correct = selected_ids == correct
             else:
-                is_correct = text.lower() == expected.lower()
+                # Eski rejim — ochiq matn
+                expected = question.correct_answer_text or ''
+                if question.case_sensitive:
+                    is_correct = text == expected
+                else:
+                    is_correct = text.lower() == expected.lower()
         elif qt == Question.QuestionType.MATCHING:
             # Matching uchun: frontend match juftliklarini text_answer'ga JSON sifatida jo'natadi
             # Yoki selected_choice_ids — to'g'ri juftliklar ID'lari

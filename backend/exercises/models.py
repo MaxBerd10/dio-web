@@ -61,16 +61,14 @@ class Quiz(models.Model):
 
 
 class Question(models.Model):
-    """
-    Yagona savol.
-    `question_type` — savolning turini belgilaydi (4 ta turdan bittasi):
-      - multiple_choice: 1 ta to'g'ri javob, 3-4 ta variant
-      - multiple_select: bir nechta to'g'ri javob mumkin
-      - true_false: True/False
-      - fill_blank: gap'dagi bo'sh joyni to'ldirish
-      - matching: chap va o'ng tomonni juftlash
-      - short_answer: qisqa yozma javob (eskakt match)
-    """
+    explanation = models.TextField(
+        blank=True,
+        help_text='To\'g\'ri javob nima uchun shu — tushuntirish',
+    )
+    hint = models.CharField(
+        max_length=300, blank=True,
+        help_text="Savol qiyin bo'lsa ko'rsatiladigan yordam (ixtiyoriy)",
+    )
 
     class QuestionType(models.TextChoices):
         MULTIPLE_CHOICE = 'multiple_choice', "Bitta to'g'ri javob"

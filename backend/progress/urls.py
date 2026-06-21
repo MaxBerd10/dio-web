@@ -8,6 +8,7 @@ from .views import (
     LeaderboardView,
     DashboardSummaryView,
     TeacherDashboardView,
+    TeacherStudentDetailView,
 )
 
 app_name = 'progress'
@@ -34,5 +35,7 @@ urlpatterns = [
     # Leaderboard
     path('leaderboard/', LeaderboardView.as_view(), name='leaderboard'),
 
+    # Teacher
     path('teacher/dashboard/', TeacherDashboardView.as_view(), name='teacher-dashboard'),
+    path('teacher/students/<int:student_id>/', TeacherStudentDetailView.as_view(), name='teacher-student-detail'),
 ]

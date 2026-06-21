@@ -42,6 +42,14 @@ export interface QuizSummary {
   best_score: number | null;
 }
 
+export interface AllQuizItem extends QuizSummary {
+  lesson_title: string;
+  module_title: string;
+  course_title: string;
+  track: 'general' | 'cefr' | 'ielts';
+  cefr_level: string;
+}
+
 export interface QuizStartResponse {
   attempt_id: number;
   quiz: {
@@ -94,6 +102,15 @@ export const quizApi = {
     return data;
   },
 
+  getAllQuizzes: async (params?: {
+    track?: string;
+    level?: string;
+    search?: string;
+  }): Promise<AllQuizItem[]> => {
+    const { data } = await api.get<AllQuizItem[]>('/exercises/quizzes/', { params });
+    return data;
+  },
+
   startQuiz: async (quizId: number): Promise<QuizStartResponse> => {
     const { data } = await api.post<QuizStartResponse>(
       `/exercises/quizzes/${quizId}/start/`,
@@ -124,3 +141,25 @@ export const quizApi = {
     return data;
   },
 };
+
+
+export interface QuizQuestion {
+  id: number;
+  question_type:
+    | 'multiple_choice'
+    | 'multiple_select'
+    | 'true_false'
+    | 'fill_blank'
+    | 'matching'
+    | 'short_answer';
+  question_type_display: string;
+  text: string;
+  image: string | null;
+  audio_url: string;
+  hint?: string;
+  correct_answer_text?: string;
+  explanation?: string;
+  points: number;
+  order: number;
+  choices: QuizChoice[];
+}

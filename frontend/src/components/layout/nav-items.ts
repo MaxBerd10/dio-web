@@ -54,6 +54,13 @@ export const NAV_ITEMS: NavItem[] = [
     mobileShow: true,
   },
   {
+    label: 'Testlar',
+    href: '/quizzes',
+    icon: ClipboardCheck,
+    forRoles: ['student'],
+    mobileShow: false,
+  },
+  {
     label: 'Grammar',
     href: '/grammar',
     icon: Brain,

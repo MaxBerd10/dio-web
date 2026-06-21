@@ -13,6 +13,7 @@ import {
   Brain,
   CircleCheck,
   ClipboardCheck,
+  ArrowRight,
 } from 'lucide-react';
 
 import { useLesson } from '@/lib/hooks/use-courses';
@@ -221,6 +222,22 @@ function LessonOverview({
         lessonId={lesson.id}
         xpReward={lesson.xp_reward}
       />
+
+      {lesson.next_lesson_id && (
+        <Link href={`/lessons/${lesson.next_lesson_id}`} className="block">
+          <Card className="hover:border-[var(--color-primary)]/40 transition-all hover:shadow-md active:scale-[0.99]">
+            <CardContent className="p-4 flex items-center justify-between">
+              <span className="text-sm font-medium text-[var(--color-muted-foreground)]">
+                Keyingi dars
+              </span>
+              <span className="flex items-center gap-1.5 text-sm font-semibold text-[var(--color-primary)]">
+                Davom etish
+                <ArrowRight className="h-4 w-4" />
+              </span>
+            </CardContent>
+          </Card>
+        </Link>
+      )}
     </div>
   );
 }

@@ -28,11 +28,11 @@ class LessonDetailSerializer(serializers.ModelSerializer):
     cefr_level = serializers.CharField(read_only=True)
     module_title = serializers.CharField(source='module.title', read_only=True)
     course_title = serializers.CharField(source='module.course.title', read_only=True)
-
     word_count = serializers.SerializerMethodField()
     grammar_topic_count = serializers.SerializerMethodField()
     quiz_count = serializers.SerializerMethodField()
     assignment_count = serializers.SerializerMethodField()
+    next_lesson_id = serializers.SerializerMethodField()
 
     class Meta:
         model = Lesson
@@ -45,6 +45,7 @@ class LessonDetailSerializer(serializers.ModelSerializer):
             'module_title', 'course_title',
             'word_count', 'grammar_topic_count',
             'quiz_count', 'assignment_count',
+            'next_lesson_id',
         )
 
     def get_word_count(self, obj):
@@ -58,6 +59,28 @@ class LessonDetailSerializer(serializers.ModelSerializer):
 
     def get_assignment_count(self, obj):
         return obj.assignments.filter(is_published=True).count()
+
+    def get_next_lesson_id(self, obj):
+        # 1) Shu modul ichida keyingi dars bormi?
+        siblings = list(
+            Lesson.objects.filter(module=obj.module, is_published=True).order_by('order')
+        )
+        idx = next((i for i, l in enumerate(siblings) if l.id == obj.id), None)
+        if idx is not None and idx + 1 < len(siblings):
+            return siblings[idx + 1].id
+
+        # 2) Bo'lmasa — kursdagi keyingi moduldan birinchi dars
+        modules = list(
+            Module.objects.filter(course=obj.module.course, is_published=True).order_by('order')
+        )
+        midx = next((i for i, m in enumerate(modules) if m.id == obj.module_id), None)
+        if midx is not None:
+            for m in modules[midx + 1:]:
+                next_lessons = Lesson.objects.filter(module=m, is_published=True).order_by('order')
+                if next_lessons.exists():
+                    return next_lessons.first().id
+
+        return None
 
 
 class ModuleListSerializer(serializers.ModelSerializer):

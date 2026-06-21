@@ -39,6 +39,7 @@ export interface TeacherDashboardStats {
   active_this_week: number;
   pending_submissions: number;
   average_streak: number;
+  total_lessons: number;
 }
 
 export interface TeacherStudentItem {
@@ -54,11 +55,68 @@ export interface TeacherStudentItem {
   activity_status: ActivityStatus;
   pending_submissions: number;
   completed_lessons: number;
+  lesson_progress_pct: number;
 }
 
 export interface TeacherDashboardResponse {
   stats: TeacherDashboardStats;
   students: TeacherStudentItem[];
+}
+
+// ============================================================
+// Teacher — Student Detail
+// ============================================================
+
+export type LessonStatus = 'not_started' | 'in_progress' | 'completed';
+
+export interface StudentDetailQuiz {
+  id: number;
+  title: string;
+  attempted: boolean;
+  best_score: number | null;
+  passed: boolean;
+}
+
+export interface StudentDetailAssignment {
+  id: number;
+  title: string;
+  status: SubmissionStatus | null;
+  status_display: string;
+  score: number | null;
+}
+
+export interface StudentDetailLesson {
+  id: number;
+  title: string;
+  lesson_type: string;
+  status: LessonStatus;
+  completion_percentage: number;
+  xp_earned: number;
+  quizzes: StudentDetailQuiz[];
+  assignments: StudentDetailAssignment[];
+}
+
+export interface StudentDetailModule {
+  id: number;
+  title: string;
+  lessons: StudentDetailLesson[];
+}
+
+export interface StudentDetailCourse {
+  id: number;
+  title: string;
+  track: 'general' | 'cefr' | 'ielts';
+  modules: StudentDetailModule[];
+}
+
+export interface TeacherStudentDetailResponse {
+  student: {
+    id: number;
+    username: string;
+    full_name: string;
+    cefr_level: string;
+  };
+  courses: StudentDetailCourse[];
 }
 
 export const teacherApi = {
@@ -80,6 +138,15 @@ export const teacherApi = {
     const { data } = await api.get<TeacherDashboardResponse>(
       '/progress/teacher/dashboard/',
       { params },
+    );
+    return data;
+  },
+
+  getStudentDetail: async (
+    studentId: number,
+  ): Promise<TeacherStudentDetailResponse> => {
+    const { data } = await api.get<TeacherStudentDetailResponse>(
+      `/progress/teacher/students/${studentId}/`,
     );
     return data;
   },

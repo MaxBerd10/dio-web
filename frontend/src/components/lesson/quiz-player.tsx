@@ -10,6 +10,7 @@ import {
   Sparkles,
   Trophy,
   X,
+  Lightbulb,
 } from 'lucide-react';
 
 import { quizApi, type QuizStartResponse, type QuizSubmitResponse } from '@/lib/api/quiz';
@@ -34,6 +35,7 @@ export function QuizPlayer({ startData, onClose, onComplete }: QuizPlayerProps) 
   const [answers, setAnswers] = useState<Record<number, Answer>>({});
   const [questionStartTime, setQuestionStartTime] = useState(Date.now());
   const [result, setResult] = useState<QuizSubmitResponse | null>(null);
+  const [showHint, setShowHint] = useState(false);
 
   const currentQ = questions[currentIdx];
   const isFirst = currentIdx === 0;
@@ -56,6 +58,7 @@ export function QuizPlayer({ startData, onClose, onComplete }: QuizPlayerProps) 
 
   useEffect(() => {
     setQuestionStartTime(Date.now());
+    setShowHint(false);
   }, [currentIdx]);
 
   // Result ko'rinayotganda yakuniy callback
@@ -156,6 +159,27 @@ export function QuizPlayer({ startData, onClose, onComplete }: QuizPlayerProps) 
             {currentQ.text}
           </div>
 
+          {/* Hint */}
+          {currentQ.hint && (
+            <div className="mb-5">
+              {!showHint ? (
+                <button
+                  type="button"
+                  onClick={() => setShowHint(true)}
+                  className="inline-flex items-center gap-1.5 text-xs font-medium text-amber-600 hover:text-amber-700 transition-colors"
+                >
+                  <Lightbulb className="h-3.5 w-3.5" />
+                  Yordam ko'rish
+                </button>
+              ) : (
+                <div className="flex items-start gap-2 rounded-lg bg-amber-500/10 px-3 py-2.5 text-sm text-amber-700">
+                  <Lightbulb className="h-4 w-4 shrink-0 mt-0.5" />
+                  <span>{currentQ.hint}</span>
+                </div>
+              )}
+            </div>
+          )}
+
           {/* Image */}
           {currentQ.image && (
             <img
@@ -236,9 +260,12 @@ function AnswerInput({
   value: Answer | undefined;
   onChange: (a: Answer) => void;
 }) {
+  const hasWordBank = question.choices.length > 0;
+
   if (
     question.question_type === 'multiple_choice' ||
-    question.question_type === 'true_false'
+    question.question_type === 'true_false' ||
+    ((question.question_type === 'fill_blank' || question.question_type === 'short_answer') && hasWordBank)
   ) {
     const selected = value?.type === 'choice' ? value.choiceIds : [];
     return (
@@ -330,8 +357,8 @@ function AnswerInput({
   }
 
   if (
-    question.question_type === 'fill_blank' ||
-    question.question_type === 'short_answer'
+    (question.question_type === 'fill_blank' || question.question_type === 'short_answer') &&
+    !hasWordBank
   ) {
     const text = value?.type === 'text' ? value.value : '';
     return (
@@ -544,8 +571,8 @@ function QuestionResult({
               </div>
             )}
 
-            {/* Fill-blank user answer vs correct */}
-            {question.question_type === 'fill_blank' && (
+            {/* Fill-blank user answer vs correct (faqat eski, so'z banksiz rejim uchun) */}
+            {question.question_type === 'fill_blank' && question.choices.length === 0 && (
               <div className="mt-3 space-y-1.5">
                 {user_answer.text_answer && (
                   <div

@@ -2,13 +2,15 @@ from django.db.models import Count, Q, Sum, Avg
 from django.shortcuts import get_object_or_404
 from django.utils import timezone
 
+from content.models import Course, Module, Lesson
+from exercises.models import Quiz, Assignment, AssignmentSubmission
+
 from accounts.models import User
 from .models import LessonProgress, Streak
 
 
 from datetime import timedelta
 from accounts.permissions import IsTeacherOrAdmin
-from exercises.models import AssignmentSubmission
 
 
 from rest_framework import generics, status
@@ -18,7 +20,6 @@ from rest_framework.views import APIView
 
 from accounts.pagination import StandardPagination
 from accounts.permissions import IsStudent
-from content.models import Lesson
 
 from .models import (
     LessonProgress, WordProgress,
@@ -331,6 +332,8 @@ class TeacherDashboardView(APIView):
         if level_filter:
             students = students.filter(cefr_level=level_filter)
 
+        total_lessons = Lesson.objects.filter(is_published=True).count()
+
         # === Umumiy statistika ===
         stats = {
             'total_students': students.count(),
@@ -348,6 +351,7 @@ class TeacherDashboardView(APIView):
                 Streak.objects.filter(student__role=User.Role.STUDENT)
                 .aggregate(avg=Avg('current_streak'))['avg'] or 0, 1,
             ),
+            'total_lessons': total_lessons,
         }
 
         # === Studentlar ro'yxati ===
@@ -403,6 +407,9 @@ class TeacherDashboardView(APIView):
                 'activity_status': activity_status,
                 'pending_submissions': s.pending_count,
                 'completed_lessons': s.completed_lessons,
+                'lesson_progress_pct': round(
+                    (s.completed_lessons / total_lessons * 100) if total_lessons else 0,
+                ),
             })
 
         # Eng faolsizlarni tepaga chiqaramiz (e'tibor talab qiladiganlar)
@@ -411,4 +418,108 @@ class TeacherDashboardView(APIView):
         return Response({
             'stats': stats,
             'students': student_list,
+        })
+
+
+# ============================================================
+# TEACHER — STUDENT DETAIL (batafsil sahifa)
+# ============================================================
+
+class TeacherStudentDetailView(APIView):
+    """
+    GET /api/progress/teacher/students/<id>/
+    Bitta studentning barcha kurs/modul/dars/test/vazifa natijalari.
+    """
+    permission_classes = [IsTeacherOrAdmin]
+
+    def get(self, request, student_id):
+        student = get_object_or_404(User, id=student_id, role=User.Role.STUDENT)
+
+        lesson_progress_map = {
+            lp.lesson_id: lp
+            for lp in LessonProgress.objects.filter(student=student)
+        }
+
+        best_quiz_map = {}
+        for qa in QuizAttempt.objects.filter(
+            student=student, status=QuizAttempt.Status.COMPLETED,
+        ).order_by('quiz_id', '-percentage'):
+            if qa.quiz_id not in best_quiz_map:
+                best_quiz_map[qa.quiz_id] = qa
+
+        submission_map = {
+            sub.assignment_id: sub
+            for sub in AssignmentSubmission.objects.filter(
+                student=student,
+            ).order_by('-created_at')
+        }
+
+        courses = (
+            Course.objects.filter(is_published=True)
+            .prefetch_related('modules__lessons__quizzes', 'modules__lessons__assignments')
+            .order_by('track', 'order')
+        )
+
+        result = []
+        for course in courses:
+            modules_data = []
+            for module in course.modules.filter(is_published=True).order_by('order'):
+                lessons_data = []
+                for lesson in module.lessons.filter(is_published=True).order_by('order'):
+                    lp = lesson_progress_map.get(lesson.id)
+
+                    quizzes_data = []
+                    for quiz in lesson.quizzes.all():
+                        best = best_quiz_map.get(quiz.id)
+                        quizzes_data.append({
+                            'id': quiz.id,
+                            'title': quiz.title,
+                            'attempted': best is not None,
+                            'best_score': float(best.percentage) if best else None,
+                            'passed': best.passed if best else False,
+                        })
+
+                    assignments_data = []
+                    for assignment in lesson.assignments.all():
+                        sub = submission_map.get(assignment.id)
+                        assignments_data.append({
+                            'id': assignment.id,
+                            'title': assignment.title,
+                            'status': sub.status if sub else None,
+                            'status_display': sub.get_status_display() if sub else "Topshirilmagan",
+                            'score': float(sub.score) if sub and sub.score is not None else None,
+                        })
+
+                    lessons_data.append({
+                        'id': lesson.id,
+                        'title': lesson.title,
+                        'lesson_type': lesson.lesson_type,
+                        'status': lp.status if lp else 'not_started',
+                        'completion_percentage': lp.completion_percentage if lp else 0,
+                        'xp_earned': lp.xp_earned if lp else 0,
+                        'quizzes': quizzes_data,
+                        'assignments': assignments_data,
+                    })
+
+                modules_data.append({
+                    'id': module.id,
+                    'title': module.title,
+                    'lessons': lessons_data,
+                })
+
+            result.append({
+                'id': course.id,
+                'title': course.title,
+                'track': course.track,
+                'modules': modules_data,
+            })
+
+        return Response({
+            'student': {
+                'id': student.id,
+                'username': student.username,
+                'full_name': student.full_name,
+                'cefr_level': student.cefr_level,
+            },
+            'courses': result,
         })

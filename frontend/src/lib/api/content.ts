@@ -76,6 +76,7 @@ export interface LessonDetail {
   grammar_topic_count: number;
   quiz_count: number;
   assignment_count: number;
+  next_lesson_id: number | null;
 }
 
 export const contentApi = {
