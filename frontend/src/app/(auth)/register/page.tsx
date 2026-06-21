@@ -80,9 +80,11 @@ export default function RegisterPage() {
             cefr_level: undefined,
             learning_goal: undefined,
           }
-        : !isCefrTrack
-          ? { ...data, cefr_level: undefined }
-          : data;
+        : {
+            ...data,
+            invite_code: undefined,
+            ...(isCefrTrack ? {} : { cefr_level: undefined }),
+          };
 
       const res = await authApi.register(payload);
       tokenStorage.set(res.access, res.refresh);
@@ -179,6 +181,19 @@ export default function RegisterPage() {
             {...register('password_confirm')}
             error={errors.password_confirm?.message}
           />
+
+          {!isStudent && (
+            <Input
+              label="O'qituvchi kodi"
+              type="text"
+              placeholder="Invite kodni kiriting"
+              autoComplete="off"
+              required
+              {...register('invite_code')}
+              error={errors.invite_code?.message}
+              hint="Bu kodni administratordan olishingiz mumkin"
+            />
+          )}
 
           {isStudent && (
             <>

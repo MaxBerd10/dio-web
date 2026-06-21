@@ -24,12 +24,20 @@ export const registerSchema = z
       .regex(/[0-9]/, 'Kamida bitta raqam'),
     password_confirm: z.string(),
     role: z.enum(['student', 'teacher']),
+    invite_code: z.string().optional(),
     cefr_level: z.enum(['A1', 'A2', 'B1', 'B2', 'C1', 'C2']).optional(),
     learning_goal: z.enum(['general', 'cefr', 'ielts']).optional(),
   })
   .refine((data) => data.password === data.password_confirm, {
     message: 'Parollar mos kelmadi',
     path: ['password_confirm'],
-  });
+  })
+  .refine(
+    (data) => data.role !== 'teacher' || (data.invite_code && data.invite_code.length > 0),
+    {
+      message: "O'qituvchi kodi kiritilishi shart",
+      path: ['invite_code'],
+    },
+  );
 
 export type RegisterFormValues = z.infer<typeof registerSchema>;
