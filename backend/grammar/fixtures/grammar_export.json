@@ -1,0 +1,1739 @@
+[
+  {
+    "title": "Articles (a / an / the)",
+    "category": "articles",
+    "cefr_level": "A1",
+    "short_description": "a, an, the — qaysi biri va qachon ishlatilishi.",
+    "description": "Inglizcha 3 ta article bor:\n\n- **a** — undosh tovush bilan boshlangan so'z oldidan (*a book*)\n- **an** — unli tovush bilan (*an apple*)\n- **the** — aniq predmet (*the book on the table*)",
+    "icon": "🔤",
+    "order": 4,
+    "rules": [
+      {
+        "title": "Indefinite articles: a / an",
+        "formula": "a + consonant sound, an + vowel sound",
+        "explanation": "a/an birinchi marta zikr qilingan, bitta predmet uchun. Tanlov tovush bo'yicha, harf bo'yicha emas.",
+        "explanation_uz": "",
+        "tips": "Diqqat tovushga, harfga emas:\n- an hour (/aʊə/ unli tovush) ✓\n- a university (/juː/ undosh tovush) ✓",
+        "common_mistakes": "",
+        "order": 1,
+        "examples": [
+          {
+            "sentence": "I have a book.",
+            "translation": "Mening kitobim bor.",
+            "highlight": "a",
+            "is_incorrect": false,
+            "order": 1
+          },
+          {
+            "sentence": "She is an engineer.",
+            "translation": "U muhandis.",
+            "highlight": "an",
+            "is_incorrect": false,
+            "order": 2
+          },
+          {
+            "sentence": "It takes an hour.",
+            "translation": "Bir soat oladi.",
+            "highlight": "an",
+            "is_incorrect": false,
+            "order": 3
+          },
+          {
+            "sentence": "A university is big.",
+            "translation": "Universitet katta.",
+            "highlight": "A",
+            "is_incorrect": false,
+            "order": 4
+          }
+        ]
+      },
+      {
+        "title": "Definite article: the",
+        "formula": "the + specific noun",
+        "explanation": "the — gap qiluvchi va tinglovchi ikkalasi biladigan aniq predmet uchun. Yagona predmetlar (the sun, the moon) uchun ham ishlatiladi.",
+        "explanation_uz": "",
+        "tips": "",
+        "common_mistakes": "",
+        "order": 2,
+        "examples": [
+          {
+            "sentence": "The book on the table is mine.",
+            "translation": "Stol ustidagi kitob meniki.",
+            "highlight": "The",
+            "is_incorrect": false,
+            "order": 1
+          },
+          {
+            "sentence": "The sun is bright.",
+            "translation": "Quyosh yorqin.",
+            "highlight": "The",
+            "is_incorrect": false,
+            "order": 2
+          },
+          {
+            "sentence": "Open the door, please.",
+            "translation": "Eshikni oching, iltimos.",
+            "highlight": "the",
+            "is_incorrect": false,
+            "order": 3
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Comparatives and Superlatives",
+    "category": "comparatives",
+    "cefr_level": "A2",
+    "short_description": "Bigger, biggest — taqqoslash shakllari.",
+    "description": "Sifatlarning taqqoslash darajalari.",
+    "icon": "📈",
+    "order": 7,
+    "rules": [
+      {
+        "title": "Short adjectives (1 syllable)",
+        "formula": "adj + er / the + adj + est",
+        "explanation": "1 bo'g'inli sifatlarga -er/-est qo'shiladi.",
+        "explanation_uz": "",
+        "tips": "- big → bigger → the biggest (oxirgi undosh ikki marta)\n- nice → nicer → the nicest (e bo'lsa faqat -r/-st)\n- happy → happier → the happiest (y → i)",
+        "common_mistakes": "",
+        "order": 1,
+        "examples": [
+          {
+            "sentence": "My house is bigger than yours.",
+            "translation": "Mening uyim sizning uyingizdan katta.",
+            "highlight": "bigger",
+            "is_incorrect": false,
+            "order": 1
+          },
+          {
+            "sentence": "This is the biggest city.",
+            "translation": "Bu eng katta shahar.",
+            "highlight": "the biggest",
+            "is_incorrect": false,
+            "order": 2
+          },
+          {
+            "sentence": "She is happier today.",
+            "translation": "U bugun baxtliroq.",
+            "highlight": "happier",
+            "is_incorrect": false,
+            "order": 3
+          }
+        ]
+      },
+      {
+        "title": "Long adjectives (2+ syllables)",
+        "formula": "more + adj / the most + adj",
+        "explanation": "2 va undan ortiq bo'g'inli sifatlar uchun more / the most.",
+        "explanation_uz": "",
+        "tips": "",
+        "common_mistakes": "❌ This is more bigger.\n✓ This is bigger.\n\n❌ She is beautifuler.\n✓ She is more beautiful.",
+        "order": 2,
+        "examples": [
+          {
+            "sentence": "This book is more interesting.",
+            "translation": "Bu kitob qiziqarliroq.",
+            "highlight": "more interesting",
+            "is_incorrect": false,
+            "order": 1
+          },
+          {
+            "sentence": "She is the most beautiful.",
+            "translation": "U eng go'zal.",
+            "highlight": "the most beautiful",
+            "is_incorrect": false,
+            "order": 2
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "First Conditional",
+    "category": "conditionals",
+    "cefr_level": "B1",
+    "short_description": "If + Present, will + V1 — real kelajak shart.",
+    "description": "Birinchi turdagi shart gaplar — real, mumkin bo'lgan kelajak.",
+    "icon": "🔀",
+    "order": 9,
+    "rules": [
+      {
+        "title": "Structure",
+        "formula": "If + Present Simple, Subject + will + V1",
+        "explanation": "Shart real va kelajakda yuz berishi mumkin. If bandida Present Simple, asosiy gapda will.",
+        "explanation_uz": "",
+        "tips": "",
+        "common_mistakes": "❌ If it will rain, I will stay home.\n✓ If it rains, I will stay home. (if bandida will yo'q)",
+        "order": 1,
+        "examples": [
+          {
+            "sentence": "If it rains, I will stay home.",
+            "translation": "Yomg'ir yog'sa, uyda qolaman.",
+            "highlight": "If it rains",
+            "is_incorrect": false,
+            "order": 1
+          },
+          {
+            "sentence": "If you study, you'll pass the exam.",
+            "translation": "O'qisang, imtihondan o'tasan.",
+            "highlight": "If you study",
+            "is_incorrect": false,
+            "order": 2
+          },
+          {
+            "sentence": "I will help you if you need it.",
+            "translation": "Kerak bo'lsa, sizga yordam beraman.",
+            "highlight": "if you need",
+            "is_incorrect": false,
+            "order": 3
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Modal Verbs: can / could",
+    "category": "modals",
+    "cefr_level": "A2",
+    "short_description": "Imkoniyat va so'rov: I can, could you...",
+    "description": "Can va could — qobiliyat va xushmuomalalik uchun.",
+    "icon": "💪",
+    "order": 8,
+    "rules": [
+      {
+        "title": "Can — ability and possibility",
+        "formula": "Subject + can + V1",
+        "explanation": "can — hozirgi qobiliyat. Inkor: can't (cannot).",
+        "explanation_uz": "",
+        "tips": "",
+        "common_mistakes": "",
+        "order": 1,
+        "examples": [
+          {
+            "sentence": "I can speak English.",
+            "translation": "Men inglizcha gapira olaman.",
+            "highlight": "can",
+            "is_incorrect": false,
+            "order": 1
+          },
+          {
+            "sentence": "She can't drive.",
+            "translation": "U mashina haydolmaydi.",
+            "highlight": "can't",
+            "is_incorrect": false,
+            "order": 2
+          },
+          {
+            "sentence": "Can you help me?",
+            "translation": "Menga yordam bera olasizmi?",
+            "highlight": "Can",
+            "is_incorrect": false,
+            "order": 3
+          }
+        ]
+      },
+      {
+        "title": "Could — past ability and polite requests",
+        "formula": "Subject + could + V1",
+        "explanation": "could — o'tgan qobiliyat yoki xushmuomalalik so'rovi. Could you... — Can you...'dan xushmuomalaroq.",
+        "explanation_uz": "",
+        "tips": "",
+        "common_mistakes": "",
+        "order": 2,
+        "examples": [
+          {
+            "sentence": "I could run fast when I was young.",
+            "translation": "Yoshligimda tez yugurardim.",
+            "highlight": "could",
+            "is_incorrect": false,
+            "order": 1
+          },
+          {
+            "sentence": "Could you open the door?",
+            "translation": "Iltimos eshikni ochasizmi?",
+            "highlight": "Could",
+            "is_incorrect": false,
+            "order": 2
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Plural Nouns",
+    "category": "other",
+    "cefr_level": "A1",
+    "short_description": "Ko'plik shakli: -s, -es, irregular.",
+    "description": "Ko'plik shaklini yasash qoidalari.",
+    "icon": "➕",
+    "order": 5,
+    "rules": [
+      {
+        "title": "Regular plurals (-s, -es, -ies)",
+        "formula": "noun + s / es / ies",
+        "explanation": "Ko'pchilik otlarga -s qo'shiladi. -ch/-sh/-x/-s/-ss bilan tugaganlarga -es. Undosh + y → ies.",
+        "explanation_uz": "",
+        "tips": "",
+        "common_mistakes": "",
+        "order": 1,
+        "examples": [
+          {
+            "sentence": "one book → two books",
+            "translation": "bir kitob → ikki kitob",
+            "highlight": "books",
+            "is_incorrect": false,
+            "order": 1
+          },
+          {
+            "sentence": "one box → two boxes",
+            "translation": "bir quti → ikki quti",
+            "highlight": "boxes",
+            "is_incorrect": false,
+            "order": 2
+          },
+          {
+            "sentence": "one baby → two babies",
+            "translation": "bir chaqaloq → ikki chaqaloq",
+            "highlight": "babies",
+            "is_incorrect": false,
+            "order": 3
+          }
+        ]
+      },
+      {
+        "title": "Irregular plurals",
+        "formula": "",
+        "explanation": "Ba'zi otlarning ko'plik shakli boshqacha.",
+        "explanation_uz": "",
+        "tips": "Eng muhim irregular ko'pliklar:\n- child → children\n- man → men\n- woman → women\n- foot → feet\n- tooth → teeth\n- mouse → mice",
+        "common_mistakes": "",
+        "order": 2,
+        "examples": [
+          {
+            "sentence": "one child → two children",
+            "translation": "bir bola → ikki bola",
+            "highlight": "children",
+            "is_incorrect": false,
+            "order": 1
+          },
+          {
+            "sentence": "one man → two men",
+            "translation": "bir erkak → ikki erkak",
+            "highlight": "men",
+            "is_incorrect": false,
+            "order": 2
+          },
+          {
+            "sentence": "one mouse → two mice",
+            "translation": "bir sichqon → ikki sichqon",
+            "highlight": "mice",
+            "is_incorrect": false,
+            "order": 3
+          },
+          {
+            "sentence": "one childs (noto'g'ri)",
+            "translation": "(noto'g'ri)",
+            "highlight": "childs",
+            "is_incorrect": true,
+            "order": 4
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "There is / There are",
+    "category": "other",
+    "cefr_level": "A1",
+    "short_description": "Bor / Mavjud — biror narsa borligini bildirish.",
+    "description": "**There is** va **there are** — biror joyda nimadir borligini aytish uchun ishlatiladi. O'zbekchada 'bor' ma'nosida.\n\n- **There is** + yakka ot (bitta narsa)\n- **There are** + ko'plik ot (bir nechta narsa)",
+    "icon": "📍",
+    "order": 13,
+    "rules": [
+      {
+        "title": "Affirmative (tasdiq)",
+        "formula": "There is + singular  /  There are + plural",
+        "explanation": "'There is' qisqa shakli — there's. 'There are' qisqa shakli yo'q (faqat yozma matnda 'there're ko'rinishi mumkin).",
+        "explanation_uz": "",
+        "tips": "Joy belgilari bilan ishlatiladi:\n- in the room — xonada\n- on the table — stolda\n- under the chair — stul ostida\n- next to the door — eshik yonida",
+        "common_mistakes": "",
+        "order": 1,
+        "examples": [
+          {
+            "sentence": "There is a book on the table.",
+            "translation": "Stol ustida kitob bor.",
+            "highlight": "There is",
+            "is_incorrect": false,
+            "order": 1
+          },
+          {
+            "sentence": "There are five chairs in the room.",
+            "translation": "Xonada beshta stul bor.",
+            "highlight": "There are",
+            "is_incorrect": false,
+            "order": 2
+          },
+          {
+            "sentence": "There's a cat in the garden.",
+            "translation": "Bog'da mushuk bor.",
+            "highlight": "There's",
+            "is_incorrect": false,
+            "order": 3
+          }
+        ]
+      },
+      {
+        "title": "Negative and questions",
+        "formula": "There isn't + singular  /  Is there + singular?",
+        "explanation": "Inkor: there is not (isn't), there are not (aren't). Savol: Is/Are there...?",
+        "explanation_uz": "",
+        "tips": "",
+        "common_mistakes": "",
+        "order": 2,
+        "examples": [
+          {
+            "sentence": "There isn't any milk.",
+            "translation": "Sut yo'q.",
+            "highlight": "isn't",
+            "is_incorrect": false,
+            "order": 1
+          },
+          {
+            "sentence": "There aren't any students here.",
+            "translation": "Bu yerda o'quvchilar yo'q.",
+            "highlight": "aren't",
+            "is_incorrect": false,
+            "order": 2
+          },
+          {
+            "sentence": "Is there a hotel near here?",
+            "translation": "Yaqin atrofda mehmonxona bormi?",
+            "highlight": "Is there",
+            "is_incorrect": false,
+            "order": 3
+          },
+          {
+            "sentence": "Are there any questions?",
+            "translation": "Savollar bormi?",
+            "highlight": "Are there",
+            "is_incorrect": false,
+            "order": 4
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Adverbs of Frequency",
+    "category": "other",
+    "cefr_level": "A2",
+    "short_description": "always, usually, often, sometimes, never — tez-tezlik ravishlari.",
+    "description": "Tez-tezlik ravishlari — qancha tez-tez biror narsa qilinishini bildiradi. Asosan Present Simple bilan ishlatiladi.\n\nTarkibi (yuqoridan pastga — eng tez-tezdan eng kamigacha):\n- **always** — har doim (100%)\n- **usually** — odatda (90%)\n- **often** — ko'pincha (70%)\n- **sometimes** — ba'zan (50%)\n- **rarely** — kamdan-kam (20%)\n- **never** — hech qachon (0%)",
+    "icon": "⏰",
+    "order": 17,
+    "rules": [
+      {
+        "title": "Position in sentence",
+        "formula": "Subject + frequency adverb + Verb  (be bilan: Subject + be + frequency)",
+        "explanation": "Asosiy fe'l bilan: ravish fe'ldan oldin keladi.\n'Be' fe'li bilan: ravish 'be' dan keyin keladi.",
+        "explanation_uz": "",
+        "tips": "Gap boshida bo'lishi mumkin (asosan 'sometimes', 'usually', 'often'):\n- Sometimes I go to the park.\n- Usually we eat at 7.",
+        "common_mistakes": "❌ I go always to school by bus.\n✓ I always go to school by bus.\n\n❌ She is never late.\n✓ She is never late. (be bilan to'g'ri)",
+        "order": 1,
+        "examples": [
+          {
+            "sentence": "I always drink coffee in the morning.",
+            "translation": "Men ertalab har doim qahva ichaman.",
+            "highlight": "always",
+            "is_incorrect": false,
+            "order": 1
+          },
+          {
+            "sentence": "She usually goes to bed at 11.",
+            "translation": "U odatda 11 da yotadi.",
+            "highlight": "usually",
+            "is_incorrect": false,
+            "order": 2
+          },
+          {
+            "sentence": "We often eat at restaurants.",
+            "translation": "Biz ko'pincha restoranda ovqat yeymiz.",
+            "highlight": "often",
+            "is_incorrect": false,
+            "order": 3
+          },
+          {
+            "sentence": "They sometimes visit us.",
+            "translation": "Ular ba'zan bizga kelishadi.",
+            "highlight": "sometimes",
+            "is_incorrect": false,
+            "order": 4
+          },
+          {
+            "sentence": "He never smokes.",
+            "translation": "U hech qachon chekmaydi.",
+            "highlight": "never",
+            "is_incorrect": false,
+            "order": 5
+          },
+          {
+            "sentence": "She is always happy.",
+            "translation": "U doim baxtli.",
+            "highlight": "is always",
+            "is_incorrect": false,
+            "order": 6
+          },
+          {
+            "sentence": "I go always to school.",
+            "translation": "(noto'g'ri — tartib xato)",
+            "highlight": "go always",
+            "is_incorrect": true,
+            "order": 7
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Passive Voice",
+    "category": "passive",
+    "cefr_level": "B2",
+    "short_description": "Passiv ovoz — kim bajarganidan ko'ra nima qilinganligi muhim.",
+    "description": "Passive Voice harakat predmetga qaratilganda ishlatiladi. Misol: 'The book was written by Tolstoy' — kitob muhimroq, kim yozgani emas.",
+    "icon": "🔁",
+    "order": 10,
+    "rules": [
+      {
+        "title": "Present Simple Passive",
+        "formula": "Subject + am/is/are + V3 (+ by + agent)",
+        "explanation": "to be (hozirgi) + asosiy fe'lning 3-shakli (past participle).",
+        "explanation_uz": "",
+        "tips": "",
+        "common_mistakes": "",
+        "order": 1,
+        "examples": [
+          {
+            "sentence": "English is spoken worldwide.",
+            "translation": "Ingliz tilida butun dunyoda gapirishadi.",
+            "highlight": "is spoken",
+            "is_incorrect": false,
+            "order": 1
+          },
+          {
+            "sentence": "Cars are made in Japan.",
+            "translation": "Mashinalar Yaponiyada ishlab chiqariladi.",
+            "highlight": "are made",
+            "is_incorrect": false,
+            "order": 2
+          }
+        ]
+      },
+      {
+        "title": "Past Simple Passive",
+        "formula": "Subject + was/were + V3 (+ by + agent)",
+        "explanation": "to be (o'tgan: was/were) + V3.",
+        "explanation_uz": "",
+        "tips": "",
+        "common_mistakes": "",
+        "order": 2,
+        "examples": [
+          {
+            "sentence": "The book was written in 1869.",
+            "translation": "Kitob 1869 yilda yozilgan.",
+            "highlight": "was written",
+            "is_incorrect": false,
+            "order": 1
+          },
+          {
+            "sentence": "The houses were built last year.",
+            "translation": "Uylar o'tgan yili qurilgan.",
+            "highlight": "were built",
+            "is_incorrect": false,
+            "order": 2
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Prepositions of Place",
+    "category": "prepositions",
+    "cefr_level": "A1",
+    "short_description": "in, on, under, at — joy bildiruvchi predloglar.",
+    "description": "Predloglar — narsalarning joylashishini bildirish uchun ishlatiladi. Eng asosiy 3 tasi: **in**, **on**, **at**.",
+    "icon": "📦",
+    "order": 15,
+    "rules": [
+      {
+        "title": "In / On / At",
+        "formula": "in (ichida)  /  on (ustida)  /  at (yonida)",
+        "explanation": "- **in** — yopiq joy ichida (in the room, in the box)\n- **on** — yuza ustida (on the table, on the wall)\n- **at** — aniq nuqta (at home, at school, at the door)",
+        "explanation_uz": "",
+        "tips": "Maxsus joylar:\n- at home (uyda — predlog yo'q!)\n- at work (ishda)\n- at school (maktabda)\n- in bed (yotoqda)\n- in hospital (kasalxonada)",
+        "common_mistakes": "",
+        "order": 1,
+        "examples": [
+          {
+            "sentence": "The book is on the table.",
+            "translation": "Kitob stol ustida.",
+            "highlight": "on",
+            "is_incorrect": false,
+            "order": 1
+          },
+          {
+            "sentence": "The cat is in the box.",
+            "translation": "Mushuk quti ichida.",
+            "highlight": "in",
+            "is_incorrect": false,
+            "order": 2
+          },
+          {
+            "sentence": "I am at home.",
+            "translation": "Men uydaman.",
+            "highlight": "at",
+            "is_incorrect": false,
+            "order": 3
+          },
+          {
+            "sentence": "She is in the kitchen.",
+            "translation": "U oshxonada.",
+            "highlight": "in",
+            "is_incorrect": false,
+            "order": 4
+          }
+        ]
+      },
+      {
+        "title": "Other place prepositions",
+        "formula": "under / next to / behind / in front of / between",
+        "explanation": "Boshqa muhim predloglar joylashishni aniqroq bildiradi.",
+        "explanation_uz": "",
+        "tips": "",
+        "common_mistakes": "",
+        "order": 2,
+        "examples": [
+          {
+            "sentence": "The ball is under the chair.",
+            "translation": "To'p stul ostida.",
+            "highlight": "under",
+            "is_incorrect": false,
+            "order": 1
+          },
+          {
+            "sentence": "My car is next to the house.",
+            "translation": "Mening mashinam uy yonida.",
+            "highlight": "next to",
+            "is_incorrect": false,
+            "order": 2
+          },
+          {
+            "sentence": "The garden is behind the house.",
+            "translation": "Bog' uy orqasida.",
+            "highlight": "behind",
+            "is_incorrect": false,
+            "order": 3
+          },
+          {
+            "sentence": "A man is in front of the door.",
+            "translation": "Eshik oldida bir kishi.",
+            "highlight": "in front of",
+            "is_incorrect": false,
+            "order": 4
+          },
+          {
+            "sentence": "The bank is between the shop and the cafe.",
+            "translation": "Bank do'kon va kafe orasida.",
+            "highlight": "between",
+            "is_incorrect": false,
+            "order": 5
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Possessive Pronouns",
+    "category": "pronouns",
+    "cefr_level": "A1",
+    "short_description": "My, your, his, her, our, their.",
+    "description": "Egalik olmoshlari va ulardan keyin keladigan ot.",
+    "icon": "👤",
+    "order": 6,
+    "rules": [
+      {
+        "title": "Possessive adjectives",
+        "formula": "Possessive + Noun",
+        "explanation": "my, your, his, her, its, our, their — keyin ot keladi.",
+        "explanation_uz": "",
+        "tips": "",
+        "common_mistakes": "",
+        "order": 1,
+        "examples": [
+          {
+            "sentence": "This is my book.",
+            "translation": "Bu mening kitobim.",
+            "highlight": "my",
+            "is_incorrect": false,
+            "order": 1
+          },
+          {
+            "sentence": "Your name is John.",
+            "translation": "Sizning ismingiz John.",
+            "highlight": "Your",
+            "is_incorrect": false,
+            "order": 2
+          },
+          {
+            "sentence": "Her car is red.",
+            "translation": "Uning mashinasi qizil.",
+            "highlight": "Her",
+            "is_incorrect": false,
+            "order": 3
+          },
+          {
+            "sentence": "Our school is big.",
+            "translation": "Bizning maktabimiz katta.",
+            "highlight": "Our",
+            "is_incorrect": false,
+            "order": 4
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Personal Pronouns",
+    "category": "pronouns",
+    "cefr_level": "A1",
+    "short_description": "I, you, he, she, it, we, they — shaxs olmoshlari.",
+    "description": "Inglizchada 7 ta shaxs olmoshi bor. Bu olmoshlar gap egasi sifatida ishlatiladi.\n\n- **I** — men\n- **You** — siz/sen (yakka va ko'plik bir xil!)\n- **He** — u (erkak)\n- **She** — u (ayol)\n- **It** — u (jonsiz narsa, hayvon)\n- **We** — biz\n- **They** — ular",
+    "icon": "👤",
+    "order": 11,
+    "rules": [
+      {
+        "title": "Subject pronouns as gap egasi",
+        "formula": "Pronoun + Verb + Object",
+        "explanation": "Inglizcha gapda ega doim bo'lishi shart. O'zbek tilida ega tushib qolishi mumkin, lekin inglizchada yo'q.",
+        "explanation_uz": "",
+        "tips": "Eslatma:\n- 'You' yakka va ko'plik bir xil\n- 'It' faqat jonsiz narsalar va hayvonlar uchun\n- 'I' har doim bosh harf bilan yoziladi (gap o'rtasida ham)",
+        "common_mistakes": "❌ Am a student.\n✓ I am a student.\n\n❌ Is hot today.\n✓ It is hot today.",
+        "order": 1,
+        "examples": [
+          {
+            "sentence": "I am from Uzbekistan.",
+            "translation": "Men O'zbekistondanman.",
+            "highlight": "I",
+            "is_incorrect": false,
+            "order": 1
+          },
+          {
+            "sentence": "You are my friend.",
+            "translation": "Sen mening do'stimsan.",
+            "highlight": "You",
+            "is_incorrect": false,
+            "order": 2
+          },
+          {
+            "sentence": "He is a doctor.",
+            "translation": "U shifokor.",
+            "highlight": "He",
+            "is_incorrect": false,
+            "order": 3
+          },
+          {
+            "sentence": "She is my sister.",
+            "translation": "U mening opam.",
+            "highlight": "She",
+            "is_incorrect": false,
+            "order": 4
+          },
+          {
+            "sentence": "It is a big city.",
+            "translation": "U katta shahar.",
+            "highlight": "It",
+            "is_incorrect": false,
+            "order": 5
+          },
+          {
+            "sentence": "We are happy.",
+            "translation": "Biz baxtlimiz.",
+            "highlight": "We",
+            "is_incorrect": false,
+            "order": 6
+          },
+          {
+            "sentence": "They are students.",
+            "translation": "Ular o'quvchilar.",
+            "highlight": "They",
+            "is_incorrect": false,
+            "order": 7
+          },
+          {
+            "sentence": "Am a teacher.",
+            "translation": "(noto'g'ri — ega yo'q)",
+            "highlight": "Am",
+            "is_incorrect": true,
+            "order": 8
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Demonstratives: this, that, these, those",
+    "category": "pronouns",
+    "cefr_level": "A1",
+    "short_description": "this/that/these/those — bu, anavi, bular, anavilar.",
+    "description": "Demonstrative olmoshlar — biror narsani ko'rsatish uchun ishlatiladi.\n\nYaqindagi narsalar uchun: **this** (yakka), **these** (ko'plik)\n\nUzoqdagi narsalar uchun: **that** (yakka), **those** (ko'plik)",
+    "icon": "👉",
+    "order": 12,
+    "rules": [
+      {
+        "title": "Yaqin va uzoqdagi narsalar",
+        "formula": "this/that + Singular Noun  /  these/those + Plural Noun",
+        "explanation": "this/that — bitta narsa uchun. these/those — bir nechta narsa uchun. this/these — yaqindagi narsalar. that/those — uzoqdagi narsalar.",
+        "explanation_uz": "",
+        "tips": "Vizual yodlash:\n- this 👉 (men yonidagi bitta narsa)\n- that 👈 (uzoqdagi bitta narsa)\n- these 👇 (men yonidagi ko'p narsa)\n- those ↗️ (uzoqdagi ko'p narsa)",
+        "common_mistakes": "❌ This are my books.\n✓ These are my books. (ko'plik — these)\n\n❌ That books are interesting.\n✓ Those books are interesting.",
+        "order": 1,
+        "examples": [
+          {
+            "sentence": "This is my book.",
+            "translation": "Bu mening kitobim.",
+            "highlight": "This",
+            "is_incorrect": false,
+            "order": 1
+          },
+          {
+            "sentence": "That is your car.",
+            "translation": "Anavi sizning mashinangiz.",
+            "highlight": "That",
+            "is_incorrect": false,
+            "order": 2
+          },
+          {
+            "sentence": "These are my friends.",
+            "translation": "Bular mening do'stlarim.",
+            "highlight": "These",
+            "is_incorrect": false,
+            "order": 3
+          },
+          {
+            "sentence": "Those are her shoes.",
+            "translation": "Anavilar uning tuflilari.",
+            "highlight": "Those",
+            "is_incorrect": false,
+            "order": 4
+          },
+          {
+            "sentence": "This are my pens.",
+            "translation": "(noto'g'ri)",
+            "highlight": "This",
+            "is_incorrect": true,
+            "order": 5
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Question Words",
+    "category": "questions",
+    "cefr_level": "A1",
+    "short_description": "What, where, when, who, why, how — savol so'zlari.",
+    "description": "Savol so'zlari (Wh-questions) — gap boshida keladi va aniq ma'lumot so'raydi. 'Yes/No' javob talab qilmaydi.\n\nEng muhim 6 ta: What, Where, When, Who, Why, How",
+    "icon": "❓",
+    "order": 16,
+    "rules": [
+      {
+        "title": "Basic question words",
+        "formula": "Question word + auxiliary + Subject + Verb?",
+        "explanation": "Savol so'zi doim gap boshida. Keyin yordamchi fe'l (do/does/is/are), keyin ega, keyin asosiy fe'l.",
+        "explanation_uz": "",
+        "tips": "Har biri nima so'raydi:\n- **What** — nima? (narsa)\n- **Where** — qayerda? (joy)\n- **When** — qachon? (vaqt)\n- **Who** — kim? (odam)\n- **Why** — nega? (sabab)\n- **How** — qanday? (usul, holat)",
+        "common_mistakes": "",
+        "order": 1,
+        "examples": [
+          {
+            "sentence": "What is your name?",
+            "translation": "Ismingiz nima?",
+            "highlight": "What",
+            "is_incorrect": false,
+            "order": 1
+          },
+          {
+            "sentence": "Where do you live?",
+            "translation": "Qayerda yashaysiz?",
+            "highlight": "Where",
+            "is_incorrect": false,
+            "order": 2
+          },
+          {
+            "sentence": "When is your birthday?",
+            "translation": "Tug'ilgan kuningiz qachon?",
+            "highlight": "When",
+            "is_incorrect": false,
+            "order": 3
+          },
+          {
+            "sentence": "Who is that man?",
+            "translation": "Anavi kishi kim?",
+            "highlight": "Who",
+            "is_incorrect": false,
+            "order": 4
+          },
+          {
+            "sentence": "Why are you sad?",
+            "translation": "Nega g'amginsiz?",
+            "highlight": "Why",
+            "is_incorrect": false,
+            "order": 5
+          },
+          {
+            "sentence": "How are you?",
+            "translation": "Qalaysiz?",
+            "highlight": "How",
+            "is_incorrect": false,
+            "order": 6
+          }
+        ]
+      },
+      {
+        "title": "How + adjective/adverb",
+        "formula": "How + adj/adv + ...?",
+        "explanation": "How so'zi sifat yoki ravish bilan birikib, aniq miqdor yoki daraja so'raydi.",
+        "explanation_uz": "",
+        "tips": "Foydali iboralar:\n- How much? — qancha? (sanab bo'lmaydigan)\n- How many? — qancha? (sanab bo'ladigan)\n- How old? — necha yoshda?\n- How long? — qancha uzun/vaqt?\n- How often? — qanchalik tez-tez?",
+        "common_mistakes": "",
+        "order": 2,
+        "examples": [
+          {
+            "sentence": "How old are you?",
+            "translation": "Necha yoshdasiz?",
+            "highlight": "How old",
+            "is_incorrect": false,
+            "order": 1
+          },
+          {
+            "sentence": "How much is this?",
+            "translation": "Buning narxi qancha?",
+            "highlight": "How much",
+            "is_incorrect": false,
+            "order": 2
+          },
+          {
+            "sentence": "How many books do you have?",
+            "translation": "Nechta kitobingiz bor?",
+            "highlight": "How many",
+            "is_incorrect": false,
+            "order": 3
+          },
+          {
+            "sentence": "How long does it take?",
+            "translation": "Qancha vaqt oladi?",
+            "highlight": "How long",
+            "is_incorrect": false,
+            "order": 4
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Future Continuous",
+    "category": "tenses",
+    "cefr_level": "B1",
+    "short_description": "Kelajakdagi muayyan paytda davom etadigan harakat — will be + V-ing",
+    "description": "",
+    "icon": "🌅",
+    "order": 0,
+    "rules": [
+      {
+        "title": "Affirmative form",
+        "formula": "Subject + will be + V-ing",
+        "explanation": "Used for an action that will be in progress at a specific time in the future.",
+        "explanation_uz": "Kelajakning ma'lum bir lahzasida davom etayotgan bo'ladigan harakatni bildiradi.",
+        "tips": "Ko'pincha 'at this time tomorrow' kabi vaqt ifodalari bilan ishlatiladi.",
+        "common_mistakes": "Future continuous'ni oddiy future simple bilan adashtirib yuborish.",
+        "order": 0,
+        "examples": [
+          {
+            "sentence": "This time tomorrow, I will be flying to London.",
+            "translation": "Ertaga shu vaqtda men Londonga uchib ketayotgan bo'laman.",
+            "highlight": "will be flying",
+            "is_incorrect": false,
+            "order": 0
+          },
+          {
+            "sentence": "At 8 PM, she will be cooking dinner.",
+            "translation": "Soat 8da u kechki ovqat tayyorlayotgan bo'ladi.",
+            "highlight": "will be cooking",
+            "is_incorrect": false,
+            "order": 1
+          }
+        ]
+      },
+      {
+        "title": "Negative form",
+        "formula": "Subject + won't be + V-ing",
+        "explanation": "Add 'not' after will.",
+        "explanation_uz": "'not' will'dan keyin qo'shiladi.",
+        "tips": "",
+        "common_mistakes": "",
+        "order": 1,
+        "examples": [
+          {
+            "sentence": "They won't be working this weekend.",
+            "translation": "Ular shu dam olish kunlari ishlamaydi.",
+            "highlight": "won't be working",
+            "is_incorrect": false,
+            "order": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Future Simple (will)",
+    "category": "tenses",
+    "cefr_level": "A2",
+    "short_description": "Kelajak harakatlar va bashoratlar — will + V1",
+    "description": "",
+    "icon": "🔮",
+    "order": 0,
+    "rules": [
+      {
+        "title": "Affirmative form",
+        "formula": "Subject + will + V1",
+        "explanation": "Used for predictions, spontaneous decisions, and promises about the future.",
+        "explanation_uz": "Kelajak haqidagi bashoratlar, to'satdan qaror va va'dalarni bildiradi.",
+        "tips": "'will' barcha shaxslar bilan o'zgarmaydi.",
+        "common_mistakes": "'will' dan keyin infinitiv 'to' qo'shish xato: 'will to go' emas, 'will go'.",
+        "order": 0,
+        "examples": [
+          {
+            "sentence": "I think it will rain tomorrow.",
+            "translation": "O'ylaymanki, ertaga yomg'ir yog'adi.",
+            "highlight": "will rain",
+            "is_incorrect": false,
+            "order": 0
+          },
+          {
+            "sentence": "I'll help you with that.",
+            "translation": "Men senga shu ishda yordam beraman.",
+            "highlight": "'ll help",
+            "is_incorrect": false,
+            "order": 1
+          }
+        ]
+      },
+      {
+        "title": "Negative form",
+        "formula": "Subject + won't + V1",
+        "explanation": "won't = will not.",
+        "explanation_uz": "won't = will not qisqartmasi.",
+        "tips": "",
+        "common_mistakes": "",
+        "order": 1,
+        "examples": [
+          {
+            "sentence": "She won't be at the meeting tomorrow.",
+            "translation": "U ertaga yig'ilishda bo'lmaydi.",
+            "highlight": "won't be",
+            "is_incorrect": false,
+            "order": 0
+          }
+        ]
+      },
+      {
+        "title": "Question form",
+        "formula": "Will + Subject + V1?",
+        "explanation": "Put 'will' at the beginning of the sentence.",
+        "explanation_uz": "Savol shaklida 'will' gap boshiga chiqadi.",
+        "tips": "",
+        "common_mistakes": "",
+        "order": 2,
+        "examples": [
+          {
+            "sentence": "Will you come to the party?",
+            "translation": "Siz ziyofatga kelasizmi?",
+            "highlight": "Will",
+            "is_incorrect": false,
+            "order": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Going to",
+    "category": "tenses",
+    "cefr_level": "A2",
+    "short_description": "Rejalashtirilgan kelajak harakatlar — am/is/are going to + V1",
+    "description": "",
+    "icon": "📅",
+    "order": 0,
+    "rules": [
+      {
+        "title": "Affirmative form",
+        "formula": "Subject + am/is/are + going to + V1",
+        "explanation": "Used for plans and intentions decided before the moment of speaking.",
+        "explanation_uz": "Gaplashishdan oldin qaror qilingan reja va niyatlarni bildiradi.",
+        "tips": "'will' bilan farqi: 'going to' — oldindan reja, 'will' — spontan qaror.",
+        "common_mistakes": "'going to' dan keyin fe'lning V1 (infinitive) shaklini ishlatmaslik xato.",
+        "order": 0,
+        "examples": [
+          {
+            "sentence": "I am going to study medicine.",
+            "translation": "Men tibbiyotni o'rganishni rejalashtirmoqdaman.",
+            "highlight": "am going to study",
+            "is_incorrect": false,
+            "order": 0
+          },
+          {
+            "sentence": "They are going to buy a new house.",
+            "translation": "Ular yangi uy sotib olishni rejalashtirgan.",
+            "highlight": "are going to buy",
+            "is_incorrect": false,
+            "order": 1
+          }
+        ]
+      },
+      {
+        "title": "Negative form",
+        "formula": "Subject + am/is/are + not + going to + V1",
+        "explanation": "Add 'not' after am/is/are.",
+        "explanation_uz": "'not' am/is/are'dan keyin qo'shiladi.",
+        "tips": "",
+        "common_mistakes": "",
+        "order": 1,
+        "examples": [
+          {
+            "sentence": "He isn't going to come to the party.",
+            "translation": "U ziyofatga kelmaydi.",
+            "highlight": "isn't going to come",
+            "is_incorrect": false,
+            "order": 0
+          }
+        ]
+      },
+      {
+        "title": "Question form",
+        "formula": "Am/Is/Are + Subject + going to + V1?",
+        "explanation": "Put am/is/are at the beginning of the sentence.",
+        "explanation_uz": "Savol shaklida am/is/are gap boshiga chiqadi.",
+        "tips": "",
+        "common_mistakes": "",
+        "order": 2,
+        "examples": [
+          {
+            "sentence": "Are you going to travel this summer?",
+            "translation": "Siz shu yoz sayohat qilishni rejalashtirgansizmi?",
+            "highlight": "Are",
+            "is_incorrect": false,
+            "order": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Past Continuous",
+    "category": "tenses",
+    "cefr_level": "A2",
+    "short_description": "O'tgan paytda davom etayotgan harakat — was/were + V-ing",
+    "description": "",
+    "icon": "🌙",
+    "order": 0,
+    "rules": [
+      {
+        "title": "Affirmative form",
+        "formula": "Subject + was/were + V-ing",
+        "explanation": "Used for an action that was in progress at a specific moment in the past.",
+        "explanation_uz": "O'tgan paytning ma'lum bir lahzasida davom etayotgan harakatni bildiradi.",
+        "tips": "I/he/she/it bilan 'was', you/we/they bilan 'were' ishlatiladi.",
+        "common_mistakes": "'I was working' ni 'I were working' deb yozish — eng ko'p uchraydigan xato.",
+        "order": 0,
+        "examples": [
+          {
+            "sentence": "I was watching TV at 8 PM yesterday.",
+            "translation": "Kecha soat 8da men televizor ko'rayotgan edim.",
+            "highlight": "was watching",
+            "is_incorrect": false,
+            "order": 0
+          },
+          {
+            "sentence": "They were playing football when it started to rain.",
+            "translation": "Yomg'ir boshlanganda ular futbol o'ynayotgan edi.",
+            "highlight": "were playing",
+            "is_incorrect": false,
+            "order": 1
+          }
+        ]
+      },
+      {
+        "title": "Negative form",
+        "formula": "Subject + wasn't/weren't + V-ing",
+        "explanation": "Negative form adds 'not' after was/were.",
+        "explanation_uz": "Inkor shaklida 'not' was/were'dan keyin qo'shiladi.",
+        "tips": "wasn't = was not, weren't = were not",
+        "common_mistakes": "'I didn't was working' kabi noto'g'ri shakl ishlatish.",
+        "order": 1,
+        "examples": [
+          {
+            "sentence": "She wasn't sleeping when I called.",
+            "translation": "Men qo'ng'iroq qilganimda u uxlamayotgan edi.",
+            "highlight": "wasn't sleeping",
+            "is_incorrect": false,
+            "order": 0
+          }
+        ]
+      },
+      {
+        "title": "Question form",
+        "formula": "Was/Were + Subject + V-ing?",
+        "explanation": "To form a question, put was/were at the beginning.",
+        "explanation_uz": "Savol shaklida was/were gap boshiga chiqadi.",
+        "tips": "",
+        "common_mistakes": "",
+        "order": 2,
+        "examples": [
+          {
+            "sentence": "Were you studying at midnight?",
+            "translation": "Yarim tunda siz o'qiyotgan edingizmi?",
+            "highlight": "Were",
+            "is_incorrect": false,
+            "order": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Past Perfect",
+    "category": "tenses",
+    "cefr_level": "B1",
+    "short_description": "Boshqa o'tmishdagi harakatdan oldin tugagan harakat — had + V3",
+    "description": "",
+    "icon": "⏮️",
+    "order": 0,
+    "rules": [
+      {
+        "title": "Affirmative form",
+        "formula": "Subject + had + Past Participle",
+        "explanation": "Used for an action that happened before another action in the past.",
+        "explanation_uz": "O'tmishdagi boshqa bir harakatdan oldin sodir bo'lgan harakatni bildiradi.",
+        "tips": "Ko'pincha 'before' yoki 'after' bilan birga ishlatiladi.",
+        "common_mistakes": "Ikkita o'tmish harakat ketma-ketligini ko'rsatish kerak bo'lmaganda past perfect ishlatish.",
+        "order": 0,
+        "examples": [
+          {
+            "sentence": "She had finished her work before I arrived.",
+            "translation": "Men kelishimdan oldin u ishini tugatgan edi.",
+            "highlight": "had finished",
+            "is_incorrect": false,
+            "order": 0
+          },
+          {
+            "sentence": "They had already left when we got there.",
+            "translation": "Biz u yerga borganimizda ular allaqachon ketgan edi.",
+            "highlight": "had already left",
+            "is_incorrect": false,
+            "order": 1
+          }
+        ]
+      },
+      {
+        "title": "Negative form",
+        "formula": "Subject + hadn't + Past Participle",
+        "explanation": "Add 'not' after had.",
+        "explanation_uz": "'not' had'dan keyin qo'shiladi.",
+        "tips": "",
+        "common_mistakes": "",
+        "order": 1,
+        "examples": [
+          {
+            "sentence": "I hadn't seen that movie before last night.",
+            "translation": "Men kechagi tundan oldin bu filmni ko'rmagan edim.",
+            "highlight": "hadn't seen",
+            "is_incorrect": false,
+            "order": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Present Perfect",
+    "category": "tenses",
+    "cefr_level": "B1",
+    "short_description": "O'tmishni hozirgi vaqt bilan bog'laydi — have/has + V3",
+    "description": "",
+    "icon": "✅",
+    "order": 0,
+    "rules": [
+      {
+        "title": "Affirmative form",
+        "formula": "Subject + have/has + Past Participle",
+        "explanation": "Used for actions that happened at an unspecified time before now, or that continue into the present.",
+        "explanation_uz": "Aniq vaqti aytilmagan, lekin hozirga bog'liq o'tgan harakatlarni bildiradi.",
+        "tips": "I/you/we/they bilan 'have', he/she/it bilan 'has' ishlatiladi.",
+        "common_mistakes": "Aniq o'tgan vaqt (yesterday, last week) bilan present perfect ishlatish — bu xato, past simple kerak.",
+        "order": 0,
+        "examples": [
+          {
+            "sentence": "I have visited Paris three times.",
+            "translation": "Men Parijga uch marta tashrif buyurganman.",
+            "highlight": "have visited",
+            "is_incorrect": false,
+            "order": 0
+          },
+          {
+            "sentence": "She has already finished her homework.",
+            "translation": "U vazifasini allaqachon tugatgan.",
+            "highlight": "has finished",
+            "is_incorrect": false,
+            "order": 1
+          }
+        ]
+      },
+      {
+        "title": "Negative form",
+        "formula": "Subject + haven't/hasn't + Past Participle",
+        "explanation": "Add 'not' after have/has.",
+        "explanation_uz": "'not' have/has'dan keyin qo'shiladi.",
+        "tips": "",
+        "common_mistakes": "",
+        "order": 1,
+        "examples": [
+          {
+            "sentence": "They haven't arrived yet.",
+            "translation": "Ular hali kelmadi.",
+            "highlight": "haven't arrived",
+            "is_incorrect": false,
+            "order": 0
+          }
+        ]
+      },
+      {
+        "title": "Question form",
+        "formula": "Have/Has + Subject + Past Participle?",
+        "explanation": "Put have/has at the beginning of the sentence.",
+        "explanation_uz": "Savol shaklida have/has gap boshiga chiqadi.",
+        "tips": "Ko'pincha 'ever' so'zi bilan ishlatiladi: Have you ever...?",
+        "common_mistakes": "",
+        "order": 2,
+        "examples": [
+          {
+            "sentence": "Have you ever been to Japan?",
+            "translation": "Siz hech Yaponiyada bo'lganmisiz?",
+            "highlight": "Have",
+            "is_incorrect": false,
+            "order": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Present Perfect Continuous",
+    "category": "tenses",
+    "cefr_level": "B2",
+    "short_description": "Hozirgacha davom etgan harakat — have/has been + V-ing",
+    "description": "",
+    "icon": "⏳",
+    "order": 0,
+    "rules": [
+      {
+        "title": "Affirmative form",
+        "formula": "Subject + have/has been + V-ing",
+        "explanation": "Used for an action that started in the past and is still continuing, emphasizing duration.",
+        "explanation_uz": "O'tmishda boshlangan va hozir ham davom etayotgan harakatni, davomiyligini ta'kidlab ko'rsatadi.",
+        "tips": "Ko'pincha 'for' (davomiylik) yoki 'since' (boshlangan nuqta) bilan ishlatiladi.",
+        "common_mistakes": "Statik fe'llar (know, like, believe) bilan continuous shaklini ishlatish xato.",
+        "order": 0,
+        "examples": [
+          {
+            "sentence": "I have been studying English for two years.",
+            "translation": "Men ingliz tilini ikki yildan beri o'rganmoqdaman.",
+            "highlight": "have been studying",
+            "is_incorrect": false,
+            "order": 0
+          },
+          {
+            "sentence": "She has been working here since 2020.",
+            "translation": "U bu yerda 2020-yildan beri ishlamoqda.",
+            "highlight": "has been working",
+            "is_incorrect": false,
+            "order": 1
+          }
+        ]
+      },
+      {
+        "title": "Negative form",
+        "formula": "Subject + haven't/hasn't been + V-ing",
+        "explanation": "Add 'not' after have/has.",
+        "explanation_uz": "'not' have/has'dan keyin qo'shiladi.",
+        "tips": "",
+        "common_mistakes": "",
+        "order": 1,
+        "examples": [
+          {
+            "sentence": "He hasn't been feeling well lately.",
+            "translation": "U so'nggi paytlarda o'zini yaxshi his qilmayapti.",
+            "highlight": "hasn't been feeling",
+            "is_incorrect": false,
+            "order": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Present Simple",
+    "category": "tenses",
+    "cefr_level": "A1",
+    "short_description": "Hozirgi oddiy zamon — kundalik harakatlar va faktlar uchun.",
+    "description": "**Present Simple** zamoni quyidagi vaziyatlarda ishlatiladi:\n\n- Kundalik takrorlanadigan harakatlar (*I work every day*)\n- Doimiy faktlar (*The sun rises in the east*)\n- Odatlar va xobbi (*She plays tennis*)\n- Jadval va vaqt (*The train leaves at 7*)",
+    "icon": "⏱️",
+    "order": 1,
+    "rules": [
+      {
+        "title": "Affirmative form",
+        "formula": "Subject + V1 (+ s/es for he/she/it) + Object",
+        "explanation": "Affirmative gaplarda fe'lning birinchi shakli ishlatiladi. He/she/it olmoshlari uchun fe'lga -s yoki -es qo'shiladi.",
+        "explanation_uz": "Tasdiq gaplarda fe'lning oddiy shakli ishlatiladi. U (he/she/it) bilan -s qo'shiladi.",
+        "tips": "- s/es qoidalari:\n  * Ko'p fe'llarda -s qo'shiladi: work → works\n  * -ch/-sh/-x/-o/-ss bilan tugaganda -es: watch → watches\n  * Undosh + y → ies: study → studies",
+        "common_mistakes": "❌ He don't work here.\n✓ He doesn't work here.\n\n❌ She work in a bank.\n✓ She works in a bank.",
+        "order": 1,
+        "examples": [
+          {
+            "sentence": "I work in Tashkent.",
+            "translation": "Men Toshkentda ishlayman.",
+            "highlight": "work",
+            "is_incorrect": false,
+            "order": 1
+          },
+          {
+            "sentence": "She works in a hospital.",
+            "translation": "U kasalxonada ishlaydi.",
+            "highlight": "works",
+            "is_incorrect": false,
+            "order": 2
+          },
+          {
+            "sentence": "They live in Samarkand.",
+            "translation": "Ular Samarqandda yashashadi.",
+            "highlight": "live",
+            "is_incorrect": false,
+            "order": 3
+          },
+          {
+            "sentence": "She work in a hospital.",
+            "translation": "(noto'g'ri)",
+            "highlight": "work",
+            "is_incorrect": true,
+            "order": 4
+          }
+        ]
+      },
+      {
+        "title": "Negative form",
+        "formula": "Subject + don't / doesn't + V1 + Object",
+        "explanation": "Negative gaplar uchun \"do not\" (don't) yoki \"does not\" (doesn't) ishlatiladi. He/she/it uchun \"doesn't\".",
+        "explanation_uz": "",
+        "tips": "doesn't ishlatilganda asosiy fe'l -s olmaydi.",
+        "common_mistakes": "❌ He doesn't works here.\n✓ He doesn't work here.",
+        "order": 2,
+        "examples": [
+          {
+            "sentence": "I don't like coffee.",
+            "translation": "Menga qahva yoqmaydi.",
+            "highlight": "don't",
+            "is_incorrect": false,
+            "order": 1
+          },
+          {
+            "sentence": "He doesn't speak Russian.",
+            "translation": "U rus tilida gapirmaydi.",
+            "highlight": "doesn't",
+            "is_incorrect": false,
+            "order": 2
+          },
+          {
+            "sentence": "He doesn't works here.",
+            "translation": "(noto'g'ri)",
+            "highlight": "doesn't works",
+            "is_incorrect": true,
+            "order": 3
+          }
+        ]
+      },
+      {
+        "title": "Question form",
+        "formula": "Do / Does + Subject + V1 + Object?",
+        "explanation": "Savol gaplarda \"Do\" yoki \"Does\" gap boshida keladi.",
+        "explanation_uz": "",
+        "tips": "Wh-savollar bilan: What do you do? Where does she live?",
+        "common_mistakes": "",
+        "order": 3,
+        "examples": [
+          {
+            "sentence": "Do you speak English?",
+            "translation": "Siz inglizcha gapirasizmi?",
+            "highlight": "Do",
+            "is_incorrect": false,
+            "order": 1
+          },
+          {
+            "sentence": "Does she work here?",
+            "translation": "U bu yerda ishlaydimi?",
+            "highlight": "Does",
+            "is_incorrect": false,
+            "order": 2
+          },
+          {
+            "sentence": "Where do they live?",
+            "translation": "Ular qayerda yashashadi?",
+            "highlight": "Where do",
+            "is_incorrect": false,
+            "order": 3
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Present Continuous",
+    "category": "tenses",
+    "cefr_level": "A1",
+    "short_description": "Hozirgi davom etayotgan zamon — ayni shu daqiqada bo'layotgan harakat.",
+    "description": "**Present Continuous** ishlatiladi:\n\n- Ayni hozir bo'layotgan harakat (*I'm reading now*)\n- Vaqtinchalik holatlar (*She's living with her parents this month*)\n- Yaqin kelajak rejalari (*We're meeting tomorrow*)",
+    "icon": "🔄",
+    "order": 2,
+    "rules": [
+      {
+        "title": "Affirmative: am / is / are + V-ing",
+        "formula": "Subject + am/is/are + verb-ing",
+        "explanation": "to be (am/is/are) + asosiy fe'lga -ing qo'shiladi.",
+        "explanation_uz": "",
+        "tips": "- I am → I'm\n- He is → He's\n- They are → They're",
+        "common_mistakes": "",
+        "order": 1,
+        "examples": [
+          {
+            "sentence": "I'm reading a book.",
+            "translation": "Men kitob o'qiyapman.",
+            "highlight": "reading",
+            "is_incorrect": false,
+            "order": 1
+          },
+          {
+            "sentence": "She is studying English.",
+            "translation": "U ingliz tilini o'rganmoqda.",
+            "highlight": "studying",
+            "is_incorrect": false,
+            "order": 2
+          },
+          {
+            "sentence": "They are playing football.",
+            "translation": "Ular futbol o'ynashmoqda.",
+            "highlight": "playing",
+            "is_incorrect": false,
+            "order": 3
+          }
+        ]
+      },
+      {
+        "title": "Present Simple vs Present Continuous",
+        "formula": "",
+        "explanation": "Present Simple — doimiy / takrorlanadigan; Present Continuous — hozir / vaqtincha bo'layotgan.",
+        "explanation_uz": "",
+        "tips": "",
+        "common_mistakes": "❌ I am working in Tashkent every day.\n✓ I work in Tashkent every day. (doimiy fakt)",
+        "order": 2,
+        "examples": [
+          {
+            "sentence": "I work in a bank. (doimiy)",
+            "translation": "Men bankda ishlayman.",
+            "highlight": "",
+            "is_incorrect": false,
+            "order": 1
+          },
+          {
+            "sentence": "I'm working at home today. (bugun)",
+            "translation": "Bugun uyda ishlayapman.",
+            "highlight": "",
+            "is_incorrect": false,
+            "order": 2
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Past Simple",
+    "category": "tenses",
+    "cefr_level": "A2",
+    "short_description": "O'tgan zamon — tugagan harakat.",
+    "description": "**Past Simple** ishlatiladi tugagan, o'tgan voqea uchun. Vaqt belgilari: yesterday, last week, in 2010, ago.",
+    "icon": "⏪",
+    "order": 3,
+    "rules": [
+      {
+        "title": "Regular verbs (-ed)",
+        "formula": "Subject + V-ed + Object",
+        "explanation": "Ko'p fe'llarga -ed qo'shiladi: work → worked, play → played.",
+        "explanation_uz": "",
+        "tips": "Tovushlash qoidalari:\n- /t/ — talked, walked (jarangsizdan keyin)\n- /d/ — played, lived (jarangli/unlidan keyin)\n- /ɪd/ — wanted, needed (-t/-d dan keyin)",
+        "common_mistakes": "",
+        "order": 1,
+        "examples": [
+          {
+            "sentence": "I worked yesterday.",
+            "translation": "Men kecha ishladim.",
+            "highlight": "worked",
+            "is_incorrect": false,
+            "order": 1
+          },
+          {
+            "sentence": "She played tennis last week.",
+            "translation": "U o'tgan hafta tennis o'ynadi.",
+            "highlight": "played",
+            "is_incorrect": false,
+            "order": 2
+          },
+          {
+            "sentence": "They visited Bukhara.",
+            "translation": "Ular Buxoroga borishdi.",
+            "highlight": "visited",
+            "is_incorrect": false,
+            "order": 3
+          }
+        ]
+      },
+      {
+        "title": "Irregular verbs",
+        "formula": "V2 (har xil shakl)",
+        "explanation": "Ba'zi fe'llar -ed olmaydi, balki o'zining ikkinchi shakliga ega: go → went, see → saw, eat → ate.",
+        "explanation_uz": "",
+        "tips": "Eng muhim irregular fe'llar:\n- be → was/were\n- have → had\n- go → went\n- do → did\n- see → saw\n- come → came",
+        "common_mistakes": "",
+        "order": 2,
+        "examples": [
+          {
+            "sentence": "I went to Samarkand.",
+            "translation": "Men Samarqandga bordim.",
+            "highlight": "went",
+            "is_incorrect": false,
+            "order": 1
+          },
+          {
+            "sentence": "She had breakfast at 8.",
+            "translation": "U 8 da nonushta qildi.",
+            "highlight": "had",
+            "is_incorrect": false,
+            "order": 2
+          },
+          {
+            "sentence": "We saw a movie yesterday.",
+            "translation": "Biz kecha kino ko'rdik.",
+            "highlight": "saw",
+            "is_incorrect": false,
+            "order": 3
+          },
+          {
+            "sentence": "I goed to school. (noto'g'ri)",
+            "translation": "(noto'g'ri shakl)",
+            "highlight": "goed",
+            "is_incorrect": true,
+            "order": 4
+          }
+        ]
+      },
+      {
+        "title": "Negative and questions",
+        "formula": "Did + Subject + V1 (+) / didn't + V1 (-)",
+        "explanation": "Past Simple savol va inkor uchun did/didn't ishlatiladi. Asosiy fe'l V1 shakliga qaytadi.",
+        "explanation_uz": "",
+        "tips": "",
+        "common_mistakes": "❌ I didn't went there.\n✓ I didn't go there.",
+        "order": 3,
+        "examples": [
+          {
+            "sentence": "Did you see her?",
+            "translation": "Siz uni ko'rdingizmi?",
+            "highlight": "Did",
+            "is_incorrect": false,
+            "order": 1
+          },
+          {
+            "sentence": "I didn't go to work.",
+            "translation": "Men ishga bormadim.",
+            "highlight": "didn't go",
+            "is_incorrect": false,
+            "order": 2
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Have got",
+    "category": "tenses",
+    "cefr_level": "A1",
+    "short_description": "Egalik bildirish: I have got = I have.",
+    "description": "**Have got** — egalik bildirish uchun ishlatiladi. Britaniya inglizchasida ko'p, Amerika inglizchasida kamroq.\n\n**Have got** = **have** ma'nosi bir xil, lekin 'have got' ko'pincha hozirgi vaqtdagi egalik uchun ishlatiladi.",
+    "icon": "🎒",
+    "order": 14,
+    "rules": [
+      {
+        "title": "Have/Has got",
+        "formula": "Subject + have/has + got + Object",
+        "explanation": "He/she/it bilan 'has got'. Boshqa ega bilan 'have got'. Qisqa shakl: I've got, He's got, She's got.",
+        "explanation_uz": "",
+        "tips": "Qachon ishlatish:\n- Hozirgi egalik: I've got a car.\n- Oilaviy aloqalar: She's got two brothers.\n- Tana qismlari: He's got blue eyes.\n- Kasalliklar: I've got a headache.",
+        "common_mistakes": "❌ He have got a dog.\n✓ He has got a dog.\n\n❌ I got a problem.\n✓ I've got a problem.",
+        "order": 1,
+        "examples": [
+          {
+            "sentence": "I've got a new phone.",
+            "translation": "Mening yangi telefonim bor.",
+            "highlight": "I've got",
+            "is_incorrect": false,
+            "order": 1
+          },
+          {
+            "sentence": "She's got long hair.",
+            "translation": "Uning sochi uzun.",
+            "highlight": "She's got",
+            "is_incorrect": false,
+            "order": 2
+          },
+          {
+            "sentence": "We've got two children.",
+            "translation": "Bizning ikkita bolamiz bor.",
+            "highlight": "We've got",
+            "is_incorrect": false,
+            "order": 3
+          },
+          {
+            "sentence": "Have you got a pen?",
+            "translation": "Sizning ruchkangiz bormi?",
+            "highlight": "Have you got",
+            "is_incorrect": false,
+            "order": 4
+          },
+          {
+            "sentence": "He haven't got a car.",
+            "translation": "(noto'g'ri)",
+            "highlight": "haven't",
+            "is_incorrect": true,
+            "order": 5
+          }
+        ]
+      }
+    ]
+  }
+]
