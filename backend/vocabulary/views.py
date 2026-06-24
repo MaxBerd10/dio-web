@@ -1,3 +1,5 @@
+import random
+
 from django.shortcuts import get_object_or_404
 from django.utils import timezone
 from rest_framework import status
@@ -11,7 +13,7 @@ from content.models import Lesson
 from progress.models import WordProgress
 from progress.serializers import WordProgressSerializer, ReviewSubmitSerializer
 
-from .models import Word, LessonWord, WordSet
+from .models import Word, LessonWord, WordSet, WordMatchAttempt
 from .serializers import (
     WordSerializer, WordCompactSerializer,
     LessonWordSerializer,
@@ -226,3 +228,93 @@ class StudentWordStatsView(APIView):
 
         stats['due_now'] = due_now
         return Response(stats)
+
+
+# ============================================================
+# WORD MATCH GAME — tezkor o'yin
+# ============================================================
+
+class WordMatchWordsView(APIView):
+    """
+    GET /api/vocabulary/game/words/?count=10&cefr_level=A1
+    "So'z bilish" o'yini uchun savollar — har birida 4 variant.
+    """
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        count = int(request.query_params.get('count', 10))
+        count = min(max(count, 5), 20)
+
+        cefr_level = request.query_params.get('cefr_level') or getattr(request.user, 'cefr_level', '') or None
+
+        qs = Word.objects.exclude(translation_uz='')
+        if cefr_level:
+            qs = qs.filter(cefr_level=cefr_level)
+
+        words = list(qs.order_by('?')[:count])
+        if len(words) < count:
+            existing_ids = [w.id for w in words]
+            extra = list(
+                Word.objects.exclude(translation_uz='')
+                .exclude(id__in=existing_ids)
+                .order_by('?')[:count - len(words)]
+            )
+            words += extra
+
+        all_translations = list(
+            Word.objects.exclude(translation_uz='').values_list('translation_uz', flat=True)
+        )
+
+        questions = []
+        for w in words:
+            pool = [t for t in all_translations if t != w.translation_uz]
+            distractors = random.sample(pool, min(3, len(pool)))
+            options = distractors + [w.translation_uz]
+            random.shuffle(options)
+            questions.append({
+                'id': w.id,
+                'word': w.word,
+                'translation_uz': w.translation_uz,
+                'options': options,
+            })
+
+        random.shuffle(questions)
+        return Response({'questions': questions})
+
+
+class WordMatchResultView(APIView):
+    """
+    POST /api/vocabulary/game/result/
+    body: {correct_count, total_count, time_spent_seconds}
+    O'yin natijasini saqlaydi va XP beradi.
+    """
+    permission_classes = [IsAuthenticated]
+
+    def post(self, request):
+        from progress.models import UserXP, Streak
+
+        correct = int(request.data.get('correct_count', 0))
+        total = int(request.data.get('total_count', 0))
+        time_spent = int(request.data.get('time_spent_seconds', 0))
+
+        xp_earned = correct * 5
+
+        WordMatchAttempt.objects.create(
+            student=request.user,
+            score=correct,
+            total_questions=total,
+            xp_earned=xp_earned,
+            time_spent_seconds=time_spent,
+        )
+
+        if xp_earned > 0:
+            xp_profile, _ = UserXP.objects.get_or_create(student=request.user)
+            xp_profile.add_xp(xp_earned)
+            streak, _ = Streak.objects.get_or_create(student=request.user)
+            streak.record_activity()
+
+        return Response({
+            'xp_earned': xp_earned,
+            'correct_count': correct,
+            'total_count': total,
+        })

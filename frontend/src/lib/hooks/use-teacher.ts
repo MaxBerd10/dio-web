@@ -1,4 +1,4 @@
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import {
   teacherApi,
   teacherSubmissionApi,
@@ -23,9 +23,15 @@ export function useSubmissionForReview(submissionId: number | null) {
 export function useTeacherDashboard(params?: {
   level?: string;
   status?: 'active' | 'inactive' | 'pending';
+  assignment?: 'mine' | 'unassigned';
 }) {
   return useQuery({
-    queryKey: ['teacher-dashboard', params?.level, params?.status],
+    queryKey: [
+      'teacher-dashboard',
+      params?.level,
+      params?.status,
+      params?.assignment,
+    ],
     queryFn: () => teacherApi.getDashboard(params),
   });
 }
@@ -35,5 +41,15 @@ export function useTeacherStudentDetail(studentId: number | null) {
     queryKey: ['teacher-student-detail', studentId],
     queryFn: () => teacherApi.getStudentDetail(studentId!),
     enabled: studentId !== null,
+  });
+}
+
+export function useAssignStudentToMe() {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: (studentId: number) => teacherApi.assignStudentToMe(studentId),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['teacher-dashboard'] });
+    },
   });
 }

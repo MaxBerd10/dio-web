@@ -11,9 +11,10 @@ import {
   Award,
   BookOpenCheck,
   ChevronRight,
+  UserPlus,
 } from 'lucide-react';
 
-import { useTeacherDashboard } from '@/lib/hooks/use-teacher';
+import { useTeacherDashboard, useAssignStudentToMe } from '@/lib/hooks/use-teacher';
 import { useAuthStore } from '@/store/auth';
 import { Card, CardContent } from '@/components/ui/card';
 import { Skeleton } from '@/components/ui/skeleton';
@@ -21,6 +22,7 @@ import { cn } from '@/lib/utils';
 import type { ActivityStatus, TeacherStudentItem } from '@/lib/api/teacher';
 
 type StatusFilter = 'all' | 'active' | 'inactive' | 'pending';
+type AssignmentFilter = '' | 'mine' | 'unassigned';
 
 const STATUS_FILTERS: Array<{ value: StatusFilter; label: string }> = [
   { value: 'all', label: 'Hammasi' },
@@ -29,7 +31,22 @@ const STATUS_FILTERS: Array<{ value: StatusFilter; label: string }> = [
   { value: 'pending', label: 'Vazifa kutmoqda' },
 ];
 
-const LEVELS = ['Hammasi', 'A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
+const ASSIGNMENT_FILTERS: Array<{ value: AssignmentFilter; label: string }> = [
+  { value: '', label: 'Hammasi' },
+  { value: 'mine', label: 'Mening talabalarim' },
+  { value: 'unassigned', label: "Yangi (biriktirilmagan)" },
+];
+
+const LEVELS: Array<{ value: string; label: string }> = [
+  { value: '', label: 'Hammasi' },
+  { value: 'A1', label: 'A1' },
+  { value: 'A2', label: 'A2' },
+  { value: 'B1', label: 'B1' },
+  { value: 'B2', label: 'B2' },
+  { value: 'C1', label: 'C1' },
+  { value: 'C2', label: 'C2' },
+  { value: 'none', label: "Daraja yo'q" },
+];
 
 const ACTIVITY_STYLES: Record<ActivityStatus, string> = {
   active: 'bg-[var(--color-success)]/10 text-[var(--color-success)]',
@@ -71,16 +88,34 @@ function StatCard({
   icon: Icon,
   label,
   value,
+  color = 'primary',
 }: {
   icon: typeof Users;
   label: string;
   value: string | number;
+  color?: 'primary' | 'success' | 'amber' | 'orange';
 }) {
+  const colorStyles = {
+    primary: 'bg-[var(--color-primary)]/10 text-[var(--color-primary)]',
+    success: 'bg-[var(--color-success)]/10 text-[var(--color-success)]',
+    amber: 'bg-amber-500/10 text-amber-500',
+    orange: 'bg-orange-500/10 text-orange-500',
+  }[color];
+
   return (
-    <Card>
-      <CardContent className="flex items-center gap-3 p-4">
-        <div className="rounded-full bg-[var(--color-primary)]/10 p-2.5">
-          <Icon className="h-5 w-5 text-[var(--color-primary)]" />
+    <Card className="overflow-hidden relative">
+      <div
+        className={cn(
+          'absolute inset-0 opacity-[0.03]',
+          color === 'primary' && 'bg-[var(--color-primary)]',
+          color === 'success' && 'bg-[var(--color-success)]',
+          color === 'amber' && 'bg-amber-500',
+          color === 'orange' && 'bg-orange-500',
+        )}
+      />
+      <CardContent className="flex items-center gap-3 p-4 relative">
+        <div className={cn('rounded-full p-2.5', colorStyles)}>
+          <Icon className="h-5 w-5" />
         </div>
         <div>
           <p className="text-xs text-[var(--color-muted-foreground)]">
@@ -97,11 +132,17 @@ function StudentRow({ student }: { student: TeacherStudentItem }) {
   const initial = (student.full_name || student.username)
     .charAt(0)
     .toUpperCase();
+  const assignMutation = useAssignStudentToMe();
 
   return (
-    <Link href={`/teacher/students/${student.id}`} className="block">
-      <Card className="transition-all hover:shadow-md hover:border-[var(--color-primary)]/30 active:scale-[0.99]">
-        <CardContent className="p-4">
+    <Card
+      className={cn(
+        'transition-all hover:shadow-md hover:border-[var(--color-primary)]/30',
+        student.is_unassigned && 'border-amber-500/30',
+      )}
+    >
+      <CardContent className="p-4">
+        <Link href={`/teacher/students/${student.id}`} className="block">
           <div className="flex flex-wrap items-center gap-4">
             {/* Avatar */}
             <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[var(--color-primary)]/10 text-base font-semibold text-[var(--color-primary)]">
@@ -112,8 +153,7 @@ function StudentRow({ student }: { student: TeacherStudentItem }) {
             <div className="min-w-[140px] flex-1">
               <p className="font-semibold leading-tight">{student.full_name}</p>
               <p className="text-xs text-[var(--color-muted-foreground)]">
-                @{student.username}
-                {student.cefr_level && ` · ${student.cefr_level}`}
+                @{student.username} · {student.cefr_level || "Daraja yo'q"}
               </p>
             </div>
 
@@ -161,7 +201,9 @@ function StudentRow({ student }: { student: TeacherStudentItem }) {
               </span>
             )}
 
-            <ChevronRight className="h-4 w-4 text-[var(--color-muted-foreground)] ml-auto shrink-0" />
+            {!student.is_unassigned && (
+              <ChevronRight className="h-4 w-4 text-[var(--color-muted-foreground)] ml-auto shrink-0" />
+            )}
           </div>
 
           {/* Progress bar */}
@@ -180,21 +222,39 @@ function StudentRow({ student }: { student: TeacherStudentItem }) {
               {student.completed_lessons} dars · {student.lesson_progress_pct}%
             </span>
           </div>
-        </CardContent>
-      </Card>
-    </Link>
+        </Link>
+
+        {/* Menga qo'shish tugmasi */}
+        {student.is_unassigned && (
+          <button
+            type="button"
+            onClick={(e) => {
+              e.preventDefault();
+              assignMutation.mutate(student.id);
+            }}
+            disabled={assignMutation.isPending}
+            className="mt-3 w-full flex items-center justify-center gap-1.5 rounded-lg bg-amber-500/10 text-amber-600 text-sm font-medium py-2 hover:bg-amber-500/20 transition-colors disabled:opacity-50"
+          >
+            <UserPlus className="h-4 w-4" />
+            {assignMutation.isPending ? "Qo'shilmoqda..." : "Menga qo'shish"}
+          </button>
+        )}
+      </CardContent>
+    </Card>
   );
 }
 
 export default function TeacherStudentsPage() {
   const { user } = useAuthStore();
   const [statusFilter, setStatusFilter] = useState<StatusFilter>('all');
-  const [levelFilter, setLevelFilter] = useState('Hammasi');
+  const [assignmentFilter, setAssignmentFilter] = useState<AssignmentFilter>('');
+  const [levelFilter, setLevelFilter] = useState('');
   const [search, setSearch] = useState('');
 
   const { data, isLoading } = useTeacherDashboard({
-    level: levelFilter === 'Hammasi' ? undefined : levelFilter,
+    level: levelFilter || undefined,
     status: statusFilter === 'all' ? undefined : statusFilter,
+    assignment: assignmentFilter || undefined,
   });
 
   if (user && user.role !== 'teacher' && user.role !== 'admin') {
@@ -242,27 +302,31 @@ export default function TeacherStudentsPage() {
             icon={Users}
             label="Jami studentlar"
             value={data?.stats.total_students ?? 0}
+            color="primary"
           />
           <StatCard
             icon={Activity}
             label="Bugun faol"
             value={data?.stats.active_today ?? 0}
+            color="success"
           />
           <StatCard
             icon={ClipboardList}
             label="Vazifa kutmoqda"
             value={data?.stats.pending_submissions ?? 0}
+            color="amber"
           />
           <StatCard
             icon={Flame}
             label="O'rtacha streak"
             value={data?.stats.average_streak ?? 0}
+            color="orange"
           />
         </div>
       )}
 
       {/* Qidiruv */}
-      <div className="relative mb-4">
+      <div className="relative mb-5">
         <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-[var(--color-muted-foreground)]" />
         <input
           value={search}
@@ -272,8 +336,32 @@ export default function TeacherStudentsPage() {
         />
       </div>
 
+      {/* Biriktirilganlik filtri */}
+      <p className="text-xs font-medium text-[var(--color-muted-foreground)] mb-1.5">
+        Biriktirilganlik
+      </p>
+      <div className="flex gap-2 overflow-x-auto mb-4 pb-1">
+        {ASSIGNMENT_FILTERS.map((f) => (
+          <button
+            key={f.value || 'all'}
+            onClick={() => setAssignmentFilter(f.value)}
+            className={cn(
+              'shrink-0 rounded-full px-3.5 py-1.5 text-sm font-medium transition-colors',
+              assignmentFilter === f.value
+                ? 'bg-amber-500 text-white'
+                : 'bg-[var(--color-muted)] text-[var(--color-muted-foreground)]',
+            )}
+          >
+            {f.label}
+          </button>
+        ))}
+      </div>
+
       {/* Status filtri */}
-      <div className="flex gap-2 overflow-x-auto mb-3 pb-1">
+      <p className="text-xs font-medium text-[var(--color-muted-foreground)] mb-1.5">
+        Faollik
+      </p>
+      <div className="flex gap-2 overflow-x-auto mb-4 pb-1">
         {STATUS_FILTERS.map((f) => (
           <button
             key={f.value}
@@ -291,19 +379,22 @@ export default function TeacherStudentsPage() {
       </div>
 
       {/* Level filtri */}
+      <p className="text-xs font-medium text-[var(--color-muted-foreground)] mb-1.5">
+        CEFR darajasi
+      </p>
       <div className="flex gap-2 overflow-x-auto mb-6 pb-1">
         {LEVELS.map((lvl) => (
           <button
-            key={lvl}
-            onClick={() => setLevelFilter(lvl)}
+            key={lvl.value || 'all'}
+            onClick={() => setLevelFilter(lvl.value)}
             className={cn(
               'shrink-0 rounded-full px-3 py-1 text-xs font-medium border transition-colors',
-              levelFilter === lvl
+              levelFilter === lvl.value
                 ? 'border-[var(--color-primary)] text-[var(--color-primary)]'
                 : 'border-[var(--color-border)] text-[var(--color-muted-foreground)]',
             )}
           >
-            {lvl}
+            {lvl.label}
           </button>
         ))}
       </div>

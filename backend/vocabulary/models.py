@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.db import models
 from content.models import CEFRLevel
 
@@ -154,3 +155,25 @@ class WordSet(models.Model):
     @property
     def word_count(self):
         return self.words.count()
+
+
+class WordMatchAttempt(models.Model):
+    """
+    "So'z bilish" tezkor o'yini urinishi.
+    """
+    student = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name='word_match_attempts',
+    )
+    score = models.PositiveIntegerField(default=0, help_text="To'g'ri javoblar soni")
+    total_questions = models.PositiveIntegerField(default=0)
+    xp_earned = models.PositiveIntegerField(default=0)
+    time_spent_seconds = models.PositiveIntegerField(default=0)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['-created_at']
+
+    def __str__(self):
+        return f'{self.student.username}: {self.score}/{self.total_questions}'

@@ -56,6 +56,7 @@ export interface TeacherStudentItem {
   pending_submissions: number;
   completed_lessons: number;
   lesson_progress_pct: number;
+  is_unassigned: boolean;
 }
 
 export interface TeacherDashboardResponse {
@@ -134,6 +135,7 @@ export const teacherApi = {
   getDashboard: async (params?: {
     level?: string;
     status?: 'active' | 'inactive' | 'pending';
+    assignment?: 'mine' | 'unassigned';
   }): Promise<TeacherDashboardResponse> => {
     const { data } = await api.get<TeacherDashboardResponse>(
       '/progress/teacher/dashboard/',
@@ -147,6 +149,15 @@ export const teacherApi = {
   ): Promise<TeacherStudentDetailResponse> => {
     const { data } = await api.get<TeacherStudentDetailResponse>(
       `/progress/teacher/students/${studentId}/`,
+    );
+    return data;
+  },
+
+  assignStudentToMe: async (
+    studentId: number,
+  ): Promise<{ detail: string; student_id: number }> => {
+    const { data } = await api.post(
+      `/progress/teacher/students/${studentId}/assign/`,
     );
     return data;
   },

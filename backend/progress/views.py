@@ -323,14 +323,19 @@ class TeacherDashboardView(APIView):
         today = now.date()
         week_ago = today - timedelta(days=7)
 
-        students = User.objects.filter(role=User.Role.STUDENT)
+        students = User.objects.filter(role=User.Role.STUDENT).filter(
+            Q(assigned_teacher=request.user) | Q(assigned_teacher__isnull=True)
+        )
 
         # Filtrlar (query params)
         level_filter = request.query_params.get('level')      # masalan ?level=A2
         status_filter = request.query_params.get('status')    # active / inactive / pending
 
         if level_filter:
-            students = students.filter(cefr_level=level_filter)
+            if level_filter == 'none':
+                students = students.filter(cefr_level='')
+            else:
+                students = students.filter(cefr_level=level_filter)
 
         total_lessons = Lesson.objects.filter(is_published=True).count()
 
@@ -338,17 +343,17 @@ class TeacherDashboardView(APIView):
         stats = {
             'total_students': students.count(),
             'active_today': Streak.objects.filter(
-                student__role=User.Role.STUDENT, last_activity_date=today,
+                student__in=students, last_activity_date=today,
             ).count(),
             'active_this_week': Streak.objects.filter(
-                student__role=User.Role.STUDENT, last_activity_date__gte=week_ago,
+                student__in=students, last_activity_date__gte=week_ago,
             ).count(),
             'pending_submissions': AssignmentSubmission.objects.filter(
-                student__role=User.Role.STUDENT,
+                student__in=students,
                 status__in=[AssignmentSubmission.Status.SUBMITTED, AssignmentSubmission.Status.IN_REVIEW],
             ).count(),
             'average_streak': round(
-                Streak.objects.filter(student__role=User.Role.STUDENT)
+                Streak.objects.filter(student__in=students)
                 .aggregate(avg=Avg('current_streak'))['avg'] or 0, 1,
             ),
             'total_lessons': total_lessons,
@@ -410,6 +415,7 @@ class TeacherDashboardView(APIView):
                 'lesson_progress_pct': round(
                     (s.completed_lessons / total_lessons * 100) if total_lessons else 0,
                 ),
+                'is_unassigned': s.assigned_teacher_id is None,
             })
 
         # Eng faolsizlarni tepaga chiqaramiz (e'tibor talab qiladiganlar)
@@ -523,3 +529,26 @@ class TeacherStudentDetailView(APIView):
             },
             'courses': result,
         })
+
+
+# ============================================================
+# TEACHER — ASSIGN STUDENT TO SELF
+# ============================================================
+
+class AssignStudentToMeView(APIView):
+    """
+    POST /api/progress/teacher/students/<id>/assign/
+    Biriktirilmagan studentni o'ziga biriktirish.
+    """
+    permission_classes = [IsTeacherOrAdmin]
+
+    def post(self, request, student_id):
+        student = get_object_or_404(User, id=student_id, role=User.Role.STUDENT)
+        if student.assigned_teacher_id is not None and student.assigned_teacher_id != request.user.id:
+            return Response(
+                {'detail': "Bu student allaqachon boshqa o'qituvchiga biriktirilgan."},
+                status=400,
+            )
+        student.assigned_teacher = request.user
+        student.save(update_fields=['assigned_teacher'])
+        return Response({'detail': 'Biriktirildi.', 'student_id': student.id})

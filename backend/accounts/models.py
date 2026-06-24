@@ -36,6 +36,16 @@ class User(AbstractUser):
         default=Role.STUDENT,
     )
 
+    # Ustoz-student bog'lanishi (faqat student'larda to'ldiriladi)
+    assigned_teacher = models.ForeignKey(
+        'self',
+        on_delete=models.SET_NULL,
+        null=True, blank=True,
+        related_name='assigned_students',
+        limit_choices_to={'role': 'teacher'},
+        help_text="Bu studentni qaysi teacher o'ziga biriktirgan",
+    )
+
     # Profil ma'lumotlari
     full_name = models.CharField(max_length=150, blank=True)
     avatar = models.ImageField(upload_to='avatars/', blank=True, null=True)

@@ -10,6 +10,7 @@ import {
   FileText,
   Inbox,
   Users,
+  Gamepad2,
 } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 
@@ -57,6 +58,13 @@ export const NAV_ITEMS: NavItem[] = [
     label: 'Testlar',
     href: '/quizzes',
     icon: ClipboardCheck,
+    forRoles: ['student'],
+    mobileShow: false,
+  },
+  {
+    label: "O'yin",
+    href: '/games/word-match',
+    icon: Gamepad2,
     forRoles: ['student'],
     mobileShow: false,
   },

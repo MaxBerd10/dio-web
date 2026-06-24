@@ -5,6 +5,7 @@ from .views import (
     WordSetListView, WordSetDetailView,
     ReviewQueueView, ReviewSubmitView,
     StudentWordStatsView,
+    WordMatchWordsView, WordMatchResultView,
 )
 
 app_name = 'vocabulary'
@@ -23,4 +24,7 @@ urlpatterns = [
 
     # Stats
     path('stats/', StudentWordStatsView.as_view(), name='stats'),
+
+    path('game/words/', WordMatchWordsView.as_view(), name='word-match-words'),
+    path('game/result/', WordMatchResultView.as_view(), name='word-match-result'),
 ]
