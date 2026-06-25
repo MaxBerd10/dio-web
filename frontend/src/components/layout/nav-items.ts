@@ -62,11 +62,11 @@ export const NAV_ITEMS: NavItem[] = [
     mobileShow: false,
   },
   {
-    label: "O'yin",
-    href: '/games/word-match',
+    label: "O'yinlar",
+    href: '/games',
     icon: Gamepad2,
     forRoles: ['student'],
-    mobileShow: false,
+    mobileShow: true,
   },
   {
     label: 'Grammar',

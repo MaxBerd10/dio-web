@@ -1,11 +1,13 @@
 from django.urls import path
 
+from django.urls import path
 from .views import (
     LessonWordsView,
     WordSetListView, WordSetDetailView,
     ReviewQueueView, ReviewSubmitView,
     StudentWordStatsView,
     WordMatchWordsView, WordMatchResultView,
+    HangmanWordView, HangmanResultView,
 )
 
 app_name = 'vocabulary'
@@ -27,4 +29,7 @@ urlpatterns = [
 
     path('game/words/', WordMatchWordsView.as_view(), name='word-match-words'),
     path('game/result/', WordMatchResultView.as_view(), name='word-match-result'),
+
+    path('game/hangman/word/', HangmanWordView.as_view(), name='hangman-word'),
+    path('game/hangman/result/', HangmanResultView.as_view(), name='hangman-result'),
 ]

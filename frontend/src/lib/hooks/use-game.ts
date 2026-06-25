@@ -18,3 +18,24 @@ export function useSubmitWordMatchResult() {
     },
   });
 }
+
+export function useStartHangman() {
+  return useMutation({
+    mutationFn: (params?: { cefr_level?: string }) => gameApi.getHangmanWord(params),
+  });
+}
+
+export function useSubmitHangmanResult() {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: (payload: {
+      word_id: number;
+      won: boolean;
+      wrong_guesses: number;
+      time_spent_seconds: number;
+    }) => gameApi.submitHangmanResult(payload),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['dashboard'] });
+    },
+  });
+}

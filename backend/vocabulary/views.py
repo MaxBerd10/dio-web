@@ -13,6 +13,8 @@ from content.models import Lesson
 from progress.models import WordProgress
 from progress.serializers import WordProgressSerializer, ReviewSubmitSerializer
 
+
+from .models import Word, LessonWord, WordSet, WordMatchAttempt, HangmanAttempt
 from .models import Word, LessonWord, WordSet, WordMatchAttempt
 from .serializers import (
     WordSerializer, WordCompactSerializer,
@@ -318,3 +320,70 @@ class WordMatchResultView(APIView):
             'correct_count': correct,
             'total_count': total,
         })
+
+
+# ============================================================
+# HANGMAN GAME — "Osma o'yin"
+# ============================================================
+
+class HangmanWordView(APIView):
+    """
+    GET /api/vocabulary/game/hangman/word/?cefr_level=A1
+    Hangman o'yini uchun bitta tasodifiy so'z.
+    """
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        cefr_level = request.query_params.get('cefr_level') or getattr(request.user, 'cefr_level', '') or None
+
+        qs = Word.objects.exclude(translation_uz='').exclude(word='')
+        if cefr_level:
+            qs = qs.filter(cefr_level=cefr_level)
+
+        word = qs.order_by('?').first()
+        if not word:
+            word = Word.objects.exclude(translation_uz='').exclude(word='').order_by('?').first()
+        if not word:
+            return Response({'detail': "So'zlar topilmadi."}, status=status.HTTP_404_NOT_FOUND)
+
+        return Response({
+            'id': word.id,
+            'word': word.word.lower(),
+            'translation_uz': word.translation_uz,
+            'length': len(word.word),
+        })
+
+
+class HangmanResultView(APIView):
+    """
+    POST /api/vocabulary/game/hangman/result/
+    body: {word_id, won, wrong_guesses, time_spent_seconds}
+    """
+    permission_classes = [IsAuthenticated]
+
+    def post(self, request):
+        from progress.models import UserXP, Streak
+
+        word_id = request.data.get('word_id')
+        won = bool(request.data.get('won', False))
+        wrong_guesses = int(request.data.get('wrong_guesses', 0))
+        time_spent = int(request.data.get('time_spent_seconds', 0))
+
+        xp_earned = max(10, (6 - wrong_guesses) * 5) if won else 0
+
+        HangmanAttempt.objects.create(
+            student=request.user,
+            word_id=word_id,
+            won=won,
+            wrong_guesses=wrong_guesses,
+            xp_earned=xp_earned,
+            time_spent_seconds=time_spent,
+        )
+
+        if xp_earned > 0:
+            xp_profile, _ = UserXP.objects.get_or_create(student=request.user)
+            xp_profile.add_xp(xp_earned)
+            streak, _ = Streak.objects.get_or_create(student=request.user)
+            streak.record_activity()
+
+        return Response({'xp_earned': xp_earned, 'won': won})

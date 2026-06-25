@@ -177,3 +177,32 @@ class WordMatchAttempt(models.Model):
 
     def __str__(self):
         return f'{self.student.username}: {self.score}/{self.total_questions}'
+
+
+class HangmanAttempt(models.Model):
+    """
+    "Osma o'yin" (Hangman) urinishi.
+    """
+    student = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name='hangman_attempts',
+    )
+    word = models.ForeignKey(
+        Word,
+        on_delete=models.SET_NULL,
+        null=True, blank=True,
+        related_name='hangman_attempts',
+    )
+    won = models.BooleanField(default=False)
+    wrong_guesses = models.PositiveIntegerField(default=0)
+    xp_earned = models.PositiveIntegerField(default=0)
+    time_spent_seconds = models.PositiveIntegerField(default=0)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['-created_at']
+
+    def __str__(self):
+        result = 'yutdi' if self.won else "yutqazdi"
+        return f'{self.student.username}: {result} ({self.wrong_guesses} xato)'

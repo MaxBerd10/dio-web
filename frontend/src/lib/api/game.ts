@@ -17,6 +17,18 @@ export interface WordMatchResultResponse {
   total_count: number;
 }
 
+export interface HangmanWordResponse {
+  id: number;
+  word: string;
+  translation_uz: string;
+  length: number;
+}
+
+export interface HangmanResultResponse {
+  xp_earned: number;
+  won: boolean;
+}
+
 export const gameApi = {
   getWordMatchWords: async (params?: {
     count?: number;
@@ -32,6 +44,21 @@ export const gameApi = {
     time_spent_seconds: number;
   }): Promise<WordMatchResultResponse> => {
     const { data } = await api.post<WordMatchResultResponse>('/vocabulary/game/result/', payload);
+    return data;
+  },
+
+  getHangmanWord: async (params?: { cefr_level?: string }): Promise<HangmanWordResponse> => {
+    const { data } = await api.get<HangmanWordResponse>('/vocabulary/game/hangman/word/', { params });
+    return data;
+  },
+
+  submitHangmanResult: async (payload: {
+    word_id: number;
+    won: boolean;
+    wrong_guesses: number;
+    time_spent_seconds: number;
+  }): Promise<HangmanResultResponse> => {
+    const { data } = await api.post<HangmanResultResponse>('/vocabulary/game/hangman/result/', payload);
     return data;
   },
 };
