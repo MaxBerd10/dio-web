@@ -262,13 +262,16 @@ class WordMatchWordsView(APIView):
             )
             words += extra
 
-        all_translations = list(
+        all_translations = list(set(
             Word.objects.exclude(translation_uz='').values_list('translation_uz', flat=True)
-        )
+        ))
 
         questions = []
         for w in words:
-            pool = [t for t in all_translations if t != w.translation_uz]
+            pool = [
+                t for t in all_translations
+                if t.strip().lower() != w.translation_uz.strip().lower()
+            ]
             distractors = random.sample(pool, min(3, len(pool)))
             options = distractors + [w.translation_uz]
             random.shuffle(options)
