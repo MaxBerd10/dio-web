@@ -1,0 +1,3514 @@
+[
+  {
+    "title": "IELTS Reading — Amaliy test 2",
+    "lesson_type": "reading",
+    "description": "3 ta passage, 30 savol — haqiqiy IELTS Reading formatida.",
+    "content": "## Passage 1: The Origins of Coffee\n\nCoffee, now one of the most widely traded commodities in the world, has a history stretching back many centuries. According to popular legend, coffee was first discovered in Ethiopia by a goat herder named Kaldi, who noticed that his goats became unusually energetic after eating berries from a certain shrub. While this story is almost certainly apocryphal, historians generally agree that coffee cultivation began in the Ethiopian highlands, likely sometime before the 15th century.\n\nFrom Ethiopia, knowledge of coffee spread to the Arabian Peninsula, where it was first cultivated on a significant scale in Yemen. By the 15th century, coffee had become an integral part of social and religious life in the region, consumed by Sufi communities to maintain alertness during long nocturnal prayers. Coffeehouses, known as qahveh khaneh, soon began to appear in cities such as Mecca and Cairo, becoming important centres of social interaction, intellectual discussion, and even political debate.\n\nThe beverage's popularity continued to spread throughout the Ottoman Empire and eventually reached Europe in the 17th century, initially through the port city of Venice. Although coffee was met with suspicion by some religious authorities, who viewed it as a foreign and potentially dangerous substance, its popularity proved unstoppable. Coffeehouses sprang up across major European cities, including London, Paris, and Vienna, often serving as hubs for merchants, writers, and philosophers.\n\nEuropean colonial powers later established coffee plantations in their overseas territories, dramatically expanding global production. The Dutch introduced coffee cultivation to Indonesia in the late 17th century, while the French brought it to the Caribbean. Brazil, which would eventually become the world's largest coffee producer, began cultivating coffee in the 18th century, and by the 19th century had come to dominate global supply.\n\nToday, coffee is grown in more than 70 countries, predominantly in tropical regions located along the equatorial belt sometimes referred to as the \"Bean Belt.\" Brazil and Vietnam currently rank as the two largest producers, though coffee cultivation remains economically vital to many smaller nations as well, where it often represents a significant proportion of export revenue.\n\n---\n\n## Passage 2: The Psychology of Procrastination\n\nProcrastination, commonly defined as the voluntary delay of an intended course of action despite the awareness that this delay may be detrimental, is a behaviour familiar to nearly everyone. Although it is often dismissed as a simple failure of time management or self-discipline, psychological research suggests that procrastination is a considerably more complex phenomenon, frequently rooted in emotional regulation rather than poor planning.\n\nOne influential explanation suggests that procrastination functions as a coping mechanism for managing negative emotions associated with a given task, such as anxiety, boredom, or self-doubt. By postponing the task, an individual experiences temporary relief from these uncomfortable feelings, even though doing so often increases stress in the long run. This perspective reframes procrastination not as laziness, but as a misguided attempt at short-term emotional regulation.\n\nPerfectionism has also been identified as a significant contributing factor. Individuals who hold excessively high standards for their own performance may delay starting a task out of fear that their work will not meet these standards. Paradoxically, this fear of failure can itself become a self-fulfilling prophecy, as insufficient time remains to complete the task to an acceptable standard once procrastination has occurred.\n\nResearch using brain imaging techniques has further suggested that procrastination may be linked to an ongoing internal conflict between two systems: the limbic system, associated with immediate gratification, and the prefrontal cortex, associated with planning and long-term goals. When the limbic system exerts greater influence, individuals are more likely to choose immediately pleasurable activities over tasks with delayed but more significant rewards.\n\nSeveral strategies have been proposed to mitigate chronic procrastination, including breaking large tasks into smaller, more manageable components, setting specific implementation intentions, and practising self-compassion rather than harsh self-criticism when setbacks occur. Notably, research indicates that self-criticism, rather than motivating change, often exacerbates the negative emotions that drive procrastination in the first place, creating an unproductive cycle.\n\n---\n\n## Passage 3: Coral Reefs and Climate Resilience\n\nCoral reefs, often described as the rainforests of the sea due to their extraordinary biodiversity, are increasingly recognised as critically important ecosystems facing unprecedented threats from climate change. These structures, built over thousands of years by colonies of tiny marine organisms, support an estimated twenty-five percent of all marine species, despite covering less than one percent of the ocean floor.\n\nRising ocean temperatures represent perhaps the most significant threat to coral reef survival. When water temperatures exceed a coral species' tolerance threshold for a prolonged period, the coral expels the symbiotic algae living within its tissues, a process known as bleaching. Since these algae provide corals with both their characteristic colour and the majority of their nutritional needs, prolonged bleaching events frequently result in widespread coral mortality.\n\nIn addition to temperature stress, ocean acidification poses a further significant challenge. As atmospheric carbon dioxide concentrations rise, a proportion is absorbed by the ocean, lowering its pH and reducing the availability of carbonate ions that corals require to build their calcium carbonate skeletons. This makes it progressively more difficult for corals to grow and repair damage, even in the absence of bleaching events.\n\nDespite these considerable challenges, scientists have identified certain reef systems that appear to demonstrate greater resilience to environmental stressors than others. Some coral populations inhabiting naturally warmer or more variable environments have developed enhanced thermal tolerance, suggesting that adaptation, while limited, is not entirely impossible. Researchers are now investigating whether such naturally resilient populations might be used to help restore degraded reef systems elsewhere, through techniques such as selective breeding and coral transplantation.\n\nConservation efforts increasingly emphasise a combination of approaches, including reducing local stressors such as pollution and overfishing, establishing marine protected areas, and pursuing global efforts to limit greenhouse gas emissions. While many scientists caution that local interventions alone cannot fully offset the impact of global climate change, they nonetheless argue that such measures can meaningfully improve the odds of reef survival during the critical period before broader climate stabilisation can be achieved.",
+    "estimated_minutes": 60,
+    "xp_reward": 50,
+    "order": 2,
+    "quizzes": [
+      {
+        "title": "Passage 1: The Origins of Coffee — Savollar 1-10",
+        "description": "IELTS Reading amaliy test qismi.",
+        "passing_score": 70,
+        "xp_reward": 30,
+        "max_attempts": 0,
+        "questions": [
+          {
+            "text": "According to legend, who discovered coffee?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 0,
+            "choices": [
+              {
+                "text": "A goat herder named Kaldi",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "A Sufi monk",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "An Ottoman trader",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "A Brazilian farmer",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          },
+          {
+            "text": "Where did coffee cultivation most likely begin?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 1,
+            "choices": [
+              {
+                "text": "The Ethiopian highlands",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "Yemen",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "Venice",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "Brazil",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          },
+          {
+            "text": "Why did Sufi communities consume coffee?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 2,
+            "choices": [
+              {
+                "text": "To maintain alertness during long nocturnal prayers",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "To celebrate religious festivals",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "As a medicine for illness",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "As a substitute for water",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          },
+          {
+            "text": "What were qahveh khaneh?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 3,
+            "choices": [
+              {
+                "text": "Coffeehouses that became centres of social interaction",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "Religious temples",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "Coffee plantations",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "Trading ships",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          },
+          {
+            "text": "Through which city did coffee first reach Europe?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 4,
+            "choices": [
+              {
+                "text": "Venice",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "London",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "Paris",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "Cairo",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          },
+          {
+            "text": "How did some religious authorities initially view coffee in Europe?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 5,
+            "choices": [
+              {
+                "text": "With suspicion, as a foreign and potentially dangerous substance",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "As a holy beverage",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "As completely harmless",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "As a luxury only for royalty",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          },
+          {
+            "text": "Which European power introduced coffee to Indonesia?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 6,
+            "choices": [
+              {
+                "text": "The Dutch",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "The French",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "The British",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "The Portuguese",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          },
+          {
+            "text": "Which country brought coffee cultivation to the Caribbean?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 7,
+            "choices": [
+              {
+                "text": "France",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "Spain",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "Italy",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "Germany",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          },
+          {
+            "text": "Which country eventually became the world's largest coffee producer?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 8,
+            "choices": [
+              {
+                "text": "Brazil",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "Vietnam",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "Ethiopia",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "Yemen",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          },
+          {
+            "text": "What is the 'Bean Belt'?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 9,
+            "choices": [
+              {
+                "text": "The tropical equatorial region where most coffee is grown",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "A trade route used by coffee merchants",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "A type of coffee plantation",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "A coffee storage facility",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Passage 2: The Psychology of Procrastination — Savollar 11-20",
+        "description": "IELTS Reading amaliy test qismi.",
+        "passing_score": 70,
+        "xp_reward": 30,
+        "max_attempts": 0,
+        "questions": [
+          {
+            "text": "How is procrastination defined in the passage?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 0,
+            "choices": [
+              {
+                "text": "The voluntary delay of an intended action despite awareness of negative consequences",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "A permanent inability to complete any task",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "A medical condition affecting memory",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "A planning technique used by professionals",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          },
+          {
+            "text": "What does psychological research suggest procrastination is rooted in?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 1,
+            "choices": [
+              {
+                "text": "Emotional regulation rather than poor planning",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "Pure laziness",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "Lack of intelligence",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "Physical exhaustion",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          },
+          {
+            "text": "How does procrastination function as a coping mechanism?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 2,
+            "choices": [
+              {
+                "text": "It provides temporary relief from negative emotions associated with a task",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "It permanently removes anxiety about a task",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "It improves long-term performance",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "It eliminates the need to complete tasks",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          },
+          {
+            "text": "How can perfectionism contribute to procrastination?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 3,
+            "choices": [
+              {
+                "text": "Fear of not meeting high standards can delay starting a task",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "Perfectionists always complete tasks early",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "Perfectionism has no link to procrastination",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "It only affects creative tasks",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          },
+          {
+            "text": "What does 'self-fulfilling prophecy' refer to in this context?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 4,
+            "choices": [
+              {
+                "text": "Fear of failure leading to insufficient time, which causes actual failure",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "Always succeeding regardless of effort",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "A prediction that never comes true",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "A type of therapy technique",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          },
+          {
+            "text": "Which two brain systems are mentioned as being in conflict?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 5,
+            "choices": [
+              {
+                "text": "The limbic system and the prefrontal cortex",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "The cerebellum and the brainstem",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "The left and right hemispheres",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "The hippocampus and the amygdala",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          },
+          {
+            "text": "What is the limbic system associated with?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 6,
+            "choices": [
+              {
+                "text": "Immediate gratification",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "Long-term planning",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "Memory storage",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "Language processing",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          },
+          {
+            "text": "What strategy is suggested for managing chronic procrastination?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 7,
+            "choices": [
+              {
+                "text": "Breaking large tasks into smaller, manageable components",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "Avoiding all difficult tasks",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "Working only under strict deadlines",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "Increasing self-criticism",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          },
+          {
+            "text": "According to the passage, what effect does self-criticism have on procrastination?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 8,
+            "choices": [
+              {
+                "text": "It often worsens the negative emotions that drive procrastination",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "It always eliminates procrastination",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "It has no effect at all",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "It only affects perfectionists",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          },
+          {
+            "text": "What is recommended instead of harsh self-criticism?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 9,
+            "choices": [
+              {
+                "text": "Self-compassion",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "Stricter deadlines",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "Public shaming",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "Ignoring the task completely",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Passage 3: Coral Reefs and Climate Resilience — Savollar 21-30",
+        "description": "IELTS Reading amaliy test qismi.",
+        "passing_score": 70,
+        "xp_reward": 30,
+        "max_attempts": 0,
+        "questions": [
+          {
+            "text": "Why are coral reefs often called the 'rainforests of the sea'?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 0,
+            "choices": [
+              {
+                "text": "Due to their extraordinary biodiversity",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "Because they receive heavy rainfall",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "Because they are located near rainforests",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "Because they grow as fast as rainforest trees",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          },
+          {
+            "text": "What percentage of marine species do coral reefs support?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 1,
+            "choices": [
+              {
+                "text": "About twenty-five percent",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "About fifty percent",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "About ten percent",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "About seventy-five percent",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          },
+          {
+            "text": "What is coral bleaching?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 2,
+            "choices": [
+              {
+                "text": "Coral expelling symbiotic algae due to heat stress",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "Coral changing color naturally with age",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "A method used to clean coral reefs",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "A disease caused by pollution only",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          },
+          {
+            "text": "Why do corals rely on symbiotic algae?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 3,
+            "choices": [
+              {
+                "text": "The algae provide color and most of the coral's nutrition",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "The algae protect coral from predators",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "The algae help coral reproduce",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "The algae regulate water temperature",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          },
+          {
+            "text": "What does ocean acidification reduce the availability of?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 4,
+            "choices": [
+              {
+                "text": "Carbonate ions needed for coral skeletons",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "Oxygen in the water",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "Sunlight reaching the reef",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "Salt content in the ocean",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          },
+          {
+            "text": "What causes ocean acidification according to the passage?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 5,
+            "choices": [
+              {
+                "text": "Rising atmospheric carbon dioxide being absorbed by the ocean",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "Increased fishing activity",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "Coral bleaching events",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "Coastal pollution from plastics",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          },
+          {
+            "text": "What have some coral populations in warmer environments developed?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 6,
+            "choices": [
+              {
+                "text": "Enhanced thermal tolerance",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "Resistance to all pollution",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "Faster reproduction rates",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "Immunity to acidification",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          },
+          {
+            "text": "What technique is mentioned for restoring degraded reefs?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 7,
+            "choices": [
+              {
+                "text": "Selective breeding and coral transplantation",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "Artificial coloring of bleached coral",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "Removing all marine life from the area",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "Building artificial barriers",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          },
+          {
+            "text": "What conservation approach is mentioned besides reducing local stressors?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 8,
+            "choices": [
+              {
+                "text": "Establishing marine protected areas",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "Banning all ocean research",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "Increasing tourism near reefs",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "Relocating all coral to aquariums",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          },
+          {
+            "text": "What do scientists caution about local interventions?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 9,
+            "choices": [
+              {
+                "text": "They alone cannot fully offset the impact of global climate change",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "They are completely ineffective",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "They cause more harm than good",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "They are too expensive to implement",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "IELTS Reading — Amaliy test 3",
+    "lesson_type": "reading",
+    "description": "3 ta passage, 30 savol — haqiqiy IELTS Reading formatida.",
+    "content": "## Passage 1: The Silk Road\n\nThe Silk Road was not a single road but rather an extensive network of trade routes that connected the East and West for over a millennium, facilitating the exchange of goods, ideas, and culture across vast distances. Stretching from China through Central Asia, the Middle East, and into Europe, this network derived its name from the lucrative trade in Chinese silk, although a remarkable variety of other goods, including spices, precious stones, textiles, and metals, also moved along these routes.\n\nThe origins of the Silk Road are generally traced to the Han Dynasty in China, around the 2nd century BCE, when Chinese emperors sought to establish diplomatic and commercial relationships with Central Asian kingdoms. Over subsequent centuries, the network expanded considerably, eventually linking major civilisations including the Roman Empire, the Persian Empire, and various Indian kingdoms.\n\nBeyond the exchange of physical commodities, the Silk Road served as a vital conduit for the transmission of ideas, religions, and technologies. Buddhism, for example, spread from India into China and beyond largely through interactions along these trade routes. Similarly, technological innovations such as papermaking and gunpowder, both originating in China, gradually made their way westward, fundamentally altering societies far removed from their points of origin.\n\nThe network was not merely a fixed set of paths but rather a flexible and evolving system, with specific routes rising and declining in importance depending on political stability, economic conditions, and environmental factors. Oasis towns along the route, such as Samarkand and Kashgar, flourished as centres of trade, culture, and intellectual exchange, often developing remarkably diverse and cosmopolitan populations.\n\nThe gradual decline of the Silk Road as a dominant trade network is generally attributed to several factors, including the rise of maritime trade routes in the 15th century, which offered faster and often cheaper alternatives for transporting goods between East and West. Nevertheless, the historical and cultural legacy of the Silk Road remains profound, and the term continues to be invoked today in discussions of trade, globalisation, and cross-cultural exchange.\n\n---\n\n## Passage 2: Artificial Light and Sleep Disruption\n\nThe widespread availability of artificial lighting has fundamentally transformed human daily life, extending productive hours well beyond natural daylight and reshaping social and economic activities. However, a growing body of scientific research suggests that this transformation has come at a considerable cost to human health, particularly with regard to sleep quality and circadian rhythm regulation.\n\nThe human circadian rhythm, an internal biological clock that regulates numerous physiological processes over an approximately 24-hour cycle, evolved over millennia in an environment characterised by a clear distinction between daylight and darkness. Exposure to light, particularly light within the blue wavelength spectrum, plays a crucial role in regulating this internal clock by suppressing the production of melatonin, a hormone that promotes sleepiness.\n\nIn contemporary society, however, individuals are frequently exposed to substantial amounts of artificial light well into the evening hours, through sources including electric lighting, televisions, computers, and smartphones. This prolonged exposure can delay the onset of melatonin production, making it considerably more difficult for individuals to fall asleep at a biologically appropriate time, even when they feel physically tired.\n\nResearch has demonstrated that this disruption extends beyond simple difficulty falling asleep. Chronic exposure to artificial light in the evening has been associated with broader negative health outcomes, including increased risk of obesity, cardiovascular disease, and certain mood disorders, possibly due to the cascading effects of disrupted circadian regulation on metabolic and hormonal processes throughout the body.\n\nIn response to these findings, researchers and technology companies alike have begun exploring potential mitigation strategies. Some smartphone and computer manufacturers have introduced software features that reduce blue light emission during evening hours, while sleep researchers generally recommend limiting screen exposure in the hour or two preceding bedtime. Nevertheless, given the deep integration of artificial lighting and digital devices into modern life, many researchers argue that more comprehensive behavioural and societal adjustments may ultimately be necessary to fully address the public health implications of widespread artificial light exposure.\n\n---\n\n## Passage 3: The Economics of Renewable Energy\n\nFor much of the twentieth century, renewable energy sources such as solar and wind power were widely regarded as economically uncompetitive alternatives to fossil fuels, suitable primarily for niche applications rather than large-scale electricity generation. Over the past two decades, however, dramatic cost reductions have fundamentally altered this economic calculus, positioning renewable energy as an increasingly central component of global energy strategy.\n\nThe cost of solar photovoltaic technology, in particular, has declined at a remarkable pace, falling by more than eighty percent between 2010 and 2020 according to most industry estimates. This decline has been driven by a combination of factors, including improvements in manufacturing efficiency, increased production scale, and ongoing technological innovation in cell design and materials. Wind power costs have similarly decreased, although somewhat less dramatically than solar.\n\nThese cost reductions have had profound implications for energy investment decisions worldwide. In many regions, building new solar or wind capacity has become cheaper than constructing new fossil fuel power plants, and in some cases, cheaper than continuing to operate existing fossil fuel infrastructure. This shift has accelerated renewable energy adoption even in the absence of substantial government subsidies, which were previously considered essential for renewable energy competitiveness.\n\nNevertheless, significant economic challenges remain. The intermittent nature of solar and wind generation, dependent on weather conditions and time of day, necessitates either substantial energy storage capacity or a diversified, flexible electricity grid capable of balancing variable supply with demand. The costs associated with battery storage technology, while also declining, remain a significant component of total system costs in regions seeking to rely heavily on renewable sources.\n\nLooking forward, many energy economists anticipate that continued technological innovation, coupled with economies of scale, will further reduce renewable energy costs, potentially accelerating the global transition away from fossil fuels. However, the pace and extent of this transition will likely continue to depend on a complex interplay of technological, political, and economic factors that vary considerably across different countries and regions.",
+    "estimated_minutes": 60,
+    "xp_reward": 50,
+    "order": 3,
+    "quizzes": [
+      {
+        "title": "Passage 1: The Silk Road — Savollar 1-10",
+        "description": "IELTS Reading amaliy test qismi.",
+        "passing_score": 70,
+        "xp_reward": 30,
+        "max_attempts": 0,
+        "questions": [
+          {
+            "text": "What was the Silk Road?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 0,
+            "choices": [
+              {
+                "text": "An extensive network of trade routes connecting East and West",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "A single paved road built by the Roman Empire",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "A modern highway system in China",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "A sea route used exclusively for silk trade",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          },
+          {
+            "text": "Besides silk, what other goods moved along the routes?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 1,
+            "choices": [
+              {
+                "text": "Spices, precious stones, textiles, and metals",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "Only tea and rice",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "Only weapons",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "Only livestock",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          },
+          {
+            "text": "During which dynasty are the origins of the Silk Road generally traced?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 2,
+            "choices": [
+              {
+                "text": "The Han Dynasty",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "The Ming Dynasty",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "The Tang Dynasty",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "The Qing Dynasty",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          },
+          {
+            "text": "Which empires did the network eventually link?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 3,
+            "choices": [
+              {
+                "text": "The Roman Empire, the Persian Empire, and Indian kingdoms",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "Only the Roman and Egyptian empires",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "Only Chinese dynasties",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "The British and French empires",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          },
+          {
+            "text": "How did Buddhism spread according to the passage?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 4,
+            "choices": [
+              {
+                "text": "Largely through interactions along the Silk Road trade routes",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "Through military conquest only",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "It originated in China and spread to India",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "Through European missionaries",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          },
+          {
+            "text": "Which two technologies are mentioned as spreading westward from China?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 5,
+            "choices": [
+              {
+                "text": "Papermaking and gunpowder",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "Printing and silk weaving",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "Steel-making and irrigation",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "Glassmaking and pottery",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          },
+          {
+            "text": "What determined which specific routes rose or declined in importance?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 6,
+            "choices": [
+              {
+                "text": "Political stability, economic conditions, and environmental factors",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "Only the preferences of emperors",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "Religious decisions",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "Random chance",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          },
+          {
+            "text": "What is mentioned about towns like Samarkand and Kashgar?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 7,
+            "choices": [
+              {
+                "text": "They flourished as centres of trade, culture, and intellectual exchange",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "They were abandoned during the Silk Road's peak",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "They were purely military outposts",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "They had no lasting cultural impact",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          },
+          {
+            "text": "What contributed to the decline of the Silk Road?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 8,
+            "choices": [
+              {
+                "text": "The rise of maritime trade routes in the 15th century",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "A sudden ban on trade by China",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "The fall of the Roman Empire alone",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "A lack of available goods",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          },
+          {
+            "text": "How is the term 'Silk Road' used today, according to the passage?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 9,
+            "choices": [
+              {
+                "text": "In discussions of trade, globalisation, and cross-cultural exchange",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "Only as a historical term with no modern relevance",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "Exclusively to describe Chinese silk exports",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "As the name of a modern highway",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Passage 2: Artificial Light and Sleep Disruption — Savollar 11-20",
+        "description": "IELTS Reading amaliy test qismi.",
+        "passing_score": 70,
+        "xp_reward": 30,
+        "max_attempts": 0,
+        "questions": [
+          {
+            "text": "What has artificial lighting fundamentally transformed?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 0,
+            "choices": [
+              {
+                "text": "Human daily life, by extending productive hours beyond daylight",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "Only industrial manufacturing processes",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "The agricultural calendar",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "International trade routes",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          },
+          {
+            "text": "What is the circadian rhythm?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 1,
+            "choices": [
+              {
+                "text": "An internal biological clock regulating processes over a 24-hour cycle",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "A type of artificial lighting technology",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "A medical condition affecting vision",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "A measure of sleep duration only",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          },
+          {
+            "text": "What hormone is suppressed by exposure to blue light?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 2,
+            "choices": [
+              {
+                "text": "Melatonin",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "Cortisol",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "Adrenaline",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "Serotonin",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          },
+          {
+            "text": "What effect does evening light exposure have on melatonin production?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 3,
+            "choices": [
+              {
+                "text": "It delays the onset of melatonin production",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "It has no measurable effect",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "It increases melatonin production immediately",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "It only affects melatonin in children",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          },
+          {
+            "text": "What broader health outcomes have been associated with chronic evening light exposure?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 4,
+            "choices": [
+              {
+                "text": "Increased risk of obesity, cardiovascular disease, and mood disorders",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "Improved long-term memory",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "Stronger immune response",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "Increased physical strength",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          },
+          {
+            "text": "Why might disrupted circadian regulation lead to these health outcomes?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 5,
+            "choices": [
+              {
+                "text": "Due to cascading effects on metabolic and hormonal processes",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "Because of direct damage to the eyes",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "Because of reduced exercise levels only",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "Because of dietary changes alone",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          },
+          {
+            "text": "What have some technology companies done to address this issue?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 6,
+            "choices": [
+              {
+                "text": "Introduced software features that reduce blue light emission in the evening",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "Banned the use of smartphones after dark",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "Removed screens from all devices",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "Increased screen brightness at night",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          },
+          {
+            "text": "What do sleep researchers generally recommend?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 7,
+            "choices": [
+              {
+                "text": "Limiting screen exposure in the hour or two before bedtime",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "Avoiding all artificial light permanently",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "Sleeping during the day instead",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "Using brighter screens before bed",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          },
+          {
+            "text": "What do many researchers argue may ultimately be necessary?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 8,
+            "choices": [
+              {
+                "text": "More comprehensive behavioural and societal adjustments",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "A complete ban on electric lighting",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "Stricter screen-time laws for adults only",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "No further action is needed",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          },
+          {
+            "text": "What is the overall tone of the passage regarding artificial light?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 9,
+            "choices": [
+              {
+                "text": "Cautionary, highlighting health costs alongside its benefits",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "Entirely negative, with no benefits mentioned",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "Entirely positive, with no health concerns",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "Neutral and purely historical",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Passage 3: The Economics of Renewable Energy — Savollar 21-30",
+        "description": "IELTS Reading amaliy test qismi.",
+        "passing_score": 70,
+        "xp_reward": 30,
+        "max_attempts": 0,
+        "questions": [
+          {
+            "text": "How were solar and wind power widely regarded for much of the 20th century?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 0,
+            "choices": [
+              {
+                "text": "As economically uncompetitive alternatives to fossil fuels",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "As the cheapest energy sources available",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "As primarily military technologies",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "As completely impractical for any use",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          },
+          {
+            "text": "By how much did solar photovoltaic costs decline between 2010 and 2020?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 1,
+            "choices": [
+              {
+                "text": "More than eighty percent",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "About twenty percent",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "About fifty percent",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "Less than ten percent",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          },
+          {
+            "text": "What factors drove the decline in solar costs?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 2,
+            "choices": [
+              {
+                "text": "Manufacturing efficiency, production scale, and technological innovation",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "Government bans on fossil fuels",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "A sudden drop in raw material prices only",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "Reduced global energy demand",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          },
+          {
+            "text": "How have wind power costs changed compared to solar?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 3,
+            "choices": [
+              {
+                "text": "They have decreased, but somewhat less dramatically than solar",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "They have increased significantly",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "They have remained completely unchanged",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "They have decreased more than solar",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          },
+          {
+            "text": "What has happened to the relative cost of building new renewable capacity versus fossil fuel plants?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 4,
+            "choices": [
+              {
+                "text": "Renewable capacity has become cheaper in many regions",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "Fossil fuel plants remain cheaper in all regions",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "Costs have stayed exactly equal worldwide",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "The passage does not address this comparison",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          },
+          {
+            "text": "What were previously considered essential for renewable energy competitiveness?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 5,
+            "choices": [
+              {
+                "text": "Substantial government subsidies",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "International trade agreements",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "Military investment",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "Tax increases on consumers",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          },
+          {
+            "text": "What challenge does the intermittent nature of solar and wind generation create?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 6,
+            "choices": [
+              {
+                "text": "The need for storage capacity or a flexible electricity grid",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "A complete inability to generate electricity",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "Increased pollution levels",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "Higher transportation costs for fuel",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          },
+          {
+            "text": "What is mentioned about battery storage technology costs?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 7,
+            "choices": [
+              {
+                "text": "They are declining but remain a significant component of total system costs",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "They have already become negligible",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "They have increased dramatically",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "They are not mentioned in relation to renewables",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          },
+          {
+            "text": "What do many energy economists anticipate for the future?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 8,
+            "choices": [
+              {
+                "text": "Continued cost reductions accelerating the transition from fossil fuels",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "A complete return to fossil fuel dependence",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "No further changes in renewable energy costs",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "An immediate end to all renewable energy investment",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          },
+          {
+            "text": "What will the pace of the energy transition likely depend on?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 9,
+            "choices": [
+              {
+                "text": "A complex interplay of technological, political, and economic factors",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "Weather patterns alone",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "A single global agreement",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "Consumer preferences exclusively",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "IELTS Reading — Amaliy test 4",
+    "lesson_type": "reading",
+    "description": "3 ta passage, 30 savol — haqiqiy IELTS Reading formatida.",
+    "content": "## Passage 1: The Invention of the Printing Press\n\nThe development of the printing press in the mid-fifteenth century is widely regarded as one of the most transformative technological innovations in human history, fundamentally altering how information was produced, distributed, and consumed across Europe and, eventually, the world. While various forms of printing technology had existed in East Asia for centuries prior, it was Johannes Gutenberg's development of a practical movable-type printing system in the German city of Mainz around 1440 that triggered a revolution in European book production.\n\nPrior to Gutenberg's innovation, books were produced through laborious hand-copying, a process typically undertaken by monks and professional scribes that could take months or even years to complete a single volume. This made books extraordinarily expensive and consequently rare, accessible primarily to wealthy individuals, religious institutions, and universities. Gutenberg's press, by contrast, allowed for the relatively rapid production of multiple identical copies of a text, dramatically reducing the cost and time required for book production.\n\nThe consequences of this technological shift extended far beyond simple convenience. The increased availability and affordability of books contributed significantly to rising literacy rates across Europe, as access to written material was no longer restricted to a narrow elite. This, in turn, facilitated the broader dissemination of ideas, including scientific knowledge, religious texts, and political philosophy, at a pace previously unimaginable.\n\nHistorians frequently credit the printing press with playing a crucial role in several major historical movements, including the Protestant Reformation, during which printed pamphlets and translated Bibles allowed reformist ideas to spread rapidly across Europe, challenging the authority of the Catholic Church. Similarly, the Scientific Revolution benefited considerably from the ability of researchers to disseminate findings, exchange ideas through printed correspondence, and build upon previously published work with far greater efficiency than had been possible under the manuscript system.\n\nBy the close of the fifteenth century, printing presses had been established in hundreds of European cities, and the technology continued to evolve and spread over subsequent centuries. While modern digital technology has since transformed information distribution once again, the printing press is generally regarded by historians as having laid the essential groundwork for the modern information age, fundamentally reshaping the relationship between societies and the written word.\n\n---\n\n## Passage 2: Migratory Patterns of the Arctic Tern\n\nThe Arctic tern, a small seabird weighing little more than one hundred grams, undertakes what is widely considered one of the longest annual migrations of any animal species on Earth. Breeding in Arctic and sub-Arctic regions during the northern summer, these remarkable birds travel to Antarctic waters for the southern summer, completing a round trip that can exceed seventy thousand kilometres annually, depending on the specific route taken.\n\nResearchers have used satellite tracking technology in recent decades to map these migratory routes with considerably greater precision than was previously possible through traditional observational methods. These studies have revealed that Arctic terns do not necessarily follow the most direct path between their breeding and wintering grounds. Instead, many individuals follow circuitous routes that appear to take advantage of prevailing wind patterns, potentially reducing the overall energy expenditure required for the journey despite the seemingly indirect path.\n\nThe motivations underlying such an extraordinary migratory pattern remain a subject of ongoing scientific investigation. One widely accepted explanation relates to maximising exposure to daylight, as both Arctic and Antarctic regions experience extended periods of daylight during their respective summer seasons. This prolonged daylight allows for extended foraging opportunities, which may be particularly advantageous given the high energy demands associated with both breeding and migration.\n\nThe physiological adaptations that enable Arctic terns to complete such demanding journeys have also attracted considerable scientific interest. Unlike many migratory species that accumulate substantial fat reserves before departure, Arctic terns appear to rely more heavily on a combination of efficient flight techniques and opportunistic feeding along their migratory route, foraging for small fish and marine invertebrates as conditions allow.\n\nClimate change has introduced new uncertainties regarding the future of Arctic tern migration patterns. Changes in ocean temperatures and the resulting shifts in the distribution of prey species could potentially disrupt the delicate timing and routing that these birds have evolved over countless generations. Conservation researchers continue to monitor Arctic tern populations closely, recognising that this species may serve as a valuable indicator of broader environmental changes occurring across the planet's polar and oceanic ecosystems.\n\n---\n\n## Passage 3: The Placebo Effect in Medicine\n\nThe placebo effect, a phenomenon in which a patient experiences a perceived or actual improvement in their medical condition after receiving a treatment with no inherent therapeutic value, has long fascinated and puzzled medical researchers. Despite extensive scientific investigation spanning several decades, the precise mechanisms underlying this effect remain only partially understood, and its implications for both clinical practice and medical research continue to generate considerable debate.\n\nHistorically, the placebo effect was primarily regarded as a methodological nuisance, something researchers needed to account for and control when testing the efficacy of new medical treatments. The standard practice of comparing an active treatment against a placebo in clinical trials emerged largely from the recognition that patients receiving even an inert substance frequently reported improvements in their symptoms, necessitating a baseline comparison to determine whether a given treatment offered genuine therapeutic benefit beyond this effect.\n\nMore recent research, however, has suggested that the placebo effect may involve genuine physiological mechanisms rather than representing a purely psychological phenomenon. Neuroimaging studies have demonstrated that placebo treatments can trigger measurable changes in brain activity, including the release of endogenous opioids and other neurochemicals associated with pain relief and mood regulation. This suggests that the expectation of improvement, central to the placebo effect, may activate genuine biological pathways rather than simply altering a patient's subjective perception of their symptoms.\n\nThe magnitude of the placebo effect appears to vary considerably depending on the medical condition being treated and the specific characteristics of the placebo intervention itself. Conditions involving subjective symptoms, such as pain and depression, generally demonstrate more pronounced placebo responses than conditions with more objectively measurable outcomes, such as bacterial infections. Interestingly, research has also suggested that factors such as the perceived cost of a placebo treatment, and even the colour of a placebo pill, can influence the strength of the resulting effect.\n\nThese findings have prompted some researchers to explore whether placebo mechanisms might be deliberately harnessed within ethical clinical practice, potentially complementing conventional treatments rather than merely serving as a research control. However, significant ethical questions remain regarding the deliberate use of treatments without inherent therapeutic value, particularly concerning patient consent and the broader implications for the doctor-patient relationship. As research continues, the placebo effect remains a compelling illustration of the complex and still incompletely understood relationship between psychological expectation and physiological health outcomes.",
+    "estimated_minutes": 60,
+    "xp_reward": 50,
+    "order": 4,
+    "quizzes": [
+      {
+        "title": "Passage 1: The Invention of the Printing Press — Savollar 1-10",
+        "description": "IELTS Reading amaliy test qismi.",
+        "passing_score": 70,
+        "xp_reward": 30,
+        "max_attempts": 0,
+        "questions": [
+          {
+            "text": "Who developed a practical movable-type printing system around 1440?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 0,
+            "choices": [
+              {
+                "text": "Johannes Gutenberg",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "A group of Chinese inventors",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "Martin Luther",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "A Venetian merchant",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          },
+          {
+            "text": "Where did Gutenberg develop his printing system?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 1,
+            "choices": [
+              {
+                "text": "Mainz, Germany",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "Rome, Italy",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "Paris, France",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "London, England",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          },
+          {
+            "text": "How were books produced before Gutenberg's innovation?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 2,
+            "choices": [
+              {
+                "text": "Through laborious hand-copying by monks and scribes",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "Using an early form of movable type",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "Through mass printing in monasteries",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "By professional publishing houses",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          },
+          {
+            "text": "Who had access to books before the printing press?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 3,
+            "choices": [
+              {
+                "text": "Wealthy individuals, religious institutions, and universities",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "All literate citizens equally",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "Only government officials",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "Only merchants and traders",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          },
+          {
+            "text": "What effect did increased book availability have on literacy?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 4,
+            "choices": [
+              {
+                "text": "It contributed significantly to rising literacy rates",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "It had no measurable effect on literacy",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "It decreased literacy among the wealthy",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "It only affected literacy in Germany",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          },
+          {
+            "text": "Which historical movement is linked to the spread of printed pamphlets and Bibles?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 5,
+            "choices": [
+              {
+                "text": "The Protestant Reformation",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "The French Revolution",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "The Renaissance painting movement",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "The Industrial Revolution",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          },
+          {
+            "text": "How did the printing press benefit the Scientific Revolution?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 6,
+            "choices": [
+              {
+                "text": "By allowing researchers to disseminate findings and build on published work efficiently",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "By funding scientific experiments directly",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "By translating all scientific texts into Latin",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "By replacing the need for experimentation",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          },
+          {
+            "text": "By the end of the fifteenth century, where had printing presses been established?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 7,
+            "choices": [
+              {
+                "text": "Hundreds of European cities",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "Only in Germany",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "Only in religious institutions",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "Across Asia and Europe equally",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          },
+          {
+            "text": "What do historians generally credit the printing press with?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 8,
+            "choices": [
+              {
+                "text": "Laying the groundwork for the modern information age",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "Causing the decline of literacy in Europe",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "Ending all forms of religious authority",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "Eliminating the need for written language",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          },
+          {
+            "text": "What does the passage compare the printing press to, in terms of impact?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 9,
+            "choices": [
+              {
+                "text": "Modern digital technology's transformation of information distribution",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "The invention of the telephone",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "The development of postal services",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "The creation of public libraries",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Passage 2: Migratory Patterns of the Arctic Tern — Savollar 11-20",
+        "description": "IELTS Reading amaliy test qismi.",
+        "passing_score": 70,
+        "xp_reward": 30,
+        "max_attempts": 0,
+        "questions": [
+          {
+            "text": "Approximately how much does an Arctic tern weigh?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 0,
+            "choices": [
+              {
+                "text": "A little more than one hundred grams",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "About one kilogram",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "Around five hundred grams",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "Less than ten grams",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          },
+          {
+            "text": "How far can the Arctic tern's annual round trip migration exceed?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 1,
+            "choices": [
+              {
+                "text": "Seventy thousand kilometres",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "Ten thousand kilometres",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "Twenty-five thousand kilometres",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "One hundred thousand kilometres",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          },
+          {
+            "text": "What technology have researchers used to map Arctic tern migration routes?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 2,
+            "choices": [
+              {
+                "text": "Satellite tracking technology",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "Underwater sonar",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "Radar imaging only",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "Manual bird counting",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          },
+          {
+            "text": "Do Arctic terns follow the most direct path between breeding and wintering grounds?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 3,
+            "choices": [
+              {
+                "text": "No, many follow circuitous routes influenced by wind patterns",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "Yes, always the shortest possible route",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "They follow random paths with no pattern",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "They follow ocean currents exclusively",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          },
+          {
+            "text": "What is one widely accepted explanation for this migratory pattern?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 4,
+            "choices": [
+              {
+                "text": "Maximising exposure to daylight for extended foraging opportunities",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "Avoiding all predators completely",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "Following a fixed genetic map only",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "Escaping rising sea temperatures",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          },
+          {
+            "text": "How do Arctic terns differ from many other migratory species in terms of preparation?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 5,
+            "choices": [
+              {
+                "text": "They rely more on efficient flight and opportunistic feeding rather than fat reserves",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "They store significantly more fat than other species",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "They migrate in much smaller groups",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "They do not feed at all during migration",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          },
+          {
+            "text": "What do Arctic terns feed on during migration?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 6,
+            "choices": [
+              {
+                "text": "Small fish and marine invertebrates",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "Only plant matter",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "Insects exclusively",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "Other smaller birds",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          },
+          {
+            "text": "What threat does climate change pose to Arctic tern migration?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 7,
+            "choices": [
+              {
+                "text": "It could disrupt the timing and routing of migration through shifts in prey distribution",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "It has already eliminated the species",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "It only affects their breeding grounds, not migration",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "It has no known effect on this species",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          },
+          {
+            "text": "Why might Arctic terns serve as a valuable indicator species?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 8,
+            "choices": [
+              {
+                "text": "They may reflect broader environmental changes in polar and oceanic ecosystems",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "They are the only species affected by climate change",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "They live exclusively in one fixed location",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "Their population has remained completely stable",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          },
+          {
+            "text": "What is the overall focus of this passage?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 9,
+            "choices": [
+              {
+                "text": "The remarkable migration of Arctic terns and the science behind it",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "The conservation laws protecting Arctic wildlife",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "The diet of all Arctic seabird species",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "The history of bird-watching as a hobby",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Passage 3: The Placebo Effect in Medicine — Savollar 21-30",
+        "description": "IELTS Reading amaliy test qismi.",
+        "passing_score": 70,
+        "xp_reward": 30,
+        "max_attempts": 0,
+        "questions": [
+          {
+            "text": "What is the placebo effect?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 0,
+            "choices": [
+              {
+                "text": "Perceived or actual improvement after a treatment with no inherent therapeutic value",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "A medical condition caused by fake medicine",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "A side effect of all approved medications",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "A type of allergic reaction",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          },
+          {
+            "text": "How was the placebo effect historically regarded by researchers?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 1,
+            "choices": [
+              {
+                "text": "As a methodological nuisance that needed to be controlled for",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "As the most effective treatment available",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "As proof that all medicine is ineffective",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "As irrelevant to clinical research",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          },
+          {
+            "text": "Why did the practice of comparing treatments against placebos emerge?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 2,
+            "choices": [
+              {
+                "text": "Because patients receiving inert substances often reported symptom improvement",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "Because placebos were cheaper to produce than real medicine",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "Because doctors wanted to deceive patients",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "Because it was required by international law",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          },
+          {
+            "text": "What have recent neuroimaging studies suggested about the placebo effect?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 3,
+            "choices": [
+              {
+                "text": "It may involve genuine physiological mechanisms, not just psychological ones",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "It has no measurable effect on the brain",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "It only affects patients with mental illness",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "It is purely imaginary with no biological basis",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          },
+          {
+            "text": "What neurochemicals have been linked to placebo-induced pain relief?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 4,
+            "choices": [
+              {
+                "text": "Endogenous opioids",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "Insulin",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "Adrenaline only",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "Vitamin D",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          },
+          {
+            "text": "Which types of conditions show more pronounced placebo responses?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 5,
+            "choices": [
+              {
+                "text": "Conditions involving subjective symptoms, such as pain and depression",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "Bacterial infections specifically",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "Conditions with no symptoms at all",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "Only conditions affecting children",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          },
+          {
+            "text": "What factors have been shown to influence the strength of the placebo effect?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 6,
+            "choices": [
+              {
+                "text": "The perceived cost of treatment and even the colour of a pill",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "Only the patient's age",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "Only the doctor's level of experience",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "The time of day the treatment is given",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          },
+          {
+            "text": "What are some researchers now exploring regarding placebo mechanisms?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 7,
+            "choices": [
+              {
+                "text": "Whether they could be deliberately used within ethical clinical practice",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "Whether to ban placebo use in all research",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "Whether placebos should replace all conventional medicine",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "Whether placebos work only on animals",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          },
+          {
+            "text": "What ethical concern is raised regarding deliberate placebo use?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 8,
+            "choices": [
+              {
+                "text": "Questions about patient consent and the doctor-patient relationship",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "The high cost of producing placebo treatments",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "The risk of placebo treatments causing physical harm",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "Legal restrictions on all medical research",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          },
+          {
+            "text": "How does the passage describe the placebo effect overall?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 9,
+            "choices": [
+              {
+                "text": "As a compelling illustration of the link between expectation and physiological outcomes",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "As a fully solved scientific mystery",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "As an outdated concept no longer studied",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "As evidence that all medicine is placebo-based",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "IELTS Reading — Amaliy test 5",
+    "lesson_type": "reading",
+    "description": "3 ta passage, 30 savol — haqiqiy IELTS Reading formatida.",
+    "content": "## Passage 1: The Domestication of Wheat\n\nWheat ranks among the most agriculturally and historically significant crops ever cultivated by humans, forming the dietary foundation for numerous civilisations across millennia. The domestication of wild wheat varieties is generally believed to have begun in the Fertile Crescent, a region spanning parts of the modern Middle East, approximately ten thousand years ago, marking one of the earliest and most consequential developments in human agricultural history.\n\nWild wheat differed substantially from its modern cultivated descendants in several important respects. Most significantly, wild wheat varieties possessed a genetic trait causing the seed head to shatter and disperse seeds naturally once mature, an adaptation beneficial for wild propagation but highly impractical for human harvesting purposes. Early farmers, whether through deliberate selection or unintentional consequence, began favouring plants with a genetic mutation that caused seeds to remain attached to the seed head even after maturity, considerably simplifying the harvesting process.\n\nThis seemingly minor genetic shift had profound implications for human society. As wheat cultivation became increasingly reliable and productive, populations dependent on this crop were able to settle permanently rather than continuing nomadic hunter-gatherer lifestyles, contributing significantly to the broader transition toward settled agricultural societies. This transition, often referred to as the Neolithic Revolution, fundamentally transformed virtually every aspect of human social organisation, from settlement patterns to social hierarchy and resource distribution.\n\nOver subsequent millennia, wheat cultivation spread far beyond its original domestication centre, eventually reaching Europe, North Africa, and South Asia through a combination of trade, migration, and cultural exchange. Different regional varieties gradually developed, adapted to local climatic and soil conditions, contributing to the genetic diversity observed in wheat populations today, even as modern industrial agriculture has tended toward greater genetic uniformity in commercially cultivated varieties.\n\nContemporary wheat cultivation now occurs on a genuinely global scale, with the crop serving as a dietary staple for a substantial proportion of the world's population. Nevertheless, modern wheat production faces considerable challenges, including the effects of climate change on growing conditions, concerns regarding genetic diversity and disease resistance in widely cultivated commercial varieties, and ongoing debates regarding the most sustainable approaches to large-scale agricultural production.\n\n---\n\n## Passage 2: The Psychology of Decision Fatigue\n\nDecision fatigue refers to the deteriorating quality of decisions made by an individual after a long session of decision-making, a phenomenon that has attracted considerable attention from psychologists and behavioural economists in recent decades. The underlying premise suggests that the cognitive and emotional resources required for effective decision-making are finite and become progressively depleted through repeated use, much as physical muscles become fatigued through sustained exertion.\n\nEarly research into this phenomenon often focused on relatively high-stakes professional contexts. One frequently cited study examined judicial decision-making, finding that judges were considerably more likely to grant favourable rulings, such as parole approvals, earlier in the day or immediately following scheduled breaks, compared to later in extended decision-making sessions without rest. While such findings have prompted vigorous academic debate regarding interpretation and broader applicability, they have nonetheless contributed significantly to popular awareness of decision fatigue as a genuine cognitive phenomenon.\n\nSubsequent research has extended investigation of decision fatigue into a considerably broader range of everyday contexts, including consumer purchasing decisions, dietary choices, and even routine workplace decision-making. Some studies suggest that individuals experiencing decision fatigue may become more likely to default to the simplest available option, avoid making any decision whatsoever, or alternatively engage in seemingly impulsive choices that diverge substantially from their typical decision-making patterns under less depleted conditions.\n\nThe proposed underlying mechanisms of decision fatigue remain a subject of ongoing scientific debate. Some researchers favour explanations rooted in genuine depletion of finite cognitive resources, while others have proposed that apparent decision fatigue may instead reflect shifting motivational priorities or changing beliefs about one's own remaining cognitive capacity, rather than an actual depletion of a tangible cognitive resource.\n\nRegardless of the precise underlying mechanism, the practical implications of decision fatigue have attracted considerable interest from researchers and practitioners alike, particularly in contexts involving high-stakes or consequential decision-making. Suggested mitigation strategies frequently include scheduling important decisions earlier in the day, incorporating regular breaks during extended decision-making sessions, and deliberately reducing the total number of relatively trivial decisions an individual must make throughout a given day, thereby conserving cognitive resources for more consequential choices.\n\n---\n\n## Passage 3: Biomimicry in Engineering Design\n\nBiomimicry, the practice of drawing design inspiration from biological structures and processes observed in nature, has emerged as an increasingly influential approach within contemporary engineering and architectural design. Proponents of this approach argue that biological organisms, having undergone millions of years of evolutionary refinement, frequently represent remarkably efficient solutions to fundamental engineering challenges, offering valuable insights that purely human-derived design approaches might otherwise overlook.\n\nOne frequently cited example of successful biomimetic design involves the development of high-speed train technology in Japan, where engineers encountered a persistent and troublesome problem involving loud noise produced as trains emerged from tunnels at high speed, caused by rapid air pressure changes. The eventual solution drew direct inspiration from the distinctive beak shape of the kingfisher, a bird renowned for its ability to dive into water at considerable speed with minimal splash, owing to its streamlined beak structure. By redesigning the train's nose to mimic this natural shape, engineers successfully reduced both noise levels and energy consumption.\n\nArchitectural applications of biomimicry have similarly proliferated in recent decades. Termite mounds, for instance, have inspired innovative approaches to building ventilation and temperature regulation, as these structures naturally maintain remarkably stable internal temperatures despite often extreme external conditions through sophisticated passive airflow systems. Several modern buildings have incorporated design principles derived from termite mound structures to substantially reduce reliance on energy-intensive mechanical heating and cooling systems.\n\nBeyond these specific examples, biomimicry has informed developments across numerous other engineering domains, including materials science, where researchers have studied structures such as spider silk and mollusc shells in pursuit of materials combining exceptional strength with comparatively low weight. Similarly, the study of shark skin structure has informed the development of specialised surface coatings designed to reduce drag and inhibit bacterial growth on various surfaces.\n\nWhile biomimicry offers considerable promise as a design philosophy, practitioners generally acknowledge that successfully translating biological principles into practical engineering applications requires careful and rigorous adaptation, given the substantial differences between biological materials and processes and the industrial materials and manufacturing techniques typically available to human engineers. Nevertheless, as both biological understanding and engineering capability continue to advance, many researchers anticipate that biomimicry will play an increasingly prominent role in addressing pressing contemporary engineering challenges, particularly those related to sustainability and resource efficiency.",
+    "estimated_minutes": 60,
+    "xp_reward": 50,
+    "order": 5,
+    "quizzes": [
+      {
+        "title": "Passage 1: The Domestication of Wheat — Savollar 1-10",
+        "description": "IELTS Reading amaliy test qismi.",
+        "passing_score": 70,
+        "xp_reward": 30,
+        "max_attempts": 0,
+        "questions": [
+          {
+            "text": "Where is wheat domestication believed to have begun?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 0,
+            "choices": [
+              {
+                "text": "The Fertile Crescent",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "Southeast Asia",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "Northern Europe",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "Central America",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          },
+          {
+            "text": "Approximately how long ago did wheat domestication begin?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 1,
+            "choices": [
+              {
+                "text": "About ten thousand years ago",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "About one thousand years ago",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "About fifty thousand years ago",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "About five hundred years ago",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          },
+          {
+            "text": "What trait did wild wheat possess that made harvesting difficult?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 2,
+            "choices": [
+              {
+                "text": "The seed head shattered and dispersed seeds naturally once mature",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "It grew only in deep water",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "It produced no edible seeds",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "It required artificial pollination",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          },
+          {
+            "text": "What genetic mutation did early farmers favour?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 3,
+            "choices": [
+              {
+                "text": "Seeds remaining attached to the seed head after maturity",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "Seeds that ripened instantly",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "Plants that grew without sunlight",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "Plants resistant to all pests",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          },
+          {
+            "text": "What broader transition did reliable wheat cultivation contribute to?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 4,
+            "choices": [
+              {
+                "text": "The shift from nomadic lifestyles to settled agricultural societies",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "The development of seafaring trade",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "The invention of writing systems",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "The rise of nomadic herding exclusively",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          },
+          {
+            "text": "What is this broader transition often referred to as?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 5,
+            "choices": [
+              {
+                "text": "The Neolithic Revolution",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "The Industrial Revolution",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "The Agricultural Renaissance",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "The Bronze Age Shift",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          },
+          {
+            "text": "How did wheat cultivation spread beyond its original domestication centre?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 6,
+            "choices": [
+              {
+                "text": "Through trade, migration, and cultural exchange",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "Through a single coordinated global effort",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "It did not spread beyond the Fertile Crescent",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "Only through military conquest",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          },
+          {
+            "text": "What contributed to genetic diversity in historical wheat populations?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 7,
+            "choices": [
+              {
+                "text": "Different regional varieties adapting to local climate and soil conditions",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "Modern industrial agriculture practices",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "A single global wheat strain",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "Artificial genetic engineering",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          },
+          {
+            "text": "What trend has modern industrial agriculture shown regarding wheat varieties?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 8,
+            "choices": [
+              {
+                "text": "A tendency toward greater genetic uniformity",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "A dramatic increase in genetic diversity",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "Complete abandonment of wheat cultivation",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "A return to wild wheat varieties",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          },
+          {
+            "text": "What challenges does modern wheat production face?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 9,
+            "choices": [
+              {
+                "text": "Climate change effects, genetic diversity concerns, and sustainability debates",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "A complete lack of demand for wheat",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "No significant challenges at all",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "Only challenges related to transportation",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Passage 2: The Psychology of Decision Fatigue — Savollar 11-20",
+        "description": "IELTS Reading amaliy test qismi.",
+        "passing_score": 70,
+        "xp_reward": 30,
+        "max_attempts": 0,
+        "questions": [
+          {
+            "text": "What is decision fatigue?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 0,
+            "choices": [
+              {
+                "text": "The deteriorating quality of decisions after a long session of decision-making",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "A medical condition affecting memory",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "The inability to make any decisions at all permanently",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "A type of physical exhaustion only",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          },
+          {
+            "text": "What does the underlying premise of decision fatigue compare cognitive resources to?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 1,
+            "choices": [
+              {
+                "text": "Physical muscles that become fatigued through exertion",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "An unlimited renewable resource",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "A digital computer processor",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "A type of emotional reaction",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          },
+          {
+            "text": "What did the cited judicial study find?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 2,
+            "choices": [
+              {
+                "text": "Judges were more likely to grant favourable rulings earlier in the day or after breaks",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "Judges never granted parole regardless of timing",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "Decision quality improved throughout the day",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "Breaks had no effect on judicial decisions",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          },
+          {
+            "text": "How has academic debate responded to the judicial study's findings?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 3,
+            "choices": [
+              {
+                "text": "With vigorous debate regarding interpretation and applicability",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "With complete and immediate acceptance",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "With total rejection of the study",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "The passage does not mention any debate",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          },
+          {
+            "text": "To what other contexts has decision fatigue research extended?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 4,
+            "choices": [
+              {
+                "text": "Consumer purchasing, dietary choices, and workplace decisions",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "Only sports performance",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "Only academic test-taking",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "Only military strategy",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          },
+          {
+            "text": "What behaviour might individuals exhibit when experiencing decision fatigue?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 5,
+            "choices": [
+              {
+                "text": "Defaulting to the simplest option or avoiding decisions altogether",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "Always choosing the most complex option",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "Becoming completely unable to function",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "Making faster but unrelated decisions",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          },
+          {
+            "text": "What alternative explanation have some researchers proposed for decision fatigue?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 6,
+            "choices": [
+              {
+                "text": "Shifting motivational priorities rather than actual resource depletion",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "A purely physical illness",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "A permanent neurological change",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "An effect limited to professional settings only",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          },
+          {
+            "text": "What mitigation strategy involves scheduling?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 7,
+            "choices": [
+              {
+                "text": "Scheduling important decisions earlier in the day",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "Making all decisions at night",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "Avoiding decisions on weekends",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "Scheduling decisions randomly throughout the week",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          },
+          {
+            "text": "What is suggested regarding trivial decisions?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 8,
+            "choices": [
+              {
+                "text": "Reducing their total number to conserve cognitive resources for important choices",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "Increasing them to build mental endurance",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "They have no impact on cognitive resources",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "They should always be made first",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          },
+          {
+            "text": "What is the overall purpose of this passage?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 9,
+            "choices": [
+              {
+                "text": "To explain decision fatigue and its proposed causes and solutions",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "To argue that decision fatigue does not exist",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "To provide legal advice for judges",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "To promote a specific commercial product",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Passage 3: Biomimicry in Engineering Design — Savollar 21-30",
+        "description": "IELTS Reading amaliy test qismi.",
+        "passing_score": 70,
+        "xp_reward": 30,
+        "max_attempts": 0,
+        "questions": [
+          {
+            "text": "What is biomimicry?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 0,
+            "choices": [
+              {
+                "text": "Drawing design inspiration from biological structures and processes in nature",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "Creating purely artificial designs with no natural influence",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "A method of genetically modifying animals",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "A branch of pure mathematics",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          },
+          {
+            "text": "Why do proponents argue biological organisms offer valuable design insights?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 1,
+            "choices": [
+              {
+                "text": "They represent efficient solutions refined over millions of years of evolution",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "They are always cheaper to replicate than human designs",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "They require no further engineering adaptation",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "They were specifically designed for human use",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          },
+          {
+            "text": "What problem did Japanese train engineers face?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 2,
+            "choices": [
+              {
+                "text": "Loud noise caused by rapid air pressure changes exiting tunnels",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "Trains were too slow to be competitive",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "Trains consumed too much water",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "Trains were too heavy to operate efficiently",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          },
+          {
+            "text": "Which animal inspired the redesign of the train's nose?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 3,
+            "choices": [
+              {
+                "text": "The kingfisher",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "The dolphin",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "The falcon",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "The shark",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          },
+          {
+            "text": "What benefit did the kingfisher-inspired design provide?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 4,
+            "choices": [
+              {
+                "text": "Reduced noise levels and energy consumption",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "Increased train speed only",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "Reduced manufacturing costs only",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "Improved passenger comfort only",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          },
+          {
+            "text": "What natural structures inspired building ventilation systems?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 5,
+            "choices": [
+              {
+                "text": "Termite mounds",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "Beehives",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "Coral reefs",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "Bird nests",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          },
+          {
+            "text": "How do termite mounds maintain stable internal temperatures?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 6,
+            "choices": [
+              {
+                "text": "Through sophisticated passive airflow systems",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "Through active mechanical cooling",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "By absorbing heat from the sun directly",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "Through constant termite movement",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          },
+          {
+            "text": "What natural materials have inspired research into strong, lightweight materials?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 7,
+            "choices": [
+              {
+                "text": "Spider silk and mollusc shells",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "Tree bark and leaves",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "Animal bones exclusively",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "Volcanic rock",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          },
+          {
+            "text": "What has shark skin structure inspired?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 8,
+            "choices": [
+              {
+                "text": "Surface coatings that reduce drag and inhibit bacterial growth",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "A new type of swimming technique for humans",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "A method for purifying water",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "A type of waterproof clothing only",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          },
+          {
+            "text": "What challenge do practitioners acknowledge regarding biomimicry?",
+            "question_type": "multiple_choice",
+            "points": 1,
+            "order": 9,
+            "choices": [
+              {
+                "text": "Translating biological principles into practical engineering requires careful adaptation",
+                "is_correct": true,
+                "order": 0
+              },
+              {
+                "text": "Biomimicry has no practical engineering applications",
+                "is_correct": false,
+                "order": 1
+              },
+              {
+                "text": "Biological materials are identical to industrial materials",
+                "is_correct": false,
+                "order": 2
+              },
+              {
+                "text": "Biomimicry is always cheaper than traditional design",
+                "is_correct": false,
+                "order": 3
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]
