@@ -27,6 +27,7 @@ export interface Assignment {
   assignment_type_display: string;
   instructions: string;
   rubric: string;
+  image_url: string | null;
   min_words: number | null;
   max_words: number | null;
   time_limit_minutes: number | null;

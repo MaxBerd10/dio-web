@@ -95,7 +95,7 @@ export const NAV_ITEMS: NavItem[] = [
     href: '/certificates',
     icon: Award,
     forRoles: ['student'],
-    mobileShow: false,
+    mobileShow: true,
   },
   {
     label: 'Reytinglar',

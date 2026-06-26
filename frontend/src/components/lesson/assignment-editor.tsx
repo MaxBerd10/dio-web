@@ -259,6 +259,18 @@ export function AssignmentEditor({ assignment, onClose }: AssignmentEditorProps)
               Topshiriq
             </h3>
           </div>
+
+          {assignment.image_url && (
+            <div className="mb-4 rounded-lg overflow-hidden border border-[var(--color-border)] bg-white">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={assignment.image_url}
+                alt={assignment.title}
+                className="w-full h-auto"
+              />
+            </div>
+          )}
+
           <div className="text-sm md:text-base leading-relaxed">
             {renderMarkdown(assignment.instructions)}
           </div>

@@ -126,23 +126,31 @@ class AnswerSubmitSerializer(serializers.Serializer):
 # ============================================================
 # Assignment serializers
 # ============================================================
-
 class AssignmentSerializer(serializers.ModelSerializer):
     """Yagona assignment ma'lumoti."""
     assignment_type_display = serializers.CharField(
         source='get_assignment_type_display', read_only=True,
     )
     user_submission = serializers.SerializerMethodField()
+    image_url = serializers.SerializerMethodField()
 
     class Meta:
         model = Assignment
         fields = (
             'id', 'title', 'assignment_type', 'assignment_type_display',
-            'instructions', 'rubric',
+            'instructions', 'rubric', 'image_url',
             'min_words', 'max_words', 'time_limit_minutes',
             'xp_reward', 'order',
             'user_submission',
         )
+
+    def get_image_url(self, obj):
+        if not obj.image:
+            return None
+        request = self.context.get('request')
+        if request:
+            return request.build_absolute_uri(obj.image.url)
+        return obj.image.url
 
     def get_user_submission(self, obj):
         user = self.context.get('request').user
@@ -162,6 +170,7 @@ class AssignmentSerializer(serializers.ModelSerializer):
             'score': float(submission.score) if submission.score else None,
             'submitted_at': submission.submitted_at,
         }
+
 
 
 class FeedbackCommentSerializer(serializers.ModelSerializer):

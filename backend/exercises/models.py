@@ -188,6 +188,14 @@ class Assignment(models.Model):
     instructions = models.TextField(
         help_text='Topshiriqning to\'liq matni (Markdown)',
     )
+
+    image = models.ImageField(
+        upload_to='assignments/',
+        blank=True, null=True,
+        help_text="IELTS Writing Task 1 uchun chart/grafik/diagramma rasmi",
+    )
+
+
     rubric = models.TextField(
         blank=True,
         help_text='Baholash mezonlari (IELTS uchun band descriptors)',
