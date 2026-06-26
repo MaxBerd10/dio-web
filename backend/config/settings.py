@@ -25,6 +25,7 @@ SECRET_KEY = config('SECRET_KEY')
 TEACHER_INVITE_CODE = config('TEACHER_INVITE_CODE', default='')
 DEBUG = config('DEBUG', default=False, cast=bool)
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='*').split(',')
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 
 # Application definition
@@ -107,7 +108,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Internationalization
 LANGUAGE_CODE = 'en-us'
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Taskent'
 USE_I18N = True
 USE_TZ = True
 
