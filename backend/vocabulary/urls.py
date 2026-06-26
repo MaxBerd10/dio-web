@@ -8,6 +8,7 @@ from .views import (
     StudentWordStatsView,
     WordMatchWordsView, WordMatchResultView,
     HangmanWordView, HangmanResultView,
+    ScrambleWordView, ScrambleResultView,
 )
 
 app_name = 'vocabulary'
@@ -32,4 +33,7 @@ urlpatterns = [
 
     path('game/hangman/word/', HangmanWordView.as_view(), name='hangman-word'),
     path('game/hangman/result/', HangmanResultView.as_view(), name='hangman-result'),
+
+    path('game/scramble/word/', ScrambleWordView.as_view(), name='scramble-word'),
+    path('game/scramble/result/', ScrambleResultView.as_view(), name='scramble-result'),
 ]

@@ -19,6 +19,7 @@ import { useAuthStore } from '@/store/auth';
 import { Card, CardContent } from '@/components/ui/card';
 import { Skeleton } from '@/components/ui/skeleton';
 import { cn } from '@/lib/utils';
+import { DifficultTopicsCard } from '@/components/teacher/difficult-topics-card';
 import type { ActivityStatus, TeacherStudentItem } from '@/lib/api/teacher';
 
 type StatusFilter = 'all' | 'active' | 'inactive' | 'pending';
@@ -324,6 +325,11 @@ export default function TeacherStudentsPage() {
           />
         </div>
       )}
+
+      {/* Qiyin mavzular */}
+      <div className="mb-6">
+        <DifficultTopicsCard />
+      </div>
 
       {/* Qidiruv */}
       <div className="relative mb-5">

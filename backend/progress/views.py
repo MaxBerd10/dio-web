@@ -23,7 +23,7 @@ from accounts.permissions import IsStudent
 
 from .models import (
     LessonProgress, WordProgress,
-    QuizAttempt,
+    QuizAttempt, QuestionResponse,
     Streak, UserXP,
     Achievement, UserAchievement,
 )
@@ -552,3 +552,56 @@ class AssignStudentToMeView(APIView):
         student.assigned_teacher = request.user
         student.save(update_fields=['assigned_teacher'])
         return Response({'detail': 'Biriktirildi.', 'student_id': student.id})
+
+
+# ============================================================
+# TEACHER — DIFFICULT TOPICS REPORT
+# ============================================================
+
+class TeacherDifficultTopicsView(APIView):
+    """
+    GET /api/progress/teacher/difficult-topics/?limit=15
+    Qaysi savollar eng ko'p xato qilinayotganini ko'rsatadi.
+    Faqat teacher'ning o'z studentlari + biriktirilmaganlar bo'yicha.
+    """
+    permission_classes = [IsTeacherOrAdmin]
+
+    def get(self, request):
+        limit = int(request.query_params.get('limit', 15))
+        limit = min(limit, 50)
+
+        students = User.objects.filter(role=User.Role.STUDENT).filter(
+            Q(assigned_teacher=request.user) | Q(assigned_teacher__isnull=True)
+        )
+
+        rows = (
+            QuestionResponse.objects
+            .filter(attempt__student__in=students)
+            .values(
+                'question_id',
+                'question__text',
+                'question__quiz__title',
+                'question__quiz__lesson__title',
+            )
+            .annotate(
+                total=Count('id'),
+                wrong=Count('id', filter=Q(is_correct=False)),
+            )
+            .filter(total__gte=3)  # statistik ma'noga ega bo'lishi uchun kamida 3 urinish
+        )
+
+        data = []
+        for row in rows:
+            wrong_rate = round(row['wrong'] / row['total'] * 100) if row['total'] else 0
+            data.append({
+                'question_id': row['question_id'],
+                'question_text': row['question__text'],
+                'quiz_title': row['question__quiz__title'],
+                'lesson_title': row['question__quiz__lesson__title'],
+                'total_attempts': row['total'],
+                'wrong_count': row['wrong'],
+                'wrong_rate': wrong_rate,
+            })
+
+        data.sort(key=lambda x: x['wrong_rate'], reverse=True)
+        return Response({'topics': data[:limit]})

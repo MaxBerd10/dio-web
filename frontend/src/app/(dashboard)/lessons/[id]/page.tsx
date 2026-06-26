@@ -5,6 +5,7 @@ import { LessonAssignment } from '@/components/lesson/lesson-assignment';
 import { LessonCompleteButton } from '@/components/lesson/lesson-complete-button';
 import { use, useState } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import {
   ChevronLeft,
   Clock,
@@ -36,6 +37,7 @@ export default function LessonPage({
 }: {
   params: Promise<{ id: string }>;
 }) {
+    const router = useRouter();
   const { id } = use(params);
   const lessonId = parseInt(id, 10);
 
@@ -44,13 +46,14 @@ export default function LessonPage({
 
   return (
     <div className="p-4 md:p-8 max-w-4xl mx-auto">
-      <Link
-        href="/tracks"
-        className="inline-flex items-center gap-1 text-sm text-[var(--color-muted-foreground)] hover:text-[var(--color-foreground)] mb-4"
+      <button
+        type="button"
+        onClick={() => router.back()}
+        className="inline-flex items-center gap-1 text-sm font-medium text-[var(--color-foreground)] hover:text-[var(--color-primary)] mb-4 transition-colors"
       >
         <ChevronLeft className="h-4 w-4" />
         Orqaga
-      </Link>
+      </button>
 
       {isLoading ? (
         <div className="space-y-4">

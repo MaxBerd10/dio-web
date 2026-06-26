@@ -53,3 +53,11 @@ export function useAssignStudentToMe() {
     },
   });
 }
+
+
+export function useDifficultTopics(limit?: number) {
+  return useQuery({
+    queryKey: ['teacher-difficult-topics', limit],
+    queryFn: () => teacherApi.getDifficultTopics(limit),
+  });
+}

@@ -38,7 +38,7 @@ export default function TrackDetailPage({
       {/* Breadcrumb */}
       <Link
         href="/tracks"
-        className="inline-flex items-center gap-1 text-sm text-[var(--color-muted-foreground)] hover:text-[var(--color-foreground)] mb-4"
+        className="inline-flex items-center gap-1 text-sm font-medium text-[var(--color-foreground)] hover:text-[var(--color-primary)] mb-4 transition-colors"
       >
         <ChevronLeft className="h-4 w-4" />
         Barcha yo'nalishlar

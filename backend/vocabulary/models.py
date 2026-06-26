@@ -206,3 +206,31 @@ class HangmanAttempt(models.Model):
     def __str__(self):
         result = 'yutdi' if self.won else "yutqazdi"
         return f'{self.student.username}: {result} ({self.wrong_guesses} xato)'
+
+class ScrambleAttempt(models.Model):
+    """
+    "So'z tartibini tiklash" o'yini urinishi.
+    """
+    student = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name='scramble_attempts',
+    )
+    word = models.ForeignKey(
+        Word,
+        on_delete=models.SET_NULL,
+        null=True, blank=True,
+        related_name='scramble_attempts',
+    )
+    won = models.BooleanField(default=False)
+    hints_used = models.PositiveIntegerField(default=0)
+    xp_earned = models.PositiveIntegerField(default=0)
+    time_spent_seconds = models.PositiveIntegerField(default=0)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['-created_at']
+
+    def __str__(self):
+        result = 'yutdi' if self.won else "yutqazdi"
+        return f'{self.student.username}: {result}'

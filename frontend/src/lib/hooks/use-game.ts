@@ -39,3 +39,25 @@ export function useSubmitHangmanResult() {
     },
   });
 }
+
+export function useStartScramble() {
+  return useMutation({
+    mutationFn: (params?: { cefr_level?: string }) => gameApi.getScrambleWord(params),
+  });
+}
+
+
+export function useSubmitScrambleResult() {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: (payload: {
+      word_id: number;
+      answer: string;
+      hints_used: number;
+      time_spent_seconds: number;
+    }) => gameApi.submitScrambleResult(payload),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['dashboard'] });
+    },
+  });
+}

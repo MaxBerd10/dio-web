@@ -1,9 +1,8 @@
 'use client';
 
 import { use } from 'react';
-import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { ChevronLeft } from 'lucide-react';
-
 import { useModule } from '@/lib/hooks/use-courses';
 import { Skeleton } from '@/components/ui/skeleton';
 import { LessonRow } from '@/components/tracks/lesson-row';
@@ -13,21 +12,22 @@ export default function ModulePage({
 }: {
   params: Promise<{ id: string }>;
 }) {
+  const router = useRouter();
   const { id } = use(params);
   const moduleId = parseInt(id, 10);
-
   const { data: module, isLoading, error } = useModule(moduleId);
 
   return (
     <div className="p-4 md:p-8 max-w-4xl mx-auto">
-      {/* Breadcrumb — module'dan tepa course'ga */}
-      <Link
-        href="/tracks"
-        className="inline-flex items-center gap-1 text-sm text-[var(--color-muted-foreground)] hover:text-[var(--color-foreground)] mb-4"
+      {/* Orqaga — brauzer tarixiga aniq qaytadi */}
+      <button
+        type="button"
+        onClick={() => router.back()}
+        className="inline-flex items-center gap-1 text-sm font-medium text-[var(--color-foreground)] hover:text-[var(--color-primary)] mb-4 transition-colors"
       >
         <ChevronLeft className="h-4 w-4" />
         Orqaga
-      </Link>
+      </button>
 
       {/* Header */}
       {isLoading ? (

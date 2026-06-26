@@ -14,8 +14,7 @@ from progress.models import WordProgress
 from progress.serializers import WordProgressSerializer, ReviewSubmitSerializer
 
 
-from .models import Word, LessonWord, WordSet, WordMatchAttempt, HangmanAttempt
-from .models import Word, LessonWord, WordSet, WordMatchAttempt
+from .models import Word, LessonWord, WordSet, WordMatchAttempt, HangmanAttempt, ScrambleAttempt
 from .serializers import (
     WordSerializer, WordCompactSerializer,
     LessonWordSerializer,
@@ -376,6 +375,88 @@ class HangmanResultView(APIView):
             word_id=word_id,
             won=won,
             wrong_guesses=wrong_guesses,
+            xp_earned=xp_earned,
+            time_spent_seconds=time_spent,
+        )
+
+        if xp_earned > 0:
+            xp_profile, _ = UserXP.objects.get_or_create(student=request.user)
+            xp_profile.add_xp(xp_earned)
+            streak, _ = Streak.objects.get_or_create(student=request.user)
+            streak.record_activity()
+
+        return Response({'xp_earned': xp_earned, 'won': won})
+
+
+# ============================================================
+# WORD SCRAMBLE GAME — "So'z tartibini tiklash"
+# ============================================================
+
+class ScrambleWordView(APIView):
+    """
+    GET /api/vocabulary/game/scramble/word/?cefr_level=A1
+    Harflari aralashtirilgan so'z. Asl so'zning o'zi bu yerda
+    QAYTARILMAYDI (faqat aralashtirilgan harflar) — buni
+    ScrambleResultView server tomonida tekshiradi.
+    """
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        cefr_level = request.query_params.get('cefr_level') or getattr(request.user, 'cefr_level', '') or None
+
+        qs = Word.objects.exclude(translation_uz='').exclude(word='').filter(word__regex=r'^[A-Za-z]+$')
+        if cefr_level:
+            qs = qs.filter(cefr_level=cefr_level)
+
+        word = qs.order_by('?').first()
+        if not word:
+            word = Word.objects.exclude(translation_uz='').exclude(word='').filter(word__regex=r'^[A-Za-z]+$').order_by('?').first()
+        if not word:
+            return Response({'detail': "So'zlar topilmadi."}, status=status.HTTP_404_NOT_FOUND)
+
+        letters = list(word.word.lower())
+        shuffled = letters.copy()
+        for _ in range(10):
+            random.shuffle(shuffled)
+            if shuffled != letters:
+                break
+
+        return Response({
+            'id': word.id,
+            'scrambled': shuffled,
+            'translation_uz': word.translation_uz,
+            'length': len(letters),
+        })
+
+
+class ScrambleResultView(APIView):
+    """
+    POST /api/vocabulary/game/scramble/result/
+    body: {word_id, answer, hints_used, time_spent_seconds}
+
+    Backend taqdim etilgan `answer`ni haqiqiy so'z bilan solishtirib,
+    to'g'ri/noto'g'rilikni o'zi aniqlaydi (frontendga ishonib qolmaydi).
+    """
+    permission_classes = [IsAuthenticated]
+
+    def post(self, request):
+        from progress.models import UserXP, Streak
+
+        word_id = request.data.get('word_id')
+        answer = (request.data.get('answer') or '').strip().lower()
+        hints_used = int(request.data.get('hints_used', 0))
+        time_spent = int(request.data.get('time_spent_seconds', 0))
+
+        word = get_object_or_404(Word, id=word_id)
+        won = answer == word.word.strip().lower()
+
+        xp_earned = max(5, 15 - hints_used * 5) if won else 0
+
+        ScrambleAttempt.objects.create(
+            student=request.user,
+            word_id=word_id,
+            won=won,
+            hints_used=hints_used,
             xp_earned=xp_earned,
             time_spent_seconds=time_spent,
         )

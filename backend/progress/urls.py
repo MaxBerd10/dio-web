@@ -10,6 +10,7 @@ from .views import (
     TeacherDashboardView,
     TeacherStudentDetailView,
     AssignStudentToMeView,
+    TeacherDifficultTopicsView,
 )
 
 app_name = 'progress'
@@ -41,4 +42,5 @@ urlpatterns = [
     path('teacher/students/<int:student_id>/', TeacherStudentDetailView.as_view(), name='teacher-student-detail'),
 
     path('teacher/students/<int:student_id>/assign/', AssignStudentToMeView.as_view(), name='teacher-assign-student'),
+    path('teacher/difficult-topics/', TeacherDifficultTopicsView.as_view(), name='teacher-difficult-topics'),
 ]

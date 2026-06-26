@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { Gamepad2, Zap, Skull } from 'lucide-react';
+import { Gamepad2, Zap, Skull, Shuffle } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 
 const GAMES = [
@@ -15,9 +15,16 @@ const GAMES = [
   {
     href: '/games/hangman',
     icon: Skull,
-    title: 'Osma o\'yin',
+    title: "Osma o'yin",
     description: "So'zni harflab toping, 6 tadan ortiq xato qilmang.",
     color: '#8b5cf6',
+  },
+  {
+    href: '/games/scramble',
+    icon: Shuffle,
+    title: "So'z tartibini tiklash",
+    description: "Aralashtirilgan harflardan to'g'ri so'zni yig'ing.",
+    color: '#3b82f6',
   },
 ];
 

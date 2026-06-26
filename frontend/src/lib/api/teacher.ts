@@ -120,6 +120,24 @@ export interface TeacherStudentDetailResponse {
   courses: StudentDetailCourse[];
 }
 
+// ============================================================
+// Teacher — Difficult Topics
+// ============================================================
+
+export interface DifficultTopicItem {
+  question_id: number;
+  question_text: string;
+  quiz_title: string;
+  lesson_title: string;
+  total_attempts: number;
+  wrong_count: number;
+  wrong_rate: number;
+}
+
+export interface DifficultTopicsResponse {
+  topics: DifficultTopicItem[];
+}
+
 export const teacherApi = {
   getSubmissions: async (params?: {
     status?: SubmissionStatus;
@@ -159,6 +177,13 @@ export const teacherApi = {
     const { data } = await api.post(
       `/progress/teacher/students/${studentId}/assign/`,
     );
+    return data;
+  },
+
+  getDifficultTopics: async (limit?: number): Promise<DifficultTopicsResponse> => {
+    const { data } = await api.get<DifficultTopicsResponse>('/progress/teacher/difficult-topics/', {
+      params: { limit },
+    });
     return data;
   },
 };
