@@ -11,6 +11,8 @@ from .views import (
     TeacherStudentDetailView,
     AssignStudentToMeView,
     TeacherDifficultTopicsView,
+    MyCertificatesView,
+    CertificateDownloadView,
 )
 
 app_name = 'progress'
@@ -43,4 +45,7 @@ urlpatterns = [
 
     path('teacher/students/<int:student_id>/assign/', AssignStudentToMeView.as_view(), name='teacher-assign-student'),
     path('teacher/difficult-topics/', TeacherDifficultTopicsView.as_view(), name='teacher-difficult-topics'),
+
+    path('certificates/', MyCertificatesView.as_view(), name='my-certificates'),
+    path('certificates/<int:id>/download/', CertificateDownloadView.as_view(), name='certificate-download'),
 ]

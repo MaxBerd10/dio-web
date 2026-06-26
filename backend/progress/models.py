@@ -520,3 +520,41 @@ class UserAchievement(models.Model):
 
     def __str__(self):
         return f'{self.student.username} ← {self.achievement.title}'
+
+
+
+
+import uuid
+
+
+class Certificate(models.Model):
+    """
+    Student bir kursni to'liq tugatganda avtomatik yaratiladigan sertifikat.
+    """
+    student = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name='certificates',
+    )
+    course = models.ForeignKey(
+        'content.Course',
+        on_delete=models.CASCADE,
+        related_name='certificates',
+    )
+    certificate_number = models.CharField(
+        max_length=20, unique=True, default=uuid.uuid4,
+        editable=False,
+    )
+    issued_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        unique_together = [('student', 'course')]
+        ordering = ['-issued_at']
+
+    def __str__(self):
+        return f'{self.student.username} — {self.course.title}'
+
+    def save(self, *args, **kwargs):
+        if not self.certificate_number or len(str(self.certificate_number)) > 20:
+            self.certificate_number = f'DIO-{uuid.uuid4().hex[:10].upper()}'
+        super().save(*args, **kwargs)

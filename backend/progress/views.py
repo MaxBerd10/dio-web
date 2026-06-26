@@ -1,6 +1,7 @@
 from django.db.models import Count, Q, Sum, Avg
 from django.shortcuts import get_object_or_404
 from django.utils import timezone
+from django.http import FileResponse
 
 from content.models import Course, Module, Lesson
 from exercises.models import Quiz, Assignment, AssignmentSubmission
@@ -26,6 +27,7 @@ from .models import (
     QuizAttempt, QuestionResponse,
     Streak, UserXP,
     Achievement, UserAchievement,
+    Certificate,
 )
 from .serializers import (
     LessonProgressSerializer, LessonProgressUpdateSerializer,
@@ -87,6 +89,9 @@ class LessonProgressUpdateView(APIView):
             if not progress.started_at:
                 progress.started_at = timezone.now()
             progress.save()
+
+            from .certificates import check_and_issue_certificate
+            check_and_issue_certificate(request.user, lesson.module.course)
 
         return Response({
             'progress': LessonProgressSerializer(progress).data,
@@ -605,3 +610,42 @@ class TeacherDifficultTopicsView(APIView):
 
         data.sort(key=lambda x: x['wrong_rate'], reverse=True)
         return Response({'topics': data[:limit]})
+
+
+# ============================================================
+# CERTIFICATES
+# ============================================================
+
+class MyCertificatesView(generics.ListAPIView):
+    """GET /api/progress/certificates/"""
+    permission_classes = [IsStudent]
+
+    def get_queryset(self):
+        return Certificate.objects.filter(student=self.request.user).select_related('course')
+
+    def list(self, request, *args, **kwargs):
+        qs = self.get_queryset()
+        data = [
+            {
+                'id': c.id,
+                'course_title': c.course.title,
+                'course_icon': c.course.icon,
+                'certificate_number': c.certificate_number,
+                'issued_at': c.issued_at,
+            }
+            for c in qs
+        ]
+        return Response(data)
+
+
+class CertificateDownloadView(APIView):
+    """GET /api/progress/certificates/{id}/download/"""
+    permission_classes = [IsStudent]
+
+    def get(self, request, id):
+        from .certificates import generate_certificate_pdf
+
+        cert = get_object_or_404(Certificate, id=id, student=request.user)
+        buffer = generate_certificate_pdf(cert)
+        filename = f'certificate_{cert.certificate_number}.pdf'
+        return FileResponse(buffer, as_attachment=True, filename=filename, content_type='application/pdf')

@@ -91,6 +91,13 @@ export const NAV_ITEMS: NavItem[] = [
     mobileShow: false,
   },
   {
+    label: 'Sertifikatlarim',
+    href: '/certificates',
+    icon: Award,
+    forRoles: ['student'],
+    mobileShow: false,
+  },
+  {
     label: 'Reytinglar',
     href: '/leaderboard',
     icon: Trophy,
