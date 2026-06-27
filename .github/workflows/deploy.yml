@@ -1,0 +1,64 @@
+name: CI/CD
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Python sintaksisini tekshirish
+        run: |
+          find backend -name "*.py" -exec python3 -c "import ast,sys; ast.parse(open(sys.argv[1]).read())" {} \;
+
+      - name: Backend — Python o'rnatish
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Backend — kutubxonalarni o'rnatish
+        working-directory: backend
+        run: pip install -r requirements.txt
+
+      - name: Backend — Django check
+        working-directory: backend
+        env:
+          SECRET_KEY: dummy-secret-key-for-ci
+          DEBUG: 'True'
+          DB_NAME: dummy
+          DB_USER: dummy
+          DB_PASSWORD: dummy
+          DB_HOST: localhost
+          DB_PORT: '5432'
+          TEACHER_INVITE_CODE: dummy
+        run: python manage.py check
+
+      - name: Frontend — Node o'rnatish
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Frontend — kutubxonalarni o'rnatish
+        working-directory: frontend
+        run: npm ci
+
+      - name: Frontend — build tekshiruvi
+        working-directory: frontend
+        env:
+          NEXT_PUBLIC_API_URL: https://dio.max.co.uz/api
+        run: npm run build
+
+  deploy:
+    needs: test
+    runs-on: self-hosted
+    steps:
+      - name: Productionga deploy qilish
+        run: |
+          cd ~/dio-web
+          git pull origin main
+          docker compose -f docker-compose.prod.yml --env-file .env.prod build backend frontend
+          docker compose -f docker-compose.prod.yml --env-file .env.prod up -d
+          docker compose -f docker-compose.prod.yml --env-file .env.prod exec -T backend python manage.py migrate
