@@ -59,7 +59,6 @@ export default function LoginPage() {
           Hisobingizga kirish uchun email va parolingizni kiriting.
         </CardDescription>
       </CardHeader>
-
       <form onSubmit={handleSubmit(onSubmit)} noValidate>
         <CardContent className="space-y-4">
           {serverError && (
@@ -67,7 +66,6 @@ export default function LoginPage() {
               {serverError}
             </div>
           )}
-
           <Input
             label="Email"
             type="email"
@@ -77,23 +75,30 @@ export default function LoginPage() {
             {...register('email')}
             error={errors.email?.message}
           />
-
-          <Input
-            label="Parol"
-            type="password"
-            placeholder="••••••••"
-            autoComplete="current-password"
-            required
-            {...register('password')}
-            error={errors.password?.message}
-          />
+          <div>
+            <Input
+              label="Parol"
+              type="password"
+              placeholder="••••••••"
+              autoComplete="current-password"
+              required
+              {...register('password')}
+              error={errors.password?.message}
+            />
+            <div className="mt-1.5 text-right">
+              <Link
+                href="/forgot-password"
+                className="text-xs text-[var(--color-muted-foreground)] hover:text-[var(--color-primary)] hover:underline"
+              >
+                Parolni unutdingizmi?
+              </Link>
+            </div>
+          </div>
         </CardContent>
-
         <CardFooter className="flex flex-col gap-4 pt-2">
           <Button type="submit" fullWidth loading={isSubmitting}>
             {isSubmitting ? 'Kirilmoqda...' : 'Kirish'}
           </Button>
-
           <p className="text-sm text-center text-[var(--color-muted-foreground)]">
             Hisobingiz yo'qmi?{' '}
             <Link
@@ -108,3 +113,4 @@ export default function LoginPage() {
     </Card>
   );
 }
+

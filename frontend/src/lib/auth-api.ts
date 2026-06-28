@@ -34,4 +34,15 @@ export const authApi = {
     const { data } = await api.patch<User>('/auth/me/', payload);
     return data;
   },
+  requestPasswordReset: async (email: string): Promise<{ detail: string }> => {
+    const { data } = await api.post('/auth/password-reset/', { email });
+    return data;
+  },
+  confirmPasswordReset: async (payload: {
+    token: string;
+    new_password: string;
+  }): Promise<{ detail: string }> => {
+    const { data } = await api.post('/auth/password-reset/confirm/', payload);
+    return data;
+  },
 };
