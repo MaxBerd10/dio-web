@@ -51,6 +51,8 @@ INSTALLED_APPS = [
     'grammar',
     'exercises',
     'progress',
+
+    'django_celery_results',
 ]
 
 MIDDLEWARE = [
@@ -153,3 +155,29 @@ CORS_ALLOW_CREDENTIALS = True
 # Media files
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+
+
+
+
+# ============================================================
+# Email
+# ============================================================
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = config('EMAIL_HOST_USER', default='')
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD', default='')
+DEFAULT_FROM_EMAIL = f'English with Diyora <{EMAIL_HOST_USER}>'
+
+FRONTEND_URL = config('FRONTEND_URL', default='http://localhost:3000')
+
+# ============================================================
+# Celery + Redis
+# ============================================================
+CELERY_BROKER_URL = config('REDIS_URL', default='redis://redis:6379/0')
+CELERY_RESULT_BACKEND = 'django-db'
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TIMEZONE = TIME_ZONE

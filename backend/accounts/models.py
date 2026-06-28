@@ -1,6 +1,12 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 
+import uuid
+from datetime import timedelta
+from django.utils import timezone
+
+
+
 
 class User(AbstractUser):
     """
@@ -100,3 +106,32 @@ class User(AbstractUser):
     @property
     def is_teacher(self):
         return self.role == self.Role.TEACHER
+
+
+
+
+class PasswordResetToken(models.Model):
+    """
+    Parolni tiklash uchun bir martalik token.
+    """
+    user = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        related_name='password_reset_tokens',
+    )
+    token = models.CharField(max_length=64, unique=True, default=uuid.uuid4, editable=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+    used = models.BooleanField(default=False)
+
+    class Meta:
+        ordering = ['-created_at']
+
+    def __str__(self):
+        return f'{self.user.email} — {"ishlatilgan" if self.used else "faol"}'
+
+    @property
+    def is_valid(self):
+        if self.used:
+            return False
+        expiry = self.created_at + timedelta(hours=1)
+        return timezone.now() < expiry

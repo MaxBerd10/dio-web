@@ -13,3 +13,6 @@ reportlab
 gunicorn==23.0.0
 matplotlib
 matplotlib
+celery==5.4.0
+redis==5.0.8
+django-celery-results==2.5.1
