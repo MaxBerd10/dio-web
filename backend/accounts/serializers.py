@@ -1,6 +1,7 @@
 from django.conf import settings
 from django.contrib.auth import get_user_model
 from django.contrib.auth.password_validation import validate_password
+from django.core.exceptions import ValidationError as DjangoValidationError
 from rest_framework import serializers
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 
@@ -13,7 +14,6 @@ class RegisterSerializer(serializers.ModelSerializer):
     password = serializers.CharField(
         write_only=True,
         required=True,
-        validators=[validate_password],
         min_length=8,
     )
     password_confirm = serializers.CharField(write_only=True, required=True)
@@ -45,6 +45,25 @@ class RegisterSerializer(serializers.ModelSerializer):
             'learning_goal': {'required': False},
             'target_ielts_score': {'required': False},
         }
+
+    def validate_password(self, value):
+        try:
+            validate_password(value)
+        except DjangoValidationError as e:
+            translated = []
+            for msg in e.messages:
+                if 'too common' in msg:
+                    translated.append("Bu parol juda oddiy/keng tarqalgan. Boshqa, original parol tanlang.")
+                elif 'too similar' in msg:
+                    translated.append("Parol ismingiz yoki emailingizga juda o'xshash. Boshqa parol tanlang.")
+                elif 'entirely numeric' in msg:
+                    translated.append("Parol faqat raqamlardan iborat bo'lmasligi kerak.")
+                elif 'too short' in msg:
+                    translated.append("Parol juda qisqa.")
+                else:
+                    translated.append("Parol talablarga javob bermaydi. Boshqa parol tanlang.")
+            raise serializers.ValidationError(translated)
+        return value
 
     def validate(self, attrs):
         if attrs['password'] != attrs['password_confirm']:
@@ -79,6 +98,7 @@ class RegisterSerializer(serializers.ModelSerializer):
         user.set_password(password)
         user.save()
         return user
+
 
 class UserSerializer(serializers.ModelSerializer):
     """Joriy user profili (GET /me uchun)."""
