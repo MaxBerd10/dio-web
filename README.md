@@ -1,121 +1,109 @@
-# English with Diyora 🇬🇧
+Tushunarli — <<'EOF' heredoc terminali ichida chalkashib qoldi. Oddiyroq yo'l bilan qilamiz — PyCharm'da to'g'ridan-to'g'ri fayl sifatida yaratasiz.
+PyCharm'da ~/Desktop/dio-web/README.md faylini oching va butun matnni quyidagi bilan almashtiring (nusxalab, to'g'ridan-to'g'ri paste qiling):
+markdown# English with Diyora 🇬🇧
 
-**dio.max.co.uz** — O'zbek o'quvchilari uchun to'liq funksiyali ingliz tili o'rganish platformasi. Django/DRF backend va Next.js 15 frontend asosida qurilgan, gamifikatsiya (XP, streak, achievement) bilan boyitilgan.
-
----
-
-## 📋 Mazmuni
-
-- [Texnologiyalar](#-texnologiyalar)
-- [Asosiy funksiyalar](#-asosiy-funksiyalar)
-- [Loyiha tuzilishi](#-loyiha-tuzilishi)
-- [Lokal ishga tushirish](#-lokal-ishga-tushirish)
-- [Productionga deploy qilish](#-productionga-deploy-qilish)
-- [API endpointlar](#-api-endpointlar-qisqacha)
-- [Ma'lumotlar bazasi tuzilishi](#-malumotlar-bazasi-tuzilishi)
-- [Xavfsizlik eslatmalari](#-xavfsizlik-eslatmalari)
-- [Rejalashtirilgan ishlar](#-rejalashtirilgan-ishlar)
+**[dio.max.co.uz](https://dio.max.co.uz)** — A full-featured English learning platform for Uzbek learners, built with Django/DRF backend and Next.js 15 frontend, enriched with gamification (XP, streaks, achievements) and AI-generated content.
 
 ---
 
-## 🛠 Texnologiyalar
+## 🛠 Tech Stack
 
 **Backend**
-- Python 3.12+ / Django 6.0
-- Django REST Framework
+- Python 3.12 / Django 6.0 / Django REST Framework
 - PostgreSQL 16
-- JWT autentifikatsiya (`djangorestframework-simplejwt`)
+- Redis 7 + Celery 5 (async tasks: email delivery)
+- JWT authentication (`djangorestframework-simplejwt`)
 - Gunicorn (production WSGI server)
+- ReportLab (PDF certificate generation)
+- Matplotlib (chart image generation for IELTS Writing Task 1)
 
 **Frontend**
-- Next.js 15 (App Router)
-- TypeScript
+- Next.js 15 (App Router) / TypeScript
 - TanStack Query (React Query)
 - Zustand (state management)
 - Tailwind CSS
 
-**Infratuzilma**
+**Infrastructure**
 - Docker / Docker Compose
-- Nginx (reverse proxy)
-- Cloudflare Tunnel (server IP manzilini oshkor qilmasdan domenga ulash uchun)
+- Nginx (reverse proxy, media file serving)
+- Cloudflare Tunnel (secure domain connection without exposing server IP)
+- GitHub Actions CI/CD with self-hosted runner on Ubuntu home server
 
 ---
 
-## ✨ Asosiy funksiyalar
+## ✨ Features
 
-### O'quvchilar uchun
+### For Students
 
-- **3 ta yo'nalish (track):**
-  - **CEFR** — A1 dan C2 gacha barcha darajalar, har bir darajada bir nechta modul va dars
-  - **General English** — Everyday English, Travel English, Business Basics
-  - **IELTS** — Listening, Reading, Speaking, Writing
-- **Darslar** — matn, lug'at, grammatika, test va vazifalardan iborat, "Keyingi dars" tugmasi bilan ketma-ket o'rganish
-- **Lug'at (Vocabulary)** — SM-2 algoritmiga asoslangan spaced repetition (SRS) tizimi, kunlik takrorlash navbati
-- **Grammar** — 24+ mavzu (zamonlar, shart gaplar, modal fe'llar, passiv nisbat va h.k.), kategoriyalar bo'yicha guruhlangan, qoida + misollar bilan
-- **Testlar** — har bir darsda, shuningdek **umumiy "Testlar" sahifasi** orqali istalgan testni erkin tanlab yechish mumkin
-  - Fill-blank savollarda **so'z banki** (variant tanlash) — noaniqlikni oldini oladi
-  - Savollarda **hint (yordam)** tugmasi
-- **Vazifalar (Assignment)** — yozma/audio vazifalar, teacher tomonidan baholanadi, inline IELTS-uslubidagi izohlar bilan
-- **"So'z bilish" o'yini** — tezkor lug'at o'yini, har savolga vaqt cheklovi bilan, XP beradi
-- **Gamifikatsiya** — XP, level, kunlik streak, achievement (yutuqlar), reyting jadvali (leaderboard)
-- **Profil** — shaxsiy ma'lumotlar, CEFR darajasi, o'rganish maqsadi (track) tahrirlash
+- **3 Learning Tracks:** CEFR (A1–C2), General English, IELTS Preparation
+- **IELTS Reading** — 5 full practice tests (15 passages, 150 questions)
+- **IELTS Writing Task 1** — chart/diagram images auto-generated with Matplotlib (bar chart, line graph, process diagram)
+- **Vocabulary SRS** — SM-2 spaced repetition algorithm, daily review queue
+- **Grammar** — 24+ topics grouped by category
+- **Quizzes** — fill-in-the-blank with word bank, hint system, XP rewards
+- **Writing Assignments** — graded by teachers with inline IELTS-style comments
+- **3 Vocabulary Games:** Word Match, Hangman, Word Scramble (backend-validated)
+- **PDF Certificates** — auto-generated with ReportLab upon course completion
+- **Password Reset** — email-based via Celery + Redis async task (Gmail SMTP)
+- **Gamification** — XP, levels, daily streaks, achievements, leaderboard
 
-### O'qituvchilar uchun
+### For Teachers
 
-- **Teacher Dashboard** (`/teacher/students`) — barcha studentlarning faolligi, progressi, streak va XP'ini bir joyda kuzatish
-  - Filtrlar: biriktirilganlik (mening talabalarim / yangi), faollik holati, CEFR darajasi
-  - Har bir student kartasida progress bar (necha % dars tugatilgan)
-  - **"Menga qo'shish"** — yangi (biriktirilmagan) studentni o'ziga biriktirish
-- **Student Detail sahifasi** — bitta studentning barcha kurs/modul/dars/test/vazifa natijalari, qidiruv bilan (masalan "IELTS Part 1" deb qidirish)
-- **Vazifalar paneli** (`/teacher/submissions`) — kelgan vazifalarni tekshirish, baholash, inline izoh qoldirish
-- **Invite-code himoyasi** — yangi o'qituvchi faqat maxfiy kod bilan ro'yxatdan o'tishi mumkin (`TEACHER_INVITE_CODE` environment variable)
+- **Teacher Dashboard** — monitor students' activity, progress, streak and XP
+  - Filters: assignment, activity status, CEFR level
+  - **Assign to Me** button for unassigned students
+- **Difficult Topics Report** — quiz questions with highest error rates
+- **Student Detail** — full course/module/lesson/quiz/assignment breakdown
+- **Submissions Panel** — grade assignments, add inline feedback comments
+- **Invite Code Protection** — teachers register with a secret code only
 
 ---
 
-## 📁 Loyiha tuzilishi
-
-```
+## 📁 Project Structure
 dio-web/
 ├── backend/
-│   ├── config/              # Django settings, asosiy urls.py
-│   ├── accounts/             # User model, auth, ro'l (student/teacher/admin)
-│   ├── content/              # Track, Course, Module, Lesson
-│   ├── vocabulary/            # Word, WordSet, SRS, Word Match o'yini
-│   ├── grammar/               # GrammarTopic, GrammarRule, GrammarExample
-│   ├── exercises/             # Quiz, Question, Choice, Assignment, Submission
-│   ├── progress/              # LessonProgress, Streak, UserXP, Teacher Dashboard
-│   └── manage.py
+│   ├── config/              # Django settings, URLs, Celery config
+│   ├── accounts/            # User model, auth, roles, password reset
+│   ├── content/             # Track, Course, Module, Lesson
+│   ├── vocabulary/          # Word, WordSet, SRS, 3 vocabulary games
+│   ├── grammar/             # GrammarTopic, GrammarRule, GrammarExample
+│   ├── exercises/           # Quiz, Question, Choice, Assignment, Submission
+│   └── progress/            # LessonProgress, Streak, UserXP, Certificates, Teacher Dashboard
 ├── frontend/
 │   └── src/
-│       ├── app/(auth)/        # Login, register
-│       ├── app/(dashboard)/   # Asosiy ilova (lessons, quizzes, teacher/*, games/*, profile)
-│       ├── components/        # Qayta ishlatiladigan UI komponentlar
-│       ├── lib/api/           # Backend bilan aloqa qiluvchi funksiyalar
-│       └── lib/hooks/         # React Query hooklar
-├── docker-compose.prod.yml
-├── .env.prod                  # Maxfiy — git'ga kiritilmaydi
-└── README.md
-```
+│       ├── app/(auth)/      # Login, register, forgot/reset password
+│       ├── app/(dashboard)/ # Main app (lessons, quizzes, games, certificates, teacher/*)
+│       ├── components/      # Reusable UI components
+│       ├── lib/api/         # Backend API client functions
+│       └── lib/hooks/       # React Query hooks
+├── nginx/default.conf       # Reverse proxy + media file serving
+├── docker-compose.prod.yml  # backend, frontend, nginx, db, redis, celery_worker
+├── .github/workflows/       # CI/CD pipeline
+└── .env.prod                # Secret — never committed to git
 
 ---
 
-## 🚀 Lokal ishga tushirish
+## 🚀 Local Setup
 
 ### Backend
 
 ```bash
 cd backend
 python -m venv venv
-source venv/bin/activate          # Windows: venv\Scripts\activate
-pip install -r requirements.txt --break-system-packages
+source venv/bin/activate
+pip install -r requirements.txt
 
-# .env faylida SECRET_KEY, DB ma'lumotlari, TEACHER_INVITE_CODE bo'lishi kerak
+# Create .env with: SECRET_KEY, DB credentials, TEACHER_INVITE_CODE, REDIS_URL, EMAIL_*
 python manage.py migrate
-python manage.py createsuperuser
 python manage.py runserver
 ```
 
-Backend `http://localhost:8000` da ishga tushadi.
+### Celery Worker
+
+```bash
+# Separate terminal (venv activated)
+celery -A config worker --loglevel=info
+```
 
 ### Frontend
 
@@ -125,111 +113,72 @@ npm install
 npm run dev
 ```
 
-Frontend `http://localhost:3000` da ishga tushadi.
-
-> **Eslatma:** `frontend/.env.local` faylida `NEXT_PUBLIC_API_URL=http://localhost:8000/api` bo'lishi kerak.
+> Set `NEXT_PUBLIC_API_URL=http://localhost:8000/api` in `frontend/.env.local`
 
 ---
 
-## 🌐 Productionga deploy qilish
+## ⚙️ CI/CD
 
-Loyiha Docker Compose orqali konteynerlashtirilgan holda ishlaydi, Cloudflare Tunnel orqali `dio.max.co.uz`ga xavfsiz ulanadi (server IP manzili oshkor qilinmaydi). Server konfiguratsiyasi va kirish ma'lumotlari shaxsiy hisoblanadi va shu sababli bu yerda keltirilmaydi.
+Fully automated via **GitHub Actions** with a **self-hosted runner** on the production server:
 
-```bash
-# 1. Lokalda o'zgarishlarni commit qilish
-git add .
-git commit -m "..."
-git push origin main
+1. **`test` job** (GitHub's servers — free):
+   - Python syntax check, `manage.py check`, `npm run build`
+   - If any check fails → deployment is **blocked**
 
-# 2. Serverda yangilash
-git pull origin main
+2. **`deploy` job** (self-hosted runner on production server):
+   - `git pull` → `docker compose build` → `up -d` → `migrate` → `nginx restart`
+   - Triggered **only** if `test` passes
 
-# 3. Rebuild va qayta ishga tushirish
-docker compose -f docker-compose.prod.yml --env-file .env.prod build backend frontend
-docker compose -f docker-compose.prod.yml --env-file .env.prod up -d
-
-# 4. Agar yangi migration bo'lsa
-docker compose -f docker-compose.prod.yml --env-file .env.prod exec backend python manage.py migrate
-```
-
-### Ma'lumot (fixture) ko'chirish
-
-Lokal va production bazalarida `id`lar mos kelmasligi mumkin, shuning uchun **nom bo'yicha moslashtiruvchi** import buyruqlari ishlatiladi:
-
-```bash
-# Lokalda eksport (masalan grammar uchun)
-python manage.py shell < export_script.py
-
-# Serverda import (faqat yangi yozuvlarni qo'shadi, mavjudlarini o'tkazib yuboradi)
-docker compose -f docker-compose.prod.yml --env-file .env.prod exec backend python manage.py import_grammar_fixture
-docker compose -f docker-compose.prod.yml --env-file .env.prod exec backend python manage.py import_quiz_fixture
-```
+A single `git push origin main` triggers the full pipeline. No manual SSH required.
 
 ---
 
-## 🔌 API endpointlar (qisqacha)
+## 🔌 API Overview
 
-| Endpoint | Tavsif |
+| Endpoint | Description |
 |---|---|
-| `POST /api/auth/register/` | Ro'yxatdan o'tish (teacher uchun `invite_code` talab qilinadi) |
-| `POST /api/auth/login/` | Login (JWT access + refresh) |
-| `GET/PATCH /api/auth/me/` | Profil ma'lumotlari |
-| `GET /api/content/tracks/` | Yo'nalishlar ro'yxati |
-| `GET /api/content/lessons/{id}/` | Dars tafsilotlari (`next_lesson_id` bilan) |
-| `GET /api/exercises/quizzes/` | Barcha testlar (track/level/qidiruv filtrlari bilan) |
-| `POST /api/exercises/quizzes/{id}/start/` | Test boshlash |
-| `GET /api/vocabulary/game/words/` | Word Match o'yini savollari |
-| `GET /api/progress/teacher/dashboard/` | Teacher uchun studentlar statistikasi |
-| `GET /api/progress/teacher/students/{id}/` | Bitta studentning to'liq progressi |
-| `POST /api/progress/teacher/students/{id}/assign/` | Studentni o'ziga biriktirish |
+| `POST /api/auth/register/` | Registration (teacher requires `invite_code`) |
+| `POST /api/auth/login/` | Login (returns JWT access + refresh) |
+| `POST /api/auth/password-reset/` | Request password reset email |
+| `POST /api/auth/password-reset/confirm/` | Confirm with token + new password |
+| `GET /api/content/tracks/` | All learning tracks |
+| `GET /api/exercises/quizzes/` | All quizzes (with filters) |
+| `GET /api/vocabulary/game/words/` | Word Match questions |
+| `GET /api/progress/certificates/` | Student's certificates |
+| `GET /api/progress/certificates/{id}/download/` | Download PDF certificate |
+| `GET /api/progress/teacher/dashboard/` | Teacher's student statistics |
+| `GET /api/progress/teacher/difficult-topics/` | Questions with highest error rates |
 
 ---
 
-## 🗄 Ma'lumotlar bazasi tuzilishi (asosiy modellar)
-
-```
-User (accounts)
- ├─ role: student / teacher / admin
- ├─ assigned_teacher → User (faqat student'larda to'ldiriladi)
- └─ cefr_level, learning_goal
-
-Course (content) → Module → Lesson
- └─ Lesson → Quiz → Question → Choice
- └─ Lesson → Assignment → AssignmentSubmission
-
-Word (vocabulary) ←→ Lesson (M2M, LessonWord orqali)
- └─ WordProgress (SM-2 SRS holati)
- └─ WordMatchAttempt (o'yin natijalari)
-
-GrammarTopic (grammar) → GrammarRule → GrammarExample
-
-LessonProgress, QuizAttempt, Streak, UserXP, Achievement (progress)
-```
+## 🗄 Database Structure
+User → role: student / teacher / admin
+→ assigned_teacher (FK to User)
+Course → Module → Lesson
+→ Quiz → Question → Choice
+→ Assignment → Submission → FeedbackComment
+Word ←→ Lesson (M2M via LessonWord)
+→ WordProgress (SM-2 SRS state)
+→ WordMatchAttempt / HangmanAttempt / ScrambleAttempt
+LessonProgress, QuizAttempt, QuestionResponse
+Streak, UserXP, Achievement, Certificate
+PasswordResetToken (1-hour expiry, single-use)
 
 ---
 
-## 🔒 Xavfsizlik eslatmalari
+## 🔒 Security
 
-- `.env.prod` fayli **hech qachon** git'ga commit qilinmaydi (`.gitignore`da)
-- `TEACHER_INVITE_CODE` faqat ishonchli odamlarga aytiladi
-- JWT token muddati: access — 60 daqiqa, refresh — 7 kun (avtomatik yangilanadi)
-- Production'da `DEBUG=False` bo'lishi **majburiy**
-- Server joylashuvi, IP manzili va kirish ma'lumotlari faqat loyiha egasida saqlanadi, hech qaysi ochiq hujjatda keltirilmaydi
-
----
-
-## 🗺 Rejalashtirilgan ishlar
-
-- [ ] Barcha CEFR/General/IELTS darslariga AI orqali ko'proq test qo'shish
-- [ ] Placement test (yangi student uchun avtomatik CEFR aniqlash)
-- [ ] Qiyin mavzular agregati (qaysi test/savol eng ko'p xato qilinadi)
-- [ ] "E'tibor talab qiladigan studentlar" avtomatik filtri
-- [ ] Teacher uchun student haqida shaxsiy eslatma/izoh qo'shish imkoniyati
-- [ ] Qo'shimcha o'yinlar (Hangman, Word Scramble va h.k.)
-- [ ] Telegram bot integratsiyasi
+- `.env.prod` never committed to git
+- JWT: access — 60 min, refresh — 7 days with blacklist rotation
+- `DEBUG=False` in production
+- Password validation: min 8 chars, uppercase + lowercase + digit, common passwords rejected
+- Server IP never exposed (Cloudflare Tunnel)
+- Gmail SMTP via App Password
 
 ---
 
-## 👤 Muallif
+## 👤 Author
 
 **Makhkamjon Berdilloev** ([@MaxBerd10](https://github.com/MaxBerd10))
+Full-stack developer (Django + Next.js) · Fergana, Uzbekistan
+Live demo: [dio.max.co.uz](https://dio.max.co.uz)
