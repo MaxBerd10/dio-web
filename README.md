@@ -1,6 +1,4 @@
-Tushunarli — <<'EOF' heredoc terminali ichida chalkashib qoldi. Oddiyroq yo'l bilan qilamiz — PyCharm'da to'g'ridan-to'g'ri fayl sifatida yaratasiz.
-PyCharm'da ~/Desktop/dio-web/README.md faylini oching va butun matnni quyidagi bilan almashtiring (nusxalab, to'g'ridan-to'g'ri paste qiling):
-markdown# English with Diyora 🇬🇧
+English with Diyora 🇬🇧
 
 **[dio.max.co.uz](https://dio.max.co.uz)** — A full-featured English learning platform for Uzbek learners, built with Django/DRF backend and Next.js 15 frontend, enriched with gamification (XP, streaks, achievements) and AI-generated content.
 
