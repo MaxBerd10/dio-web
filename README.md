@@ -1,6 +1,6 @@
-English with Diyora 🇬🇧
+# English with Diyora 🇬🇧
 
-**[dio.max.co.uz](https://dio.max.co.uz)** — A full-featured English learning platform for Uzbek learners, built with Django/DRF backend and Next.js 15 frontend, enriched with gamification (XP, streaks, achievements) and AI-generated content.
+**[dio.max.co.uz](https://dio.max.co.uz)** — A full-featured English learning platform for Uzbek learners, built with Django/DRF backend and Next.js 16 frontend, enriched with gamification (XP, streaks, achievements) and AI-generated content.
 
 ---
 
@@ -14,12 +14,15 @@ English with Diyora 🇬🇧
 - Gunicorn (production WSGI server)
 - ReportLab (PDF certificate generation)
 - Matplotlib (chart image generation for IELTS Writing Task 1)
+- pytest (unit & API tests)
 
 **Frontend**
-- Next.js 15 (App Router) / TypeScript
+- Next.js 16 (App Router) / TypeScript / React 19
 - TanStack Query (React Query)
 - Zustand (state management)
-- Tailwind CSS
+- Tailwind CSS v4
+- Vitest + Testing Library
+- PWA (manifest, service worker, install prompt)
 
 **Infrastructure**
 - Docker / Docker Compose
@@ -33,9 +36,12 @@ English with Diyora 🇬🇧
 
 ### For Students
 
+- **Marketing landing page** at `/` with feature overview and CTA
+- **PWA support** — installable on mobile, offline fallback page
+- **Light / dark theme** toggle with persistent preference
 - **3 Learning Tracks:** CEFR (A1–C2), General English, IELTS Preparation
 - **IELTS Reading** — 5 full practice tests (15 passages, 150 questions)
-- **IELTS Writing Task 1** — chart/diagram images auto-generated with Matplotlib (bar chart, line graph, process diagram)
+- **IELTS Writing Task 1** — chart/diagram images auto-generated with Matplotlib
 - **Vocabulary SRS** — SM-2 spaced repetition algorithm, daily review queue
 - **Grammar** — 24+ topics grouped by category
 - **Quizzes** — fill-in-the-blank with word bank, hint system, XP rewards
@@ -58,6 +64,8 @@ English with Diyora 🇬🇧
 ---
 
 ## 📁 Project Structure
+
+```
 dio-web/
 ├── backend/
 │   ├── config/              # Django settings, URLs, Celery config
@@ -68,16 +76,18 @@ dio-web/
 │   ├── exercises/           # Quiz, Question, Choice, Assignment, Submission
 │   └── progress/            # LessonProgress, Streak, UserXP, Certificates, Teacher Dashboard
 ├── frontend/
+│   ├── public/              # PWA manifest, service worker, icons
 │   └── src/
 │       ├── app/(auth)/      # Login, register, forgot/reset password
 │       ├── app/(dashboard)/ # Main app (lessons, quizzes, games, certificates, teacher/*)
-│       ├── components/      # Reusable UI components
+│       ├── components/      # UI, layout, landing, PWA, theme
 │       ├── lib/api/         # Backend API client functions
 │       └── lib/hooks/       # React Query hooks
 ├── nginx/default.conf       # Reverse proxy + media file serving
 ├── docker-compose.prod.yml  # backend, frontend, nginx, db, redis, celery_worker
 ├── .github/workflows/       # CI/CD pipeline
 └── .env.prod                # Secret — never committed to git
+```
 
 ---
 
@@ -90,6 +100,7 @@ cd backend
 python -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
+pip install -r requirements-dev.txt   # pytest va test dependencies
 
 # Create .env with: SECRET_KEY, DB credentials, TEACHER_INVITE_CODE, REDIS_URL, EMAIL_*
 python manage.py migrate
@@ -113,14 +124,42 @@ npm run dev
 
 > Set `NEXT_PUBLIC_API_URL=http://localhost:8000/api` in `frontend/.env.local`
 
+If you hit stale cache or chunk errors during development:
+
+```bash
+npm run dev:clean
+```
+
+---
+
+## 🧪 Tests
+
+### Backend
+
+```bash
+cd backend
+SECRET_KEY=test TEACHER_INVITE_CODE=test pytest
+```
+
+### Frontend
+
+```bash
+cd frontend
+npm test
+```
+
+CI runs both test suites on every push to `main` before deployment.
+
 ---
 
 ## ⚙️ CI/CD
 
 Fully automated via **GitHub Actions** with a **self-hosted runner** on the production server:
 
-1. **`test` job** (GitHub's servers — free):
-   - Python syntax check, `manage.py check`, `npm run build`
+1. **`test` job** (GitHub's servers):
+   - Python syntax check
+   - `manage.py check` + `pytest`
+   - `npm run build` + `npm test`
    - If any check fails → deployment is **blocked**
 
 2. **`deploy` job** (self-hosted runner on production server):
@@ -150,17 +189,20 @@ A single `git push origin main` triggers the full pipeline. No manual SSH requir
 ---
 
 ## 🗄 Database Structure
+
+```
 User → role: student / teacher / admin
-→ assigned_teacher (FK to User)
+  → assigned_teacher (FK to User)
 Course → Module → Lesson
-→ Quiz → Question → Choice
-→ Assignment → Submission → FeedbackComment
+  → Quiz → Question → Choice
+  → Assignment → Submission → FeedbackComment
 Word ←→ Lesson (M2M via LessonWord)
-→ WordProgress (SM-2 SRS state)
-→ WordMatchAttempt / HangmanAttempt / ScrambleAttempt
+  → WordProgress (SM-2 SRS state)
+  → WordMatchAttempt / HangmanAttempt / ScrambleAttempt
 LessonProgress, QuizAttempt, QuestionResponse
 Streak, UserXP, Achievement, Certificate
 PasswordResetToken (1-hour expiry, single-use)
+```
 
 ---
 
@@ -177,6 +219,6 @@ PasswordResetToken (1-hour expiry, single-use)
 
 ## 👤 Author
 
-**Makhkamjon Berdilloev** ([@MaxBerd10](https://github.com/MaxBerd10))
-Full-stack developer (Django + Next.js) · Fergana, Uzbekistan
+**Makhkamjon Berdilloev** ([@MaxBerd10](https://github.com/MaxBerd10))  
+Full-stack developer (Django + Next.js) · Fergana, Uzbekistan  
 Live demo: [dio.max.co.uz](https://dio.max.co.uz)
