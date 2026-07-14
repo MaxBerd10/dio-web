@@ -5,6 +5,12 @@ import nextTs from "eslint-config-next/typescript";
 const eslintConfig = defineConfig([
   ...nextVitals,
   ...nextTs,
+  {
+    rules: {
+      // O'zbek matnlarda apostrof (o'quvchi, ro'yxat) ishlatiladi
+      "react/no-unescaped-entities": ["error", { forbid: [">", "}"] }],
+    },
+  },
   // Override default ignores of eslint-config-next.
   globalIgnores([
     // Default ignores of eslint-config-next:

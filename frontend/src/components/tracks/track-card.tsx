@@ -10,23 +10,27 @@ type TrackStyle = {
   gradient: string;
   iconBg: string;
   accent: string;
+  border: string;
 };
 
 const TRACK_STYLES: Record<Track['code'], TrackStyle> = {
   general: {
-    gradient: 'from-blue-500/10 to-cyan-500/5',
-    iconBg: 'bg-blue-500/15',
-    accent: 'text-blue-600 dark:text-blue-400',
+    gradient: 'from-blue-500/15 via-cyan-500/5 to-transparent',
+    iconBg: 'bg-blue-500/15 text-blue-600',
+    accent: 'text-blue-600',
+    border: 'hover:border-blue-500/30',
   },
   cefr: {
-    gradient: 'from-violet-500/10 to-purple-500/5',
-    iconBg: 'bg-violet-500/15',
-    accent: 'text-violet-600 dark:text-violet-400',
+    gradient: 'from-violet-500/15 via-purple-500/5 to-transparent',
+    iconBg: 'bg-violet-500/15 text-violet-600',
+    accent: 'text-violet-600',
+    border: 'hover:border-violet-500/30',
   },
   ielts: {
-    gradient: 'from-amber-500/10 to-orange-500/5',
-    iconBg: 'bg-amber-500/15',
-    accent: 'text-amber-600 dark:text-amber-400',
+    gradient: 'from-amber-500/15 via-orange-500/5 to-transparent',
+    iconBg: 'bg-amber-500/15 text-amber-600',
+    accent: 'text-amber-600',
+    border: 'hover:border-amber-500/30',
   },
 };
 
@@ -38,52 +42,44 @@ export function TrackCard({ track }: TrackCardProps) {
   const style = TRACK_STYLES[track.code];
 
   return (
-    <Link href={`/tracks/${track.code}`} className="block group">
+    <Link href={`/tracks/${track.code}`} className="group block active:scale-[0.98] transition-transform">
       <Card
         className={cn(
-          'relative overflow-hidden h-full transition-all duration-200',
-          'hover:border-[var(--color-primary)] hover:shadow-lg',
-          'group-active:scale-[0.99]',
+          'relative h-full overflow-hidden transition-all duration-200 hover:shadow-lg',
+          style.border,
         )}
       >
-        <div
-          className={cn(
-            'absolute inset-0 bg-gradient-to-br opacity-100',
-            style.gradient,
-          )}
-        />
+        <div className={cn('absolute inset-0 bg-gradient-to-br', style.gradient)} />
 
-        <CardContent className="relative p-6 md:p-7 flex flex-col h-full min-h-[200px]">
+        <CardContent className="relative flex min-h-[220px] flex-col p-6 lg:p-7">
           <div
             className={cn(
-              'h-14 w-14 rounded-2xl flex items-center justify-center text-3xl mb-4',
+              'mb-4 flex h-14 w-14 items-center justify-center rounded-2xl text-3xl shadow-sm',
               style.iconBg,
             )}
           >
             {track.icon}
           </div>
 
-          <h3 className="text-xl font-bold tracking-tight mb-1.5">
-            {track.name}
-          </h3>
-          <p className="text-sm text-[var(--color-muted-foreground)] leading-relaxed flex-1">
+          <h3 className="mb-1.5 text-xl font-bold tracking-tight">{track.name}</h3>
+          <p className="flex-1 text-sm leading-relaxed text-[var(--color-muted-foreground)]">
             {track.description}
           </p>
 
           <div className="mt-5 flex items-center justify-between">
             <div className="flex items-center gap-1.5 text-sm">
               <BookOpen className={cn('h-4 w-4', style.accent)} />
-              <span className="font-medium">{track.course_count}</span>
-              <span className="text-[var(--color-muted-foreground)]">
-                kurs
-              </span>
+              <span className="font-bold">{track.course_count}</span>
+              <span className="text-[var(--color-muted-foreground)]">kurs</span>
             </div>
-            <ArrowRight
+            <span
               className={cn(
-                'h-5 w-5 transition-transform group-hover:translate-x-1',
+                'flex h-9 w-9 items-center justify-center rounded-xl bg-[var(--color-muted)]/60 transition-all group-hover:bg-[var(--color-primary-soft)]',
                 style.accent,
               )}
-            />
+            >
+              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+            </span>
           </div>
         </CardContent>
       </Card>

@@ -1,0 +1,45 @@
+{
+  "name": "English with Diyora",
+  "short_name": "Diyora",
+  "description": "CEFR A1–C2 va IELTS uchun ingliz tili o'rganish platformasi",
+  "start_url": "/dashboard",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#f5f3ff",
+  "theme_color": "#6366f1",
+  "lang": "uz",
+  "categories": ["education", "productivity"],
+  "icons": [
+    {
+      "src": "/icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
+  ],
+  "screenshots": [],
+  "shortcuts": [
+    {
+      "name": "Darslar",
+      "url": "/tracks",
+      "description": "O'rganish yo'nalishlari"
+    },
+    {
+      "name": "Lug'at",
+      "url": "/vocabulary",
+      "description": "SRS takrorlash"
+    },
+    {
+      "name": "O'yinlar",
+      "url": "/games",
+      "description": "So'z o'yinlari"
+    }
+  ]
+}

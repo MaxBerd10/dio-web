@@ -5,6 +5,8 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { KeyRound, CheckCircle2 } from 'lucide-react';
 
+import { AxiosError } from 'axios';
+
 import { authApi } from '@/lib/auth-api';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -42,9 +44,10 @@ export default function ResetPasswordPage({
       await authApi.confirmPasswordReset({ token, new_password: password });
       setSuccess(true);
       setTimeout(() => router.push('/login'), 2500);
-    } catch (err: any) {
+    } catch (err) {
+      const axiosErr = err as AxiosError<{ detail?: string }>;
       setError(
-        err?.response?.data?.detail ||
+        axiosErr.response?.data?.detail ||
           "Havola yaroqsiz yoki muddati o'tgan. Qaytadan so'rang.",
       );
     } finally {

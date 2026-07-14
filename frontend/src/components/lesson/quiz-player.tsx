@@ -2,13 +2,13 @@
 
 import { useState, useEffect, useRef } from 'react';
 import { useMutation } from '@tanstack/react-query';
+import Image from 'next/image';
 import {
   ChevronLeft,
   ChevronRight,
   CircleCheck,
   CircleX,
   Sparkles,
-  Trophy,
   X,
   Lightbulb,
 } from 'lucide-react';
@@ -33,7 +33,7 @@ export function QuizPlayer({ startData, onClose, onComplete }: QuizPlayerProps) 
   const { attempt_id, quiz, questions } = startData;
   const [currentIdx, setCurrentIdx] = useState(0);
   const [answers, setAnswers] = useState<Record<number, Answer>>({});
-  const [questionStartTime, setQuestionStartTime] = useState(Date.now());
+  const questionStartTimeRef = useRef(0);
   const [result, setResult] = useState<QuizSubmitResponse | null>(null);
   const [showHint, setShowHint] = useState(false);
 
@@ -57,8 +57,7 @@ export function QuizPlayer({ startData, onClose, onComplete }: QuizPlayerProps) 
   });
 
   useEffect(() => {
-    setQuestionStartTime(Date.now());
-    setShowHint(false);
+    questionStartTimeRef.current = Date.now();
   }, [currentIdx]);
 
   // Result ko'rinayotganda yakuniy callback
@@ -69,7 +68,7 @@ export function QuizPlayer({ startData, onClose, onComplete }: QuizPlayerProps) 
 
   const saveCurrentAnswer = async () => {
     if (!currentAnswer) return;
-    const timeSpent = Math.round((Date.now() - questionStartTime) / 1000);
+    const timeSpent = Math.round((Date.now() - questionStartTimeRef.current) / 1000);
 
     if (currentAnswer.type === 'choice') {
       await answerMutation.mutateAsync({
@@ -89,11 +88,17 @@ export function QuizPlayer({ startData, onClose, onComplete }: QuizPlayerProps) 
   const goNext = async () => {
     if (!hasAnswer) return;
     await saveCurrentAnswer();
-    if (!isLast) setCurrentIdx((i) => i + 1);
+    if (!isLast) {
+      setCurrentIdx((i) => i + 1);
+      setShowHint(false);
+    }
   };
 
   const goPrev = () => {
-    if (!isFirst) setCurrentIdx((i) => i - 1);
+    if (!isFirst) {
+      setCurrentIdx((i) => i - 1);
+      setShowHint(false);
+    }
   };
 
   const handleSubmit = async () => {
@@ -182,10 +187,13 @@ export function QuizPlayer({ startData, onClose, onComplete }: QuizPlayerProps) 
 
           {/* Image */}
           {currentQ.image && (
-            <img
+            <Image
               src={currentQ.image}
               alt=""
-              className="rounded-lg mb-5 max-h-64 w-auto"
+              width={400}
+              height={256}
+              className="rounded-lg mb-5 max-h-64 w-auto h-auto"
+              unoptimized
             />
           )}
 
@@ -230,7 +238,10 @@ export function QuizPlayer({ startData, onClose, onComplete }: QuizPlayerProps) 
         {questions.map((q, idx) => (
           <button
             key={q.id}
-            onClick={() => setCurrentIdx(idx)}
+            onClick={() => {
+              setCurrentIdx(idx);
+              setShowHint(false);
+            }}
             className={cn(
               'h-2 rounded-full transition-all',
               idx === currentIdx

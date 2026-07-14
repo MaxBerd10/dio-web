@@ -1,16 +1,15 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
-import { Gamepad2, Sparkles, Trophy, X, Zap } from 'lucide-react';
+import { Gamepad2, Trophy, Zap } from 'lucide-react';
 
 import { useStartWordMatch, useSubmitWordMatchResult } from '@/lib/hooks/use-game';
 import type { WordMatchQuestion } from '@/lib/api/game';
+import { GameIdleScreen, GameResultScreen, GamePlayingShell } from '@/components/games/game-shell';
 import { Card, CardContent } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 
-const TIME_PER_QUESTION = 8; // soniya
-
+const TIME_PER_QUESTION = 8;
 type Phase = 'idle' | 'playing' | 'result';
 
 export default function WordMatchPage() {
@@ -26,7 +25,6 @@ export default function WordMatchPage() {
 
   const startMutation = useStartWordMatch();
   const submitMutation = useSubmitWordMatchResult();
-
   const currentQ = questions[currentIdx];
 
   const handleStart = () => {
@@ -56,11 +54,7 @@ export default function WordMatchPage() {
     } else {
       const timeSpent = Math.round((Date.now() - startTime) / 1000);
       submitMutation.mutate(
-        {
-          correct_count: correctCount,
-          total_count: questions.length,
-          time_spent_seconds: timeSpent,
-        },
+        { correct_count: correctCount, total_count: questions.length, time_spent_seconds: timeSpent },
         {
           onSuccess: (data) => {
             setXpEarned(data.xp_earned);
@@ -73,140 +67,106 @@ export default function WordMatchPage() {
   }, [currentIdx, questions.length, correctCount, startTime]);
 
   const handleAnswer = (option: string) => {
-    if (selected) return; // allaqachon javob berilgan
+    if (selected) return;
     setSelected(option);
     const isCorrect = option === currentQ.translation_uz;
-    if (isCorrect) {
-      setCorrectCount((c) => c + 1);
-      setFeedback('correct');
-    } else {
-      setFeedback('wrong');
-    }
+    if (isCorrect) setCorrectCount((c) => c + 1);
+    setFeedback(isCorrect ? 'correct' : 'wrong');
     setTimeout(goNext, 900);
   };
 
-  // Taymer
   useEffect(() => {
     if (phase !== 'playing' || selected) return;
     if (timeLeft <= 0) {
-      setSelected('__timeout__');
-      setFeedback('wrong');
-      setTimeout(goNext, 700);
-      return;
+      const timeoutId = setTimeout(() => {
+        setSelected('__timeout__');
+        setFeedback('wrong');
+        setTimeout(goNext, 700);
+      }, 0);
+      return () => clearTimeout(timeoutId);
     }
     const t = setTimeout(() => setTimeLeft((s) => s - 1), 1000);
     return () => clearTimeout(t);
   }, [timeLeft, phase, selected, goNext]);
 
-  // === Idle / Start screen ===
   if (phase === 'idle') {
     return (
-      <div className="p-4 md:p-8 max-w-2xl mx-auto text-center">
-        <div className="text-6xl mb-4">🎮</div>
-        <h1 className="text-2xl md:text-3xl font-bold tracking-tight mb-2">
-          So'z bilish o'yini
-        </h1>
-        <p className="text-[var(--color-muted-foreground)] mb-6">
-          10 ta so'z, har biriga 8 soniya. Tezroq va to'g'ri javob bering, ko'proq XP oling!
-        </p>
-        <Button onClick={handleStart} loading={startMutation.isPending}>
-          <Gamepad2 className="h-4 w-4" />
-          {startMutation.isPending ? 'Yuklanmoqda...' : 'Boshlash'}
-        </Button>
-      </div>
+      <GameIdleScreen
+        emoji="🎮"
+        title="So'z bilish o'yini"
+        description="10 ta so'z, har biriga 8 soniya. Tezroq va to'g'ri javob bering, ko'proq XP oling!"
+        onStart={handleStart}
+        loading={startMutation.isPending}
+        startIcon={<Gamepad2 className="h-4 w-4" />}
+      />
     );
   }
 
-  // === Result screen ===
   if (phase === 'result') {
     const pct = Math.round((correctCount / questions.length) * 100);
     return (
-      <div className="p-4 md:p-8 max-w-2xl mx-auto text-center">
-        <div className="text-6xl mb-4">{pct >= 70 ? '🏆' : '💪'}</div>
-        <h1 className="text-2xl md:text-3xl font-bold tracking-tight mb-2">
-          O'yin tugadi!
-        </h1>
-        <p className="text-[var(--color-muted-foreground)] mb-6">
-          {correctCount} / {questions.length} to'g'ri javob
-        </p>
-
-        <div className="flex items-center justify-center gap-4 mb-6">
-          <div className="flex items-center gap-1.5 px-4 py-2 rounded-full bg-[var(--color-accent)]/15 text-[var(--color-accent)]">
-            <Sparkles className="h-4 w-4" />
-            <span className="font-bold">+{xpEarned} XP</span>
+      <GameResultScreen
+        emoji={pct >= 70 ? '🏆' : '💪'}
+        title="O'yin tugadi!"
+        subtitle={`${correctCount} / ${questions.length} to'g'ri javob`}
+        xpEarned={xpEarned}
+        extra={
+          <div className="mt-2 flex justify-center">
+            <div className="inline-flex items-center gap-1.5 rounded-full bg-[var(--color-primary-soft)] px-4 py-2 text-[var(--color-primary)]">
+              <Trophy className="h-4 w-4" />
+              <span className="font-bold">{pct}%</span>
+            </div>
           </div>
-          <div className="flex items-center gap-1.5 px-4 py-2 rounded-full bg-[var(--color-primary)]/10 text-[var(--color-primary)]">
-            <Trophy className="h-4 w-4" />
-            <span className="font-bold">{pct}%</span>
-          </div>
-        </div>
-
-        <Button onClick={handleStart} loading={startMutation.isPending}>
-          <Gamepad2 className="h-4 w-4" />
-          Yana o'ynash
-        </Button>
-      </div>
+        }
+        onPlayAgain={handleStart}
+        loading={startMutation.isPending}
+      />
     );
   }
 
-  // === Playing screen ===
   if (!currentQ) return null;
 
   return (
-    <div className="p-4 md:p-8 max-w-2xl mx-auto">
-      {/* Top bar */}
-      <div className="flex items-center justify-between mb-4">
-        <span className="text-sm text-[var(--color-muted-foreground)]">
-          Savol {currentIdx + 1} / {questions.length}
+    <GamePlayingShell>
+      <div className="mb-4 flex items-center justify-between">
+        <span className="rounded-full bg-[var(--color-muted)] px-3 py-1 text-sm font-semibold">
+          {currentIdx + 1} / {questions.length}
         </span>
-        <div className="flex items-center gap-1.5">
-          <Zap className={cn('h-4 w-4', timeLeft <= 3 ? 'text-[var(--color-danger)]' : 'text-amber-500')} />
-          <span
-            className={cn(
-              'font-bold text-sm',
-              timeLeft <= 3 ? 'text-[var(--color-danger)]' : 'text-amber-500',
-            )}
-          >
-            {timeLeft}s
-          </span>
+        <div className={cn(
+          'flex items-center gap-1.5 rounded-full px-3 py-1 text-sm font-bold',
+          timeLeft <= 3 ? 'bg-[var(--color-danger)]/12 text-[var(--color-danger)]' : 'bg-amber-500/12 text-amber-600',
+        )}>
+          <Zap className="h-4 w-4" />
+          {timeLeft}s
         </div>
       </div>
 
-      {/* Timer bar */}
-      <div className="h-1.5 bg-[var(--color-muted)] rounded-full overflow-hidden mb-6">
+      <div className="mb-6 h-2 overflow-hidden rounded-full bg-[var(--color-muted)]">
         <div
           className={cn(
             'h-full rounded-full transition-all duration-1000 ease-linear',
-            timeLeft <= 3 ? 'bg-[var(--color-danger)]' : 'bg-amber-500',
+            timeLeft <= 3 ? 'bg-[var(--color-danger)]' : 'bg-gradient-to-r from-amber-400 to-[var(--color-accent)]',
           )}
           style={{ width: `${(timeLeft / TIME_PER_QUESTION) * 100}%` }}
         />
       </div>
 
-      {/* Word card */}
-      <Card className="mb-5">
-        <CardContent className="p-8 text-center">
-          <p className="text-3xl md:text-4xl font-bold tracking-tight">
-            {currentQ.word}
-          </p>
+      <Card className="mb-5 border-[var(--color-primary)]/15 bg-gradient-to-br from-[var(--color-primary-soft)] to-transparent">
+        <CardContent className="p-10 text-center">
+          <p className="text-3xl font-bold tracking-tight md:text-4xl">{currentQ.word}</p>
         </CardContent>
       </Card>
 
-      {/* Options */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
         {currentQ.options.map((opt) => {
           const isSelected = selected === opt;
           const isCorrectOpt = opt === currentQ.translation_uz;
           let style = 'border-[var(--color-border)] bg-[var(--color-surface-elevated)] hover:border-[var(--color-primary)]/40';
 
           if (selected) {
-            if (isCorrectOpt) {
-              style = 'border-[var(--color-success)] bg-[var(--color-success)]/10';
-            } else if (isSelected) {
-              style = 'border-[var(--color-danger)] bg-[var(--color-danger)]/10';
-            } else {
-              style = 'border-[var(--color-border)] opacity-50';
-            }
+            if (isCorrectOpt) style = 'border-[var(--color-success)] bg-[var(--color-success)]/10';
+            else if (isSelected) style = 'border-[var(--color-danger)] bg-[var(--color-danger)]/10';
+            else style = 'border-[var(--color-border)] opacity-50';
           }
 
           return (
@@ -216,7 +176,7 @@ export default function WordMatchPage() {
               onClick={() => handleAnswer(opt)}
               disabled={!!selected}
               className={cn(
-                'px-4 py-3.5 rounded-lg border-2 text-sm md:text-base font-medium transition-all text-left',
+                'rounded-2xl border-2 px-4 py-4 text-left text-sm font-semibold transition-all active:scale-[0.98] md:text-base',
                 style,
               )}
             >
@@ -227,15 +187,13 @@ export default function WordMatchPage() {
       </div>
 
       {feedback && (
-        <p
-          className={cn(
-            'text-center mt-4 text-sm font-medium',
-            feedback === 'correct' ? 'text-[var(--color-success)]' : 'text-[var(--color-danger)]',
-          )}
-        >
+        <p className={cn(
+          'mt-4 text-center text-sm font-semibold',
+          feedback === 'correct' ? 'text-[var(--color-success)]' : 'text-[var(--color-danger)]',
+        )}>
           {feedback === 'correct' ? "✓ To'g'ri!" : `✗ To'g'ri javob: ${currentQ.translation_uz}`}
         </p>
       )}
-    </div>
+    </GamePlayingShell>
   );
 }

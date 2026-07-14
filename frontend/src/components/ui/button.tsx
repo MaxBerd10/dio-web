@@ -3,28 +3,27 @@ import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '@/lib/utils';
 
 const buttonVariants = cva(
-  'inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all duration-150 disabled:pointer-events-none disabled:opacity-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-background)] active:scale-[0.98]',
+  'inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-xl text-sm font-semibold transition-all duration-200 disabled:pointer-events-none disabled:opacity-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-background)] active:scale-[0.97]',
   {
     variants: {
       variant: {
-        primary:
-          'bg-[var(--color-primary)] text-[var(--color-primary-foreground)] hover:bg-[var(--color-primary-hover)] shadow-sm',
+        primary: 'btn-gradient',
         accent:
-          'bg-[var(--color-accent)] text-[var(--color-accent-foreground)] hover:bg-[var(--color-accent-hover)] shadow-sm',
+          'bg-[var(--color-accent)] text-[var(--color-accent-foreground)] hover:brightness-105 shadow-md shadow-[var(--color-accent)]/25',
         outline:
-          'border border-[var(--color-border)] bg-transparent text-[var(--color-foreground)] hover:bg-[var(--color-muted)]',
+          'border-2 border-[var(--color-border)] bg-transparent text-[var(--color-foreground)] hover:bg-[var(--color-muted)]',
         ghost:
           'bg-transparent text-[var(--color-foreground)] hover:bg-[var(--color-muted)]',
         danger:
-          'bg-[var(--color-danger)] text-[var(--color-danger-foreground)] hover:opacity-90 shadow-sm',
+          'bg-[var(--color-danger)] text-[var(--color-danger-foreground)] hover:brightness-105 shadow-md',
         link:
-          'bg-transparent text-[var(--color-primary)] underline-offset-4 hover:underline p-0 h-auto',
+          'bg-transparent text-[var(--color-primary)] underline-offset-4 hover:underline p-0 h-auto font-medium',
       },
       size: {
-        sm: 'h-9 px-3 text-xs',
-        md: 'h-11 px-5',
-        lg: 'h-12 px-7 text-base',
-        icon: 'h-10 w-10',
+        sm: 'h-9 px-3.5 text-xs rounded-lg',
+        md: 'h-12 px-6',
+        lg: 'h-14 px-8 text-base rounded-2xl',
+        icon: 'h-11 w-11 rounded-xl',
       },
       fullWidth: {
         true: 'w-full',

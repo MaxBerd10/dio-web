@@ -43,6 +43,7 @@ class RegisterView(generics.CreateAPIView):
 class LoginView(TokenObtainPairView):
     """POST /api/auth/login/"""
     serializer_class = CustomTokenObtainPairSerializer
+    permission_classes = [permissions.AllowAny]
 
 
 class LogoutView(APIView):

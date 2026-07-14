@@ -7,116 +7,135 @@ import {
   ClipboardCheck,
   BarChart2,
   Award,
-  FileText,
   Inbox,
-  Users,
   Gamepad2,
+  Medal,
 } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
+
+export type UserRole = 'student' | 'teacher' | 'admin';
 
 export interface NavItem {
   label: string;
   href: string;
   icon: LucideIcon;
-  forRoles?: Array<'student' | 'teacher' | 'admin'>;
-  mobileShow?: boolean;
+  forRoles?: UserRole[];
+  /** Pastki tab bar (mobil) */
+  mobilePrimary?: boolean;
+  /** "Yana" menyusida (mobil) */
+  mobileMore?: boolean;
   dividerBefore?: boolean;
 }
 
 export const NAV_ITEMS: NavItem[] = [
-  // ── Bosh sahifa (rolega qarab manzili boshqacha) ────
+  // ── Student ────────────────────────────────────────
   {
-    label: 'Bosh sahifa',
+    label: 'Bosh',
     href: '/dashboard',
     icon: LayoutDashboard,
     forRoles: ['student'],
-    mobileShow: true,
+    mobilePrimary: true,
   },
-  {
-    label: 'Bosh sahifa',
-    href: '/teacher/students',
-    icon: LayoutDashboard,
-    forRoles: ['teacher', 'admin'],
-    mobileShow: true,
-  },
-  // ── Student only ───────────────────────────────────
   {
     label: 'Darslar',
     href: '/tracks',
     icon: GraduationCap,
     forRoles: ['student'],
-    mobileShow: true,
+    mobilePrimary: true,
   },
   {
     label: "Lug'at",
     href: '/vocabulary',
     icon: BookOpen,
     forRoles: ['student'],
-    mobileShow: true,
-  },
-  {
-    label: 'Testlar',
-    href: '/quizzes',
-    icon: ClipboardCheck,
-    forRoles: ['student'],
-    mobileShow: false,
+    mobilePrimary: true,
   },
   {
     label: "O'yinlar",
     href: '/games',
     icon: Gamepad2,
     forRoles: ['student'],
-    mobileShow: true,
+    mobilePrimary: true,
+  },
+  {
+    label: 'Testlar',
+    href: '/quizzes',
+    icon: ClipboardCheck,
+    forRoles: ['student'],
+    mobileMore: true,
   },
   {
     label: 'Grammar',
     href: '/grammar',
     icon: Brain,
     forRoles: ['student'],
-    mobileShow: false,
+    mobileMore: true,
   },
   {
     label: 'Natijalarim',
     href: '/my-progress',
     icon: BarChart2,
     forRoles: ['student'],
-    mobileShow: false,
+    mobileMore: true,
     dividerBefore: true,
   },
   {
     label: 'Yutuqlar',
     href: '/achievements',
-    icon: Award,
+    icon: Medal,
     forRoles: ['student'],
-    mobileShow: false,
+    mobileMore: true,
   },
   {
-    label: 'Sertifikatlarim',
+    label: 'Sertifikatlar',
     href: '/certificates',
     icon: Award,
     forRoles: ['student'],
-    mobileShow: true,
+    mobileMore: true,
   },
   {
-    label: 'Reytinglar',
+    label: 'Reyting',
     href: '/leaderboard',
     icon: Trophy,
     forRoles: ['student'],
-    mobileShow: false,
+    mobileMore: true,
   },
-  // ── Teacher & Admin only ───────────────────────────
+  // ── Teacher & Admin ────────────────────────────────
+  {
+    label: 'Bosh',
+    href: '/teacher/students',
+    icon: LayoutDashboard,
+    forRoles: ['teacher', 'admin'],
+    mobilePrimary: true,
+  },
   {
     label: 'Vazifalar',
     href: '/teacher/submissions',
     icon: Inbox,
     forRoles: ['teacher', 'admin'],
-    mobileShow: true,
+    mobilePrimary: true,
   },
   {
     label: 'Materiallar',
     href: '/tracks',
     icon: GraduationCap,
     forRoles: ['teacher', 'admin'],
-    mobileShow: false,
+    mobilePrimary: true,
   },
 ];
+
+export function navItemsForRole(role: UserRole) {
+  return NAV_ITEMS.filter((item) => !item.forRoles || item.forRoles.includes(role));
+}
+
+export function primaryMobileNav(role: UserRole) {
+  return navItemsForRole(role).filter((item) => item.mobilePrimary);
+}
+
+export function moreMobileNav(role: UserRole) {
+  return navItemsForRole(role).filter((item) => item.mobileMore);
+}
+
+export function desktopNav(role: UserRole) {
+  return navItemsForRole(role).filter((item) => !item.mobileMore || item.mobilePrimary);
+}

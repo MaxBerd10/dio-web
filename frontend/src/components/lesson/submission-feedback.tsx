@@ -1,11 +1,9 @@
 'use client';
 
 import {
-  Star,
   ThumbsUp,
   Lightbulb,
   MessageSquare,
-  Award,
   Calendar,
 } from 'lucide-react';
 

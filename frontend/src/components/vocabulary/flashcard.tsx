@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useEffect, useCallback } from 'react';
 import { Volume2, Eye, Sparkles, Star } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import type { ReviewQueueItem } from '@/lib/api/vocabulary';
@@ -14,13 +14,7 @@ interface FlashcardProps {
 export function Flashcard({ item, revealed, onReveal }: FlashcardProps) {
   const { word, is_new, status } = item;
 
-  // So'z o'zgarganda audio ni avtomatik chal
-  useEffect(() => {
-    playAudio(word.word, word.audio_url);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [word.id]);
-
-  const playAudio = (text: string, url: string) => {
+  const playAudio = useCallback((text: string, url: string) => {
     if (url) {
       const audio = new Audio(url);
       audio.play().catch(() => {});
@@ -30,7 +24,12 @@ export function Flashcard({ item, revealed, onReveal }: FlashcardProps) {
       utterance.rate = 0.9;
       speechSynthesis.speak(utterance);
     }
-  };
+  }, []);
+
+  // So'z o'zgarganda audio ni avtomatik chal
+  useEffect(() => {
+    playAudio(word.word, word.audio_url);
+  }, [word.id, word.word, word.audio_url, playAudio]);
 
   return (
     <div

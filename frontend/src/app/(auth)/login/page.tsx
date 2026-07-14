@@ -6,6 +6,7 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { AxiosError } from 'axios';
+import { LogIn } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -38,7 +39,10 @@ export default function LoginPage() {
   const onSubmit = async (data: LoginFormValues) => {
     setServerError(null);
     try {
-      const res = await authApi.login(data);
+      const res = await authApi.login({
+        email: data.email.trim().toLowerCase(),
+        password: data.password,
+      });
       tokenStorage.set(res.access, res.refresh);
       setUser(res.user);
       router.push('/dashboard');
@@ -52,17 +56,20 @@ export default function LoginPage() {
   };
 
   return (
-    <Card>
+    <Card className="glass-card border-[var(--color-primary)]/10">
       <CardHeader>
+        <div className="mb-2 flex h-12 w-12 items-center justify-center rounded-2xl btn-gradient">
+          <LogIn className="h-6 w-6" />
+        </div>
         <CardTitle>Tizimga kirish</CardTitle>
         <CardDescription>
           Hisobingizga kirish uchun email va parolingizni kiriting.
         </CardDescription>
       </CardHeader>
       <form onSubmit={handleSubmit(onSubmit)} noValidate>
-        <CardContent className="space-y-4">
+        <CardContent className="space-y-4 pt-0">
           {serverError && (
-            <div className="rounded-md border border-[var(--color-danger)] bg-[var(--color-danger)]/10 px-3 py-2 text-sm text-[var(--color-danger)]">
+            <div className="rounded-xl border border-[var(--color-danger)]/30 bg-[var(--color-danger)]/8 px-4 py-3 text-sm text-[var(--color-danger)]">
               {serverError}
             </div>
           )}
@@ -85,10 +92,10 @@ export default function LoginPage() {
               {...register('password')}
               error={errors.password?.message}
             />
-            <div className="mt-1.5 text-right">
+            <div className="mt-2 text-right">
               <Link
                 href="/forgot-password"
-                className="text-xs text-[var(--color-muted-foreground)] hover:text-[var(--color-primary)] hover:underline"
+                className="text-xs font-medium text-[var(--color-primary)] hover:underline"
               >
                 Parolni unutdingizmi?
               </Link>
@@ -96,16 +103,16 @@ export default function LoginPage() {
           </div>
         </CardContent>
         <CardFooter className="flex flex-col gap-4 pt-2">
-          <Button type="submit" fullWidth loading={isSubmitting}>
+          <Button type="submit" fullWidth loading={isSubmitting} size="lg">
             {isSubmitting ? 'Kirilmoqda...' : 'Kirish'}
           </Button>
           <p className="text-sm text-center text-[var(--color-muted-foreground)]">
-            Hisobingiz yo'qmi?{' '}
+            Hisobingiz yo&apos;qmi?{' '}
             <Link
               href="/register"
-              className="text-[var(--color-primary)] font-medium hover:underline"
+              className="font-semibold text-[var(--color-primary)] hover:underline"
             >
-              Ro'yxatdan o'tish
+              Ro&apos;yxatdan o&apos;tish
             </Link>
           </p>
         </CardFooter>
@@ -113,4 +120,3 @@ export default function LoginPage() {
     </Card>
   );
 }
-

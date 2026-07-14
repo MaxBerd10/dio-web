@@ -19,7 +19,6 @@ import { useAuthStore } from '@/store/auth';
 import { useDashboard } from '@/lib/hooks/use-dashboard';
 import { useReviewQueue } from '@/lib/hooks/use-vocabulary';
 import { Card, CardContent } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
 import { LeaderboardPreview } from '@/components/dashboard/leaderboard-preview';
 import { cn } from '@/lib/utils';
 
@@ -47,10 +46,10 @@ export default function DashboardPage() {
   const streak = data?.streak?.current_streak ?? 0;
   const totalXP = data?.xp?.total_xp ?? 0;
   const level = data?.xp?.level ?? 1;
-  const lessonsCompleted = data?.stats?.lessons_completed ?? 0;
-  const dailyEarned = data?.daily_goal?.earned_today ?? 0;
-  const dailyTarget = data?.daily_goal?.target_xp ?? 30;
-  const dailyDone = data?.daily_goal?.completed ?? false;
+  const lessonsCompleted = data?.lessons_completed ?? 0;
+  const dailyEarned = data?.xp?.daily_xp ?? 0;
+  const dailyTarget = data?.daily_goal_xp ?? 30;
+  const dailyDone = data?.daily_goal_met ?? false;
   const dailyPct = Math.min(100, Math.round((dailyEarned / dailyTarget) * 100));
   const wordsToReview = (queue?.due_count ?? 0) + (queue?.new_count ?? 0);
 

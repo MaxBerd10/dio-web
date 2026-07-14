@@ -1,194 +1,158 @@
 'use client';
 
-import { useQuery } from '@tanstack/react-query';
 import {
   Flame,
   Sparkles,
   BookOpen,
   CircleCheck,
-  Brain,
   Trophy,
   Target,
   TrendingUp,
+  Zap,
 } from 'lucide-react';
 
-import { api } from '@/lib/api';
+import { useDashboard } from '@/lib/hooks/use-dashboard';
+import { useVocabularyStats } from '@/lib/hooks/use-vocabulary';
 import { useAuthStore } from '@/store/auth';
+import { PageHeader } from '@/components/layout/page-header';
 import { Card, CardContent } from '@/components/ui/card';
 import { Skeleton } from '@/components/ui/skeleton';
 import { cn } from '@/lib/utils';
 
-interface DashboardData {
-  streak: { current_streak: number; longest_streak: number; last_activity: string | null };
-  xp: { total_xp: number; level: number; xp_to_next_level: number; xp_for_current_level: number };
-  stats: {
-    lessons_completed: number;
-    lessons_in_progress: number;
-    quizzes_passed: number;
-    words_mastered: number;
-    words_total: number;
-    words_due_now: number;
-    assignments_submitted: number;
-  };
-  daily_goal: { target_xp: number; earned_today: number; completed: boolean };
-}
-
 export default function MyProgressPage() {
   const { user } = useAuthStore();
-
-  const { data, isLoading } = useQuery({
-    queryKey: ['dashboard'],
-    queryFn: async (): Promise<DashboardData> => {
-      const { data } = await api.get('/progress/dashboard/');
-      return data;
-    },
-    enabled: user?.role === 'student',
-  });
-
-  const { data: xpData } = useQuery({
-    queryKey: ['xp-history'],
-    queryFn: async () => {
-      const { data } = await api.get('/progress/xp/');
-      return data;
-    },
-    enabled: user?.role === 'student',
-  });
+  const { data, isLoading } = useDashboard();
+  const { data: vocabStats } = useVocabularyStats();
 
   if (isLoading) {
     return (
-      <div className="p-4 md:p-8 max-w-4xl mx-auto space-y-4">
-        <Skeleton className="h-10 w-1/3" />
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-          {[1, 2, 3, 4].map((i) => <Skeleton key={i} className="h-28" />)}
+      <div className="mx-auto max-w-4xl space-y-4 p-4 lg:p-8 animate-fadeIn">
+        <Skeleton className="h-16 w-2/3 rounded-2xl" />
+        <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
+          {[1, 2, 3, 4].map((i) => <Skeleton key={i} className="h-28 rounded-2xl" />)}
         </div>
-        <Skeleton className="h-48" />
+        <Skeleton className="h-48 rounded-2xl" />
       </div>
     );
   }
 
   const xp = data?.xp;
   const streak = data?.streak;
-  const stats = data?.stats;
-  const daily = data?.daily_goal;
+  const dailyEarned = xp?.daily_xp ?? 0;
+  const dailyTarget = data?.daily_goal_xp ?? 30;
+  const dailyDone = data?.daily_goal_met ?? false;
+  const xpPercent = xp?.progress_to_next_level ?? 0;
+  const dailyPercent = Math.min(100, Math.round((dailyEarned / dailyTarget) * 100));
 
-  const xpPercent = xp
-    ? Math.round(((xp.total_xp - xp.xp_for_current_level) / (xp.xp_to_next_level - xp.xp_for_current_level)) * 100)
-    : 0;
-
-  const wordPercent = stats?.words_total
-    ? Math.round((stats.words_mastered / stats.words_total) * 100)
-    : 0;
-
-  const dailyPercent = daily
-    ? Math.min(100, Math.round((daily.earned_today / daily.target_xp) * 100))
-    : 0;
+  const wordsTotal = vocabStats?.total ?? data?.words_total ?? 0;
+  const wordsMastered = vocabStats?.mastered ?? data?.words_mastered ?? 0;
+  const wordsLearning = vocabStats?.learning ?? 0;
+  const wordsNew = vocabStats?.new ?? 0;
+  const wordPercent = wordsTotal > 0 ? Math.round((wordsMastered / wordsTotal) * 100) : 0;
 
   return (
-    <div className="p-4 md:p-8 max-w-4xl mx-auto">
-      <div className="mb-6">
-        <h1 className="text-2xl md:text-3xl font-bold tracking-tight flex items-center gap-2">
-          <TrendingUp className="h-7 w-7 text-[var(--color-primary)]" />
-          Mening natijalarim
-        </h1>
-        <p className="text-[var(--color-muted-foreground)] mt-1.5 text-sm">
-          {user?.full_name || user?.username} — o'quv jarayoni statistikasi
-        </p>
-      </div>
+    <div className="mx-auto max-w-4xl p-4 lg:p-8 animate-fadeIn">
+      <PageHeader
+        icon={<TrendingUp className="h-6 w-6" />}
+        title="Mening natijalarim"
+        description={`${user?.full_name || user?.username} — o'quv jarayoni statistikasi`}
+      />
 
-      {/* Top stats */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
+      <div className="mb-6 grid grid-cols-2 gap-3 lg:grid-cols-4">
         <StatCard
           icon={Flame}
           label="Joriy streak"
           value={streak?.current_streak ?? 0}
           unit="kun"
-          color="#f97316"
+          accent="streak"
           sublabel={`Rekord: ${streak?.longest_streak ?? 0} kun`}
         />
         <StatCard
           icon={Sparkles}
           label="Jami XP"
           value={xp?.total_xp ?? 0}
-          color="#8b5cf6"
+          accent="primary"
           sublabel={`Daraja ${xp?.level ?? 1}`}
         />
         <StatCard
           icon={CircleCheck}
           label="Tugatilgan darslar"
-          value={stats?.lessons_completed ?? 0}
-          color="#10b981"
-          sublabel={`${stats?.lessons_in_progress ?? 0} ta jarayonda`}
+          value={data?.lessons_completed ?? 0}
+          accent="success"
+          sublabel={`${data?.lessons_in_progress ?? 0} ta jarayonda`}
         />
         <StatCard
           icon={BookOpen}
           label="O'zlashtirilgan so'zlar"
-          value={stats?.words_mastered ?? 0}
-          color="#3b82f6"
-          sublabel={`Jami ${stats?.words_total ?? 0} ta`}
+          value={wordsMastered}
+          accent="blue"
+          sublabel={`Jami ${wordsTotal} ta`}
         />
       </div>
 
-      {/* XP Level progress */}
-      <Card className="mb-4">
+      <Card className="mb-4 overflow-hidden">
         <CardContent className="p-5">
-          <div className="flex items-center justify-between mb-3">
-            <div className="flex items-center gap-2">
-              <div className="h-8 w-8 rounded-lg bg-[var(--color-primary)]/15 flex items-center justify-center">
-                <Sparkles className="h-4 w-4 text-[var(--color-primary)]" />
-              </div>
+          <div className="mb-3 flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-[var(--color-primary-soft)]">
+                <Sparkles className="h-5 w-5 text-[var(--color-primary)]" />
+              </span>
               <div>
-                <p className="font-semibold text-sm">Daraja {xp?.level ?? 1}</p>
+                <p className="font-bold">Daraja {xp?.level ?? 1}</p>
                 <p className="text-xs text-[var(--color-muted-foreground)]">XP jarayoni</p>
               </div>
             </div>
             <div className="text-right">
-              <p className="font-bold text-[var(--color-primary)]">{xp?.total_xp ?? 0} XP</p>
+              <p className="font-bold tabular-nums text-[var(--color-primary)]">{xp?.total_xp ?? 0} XP</p>
               <p className="text-xs text-[var(--color-muted-foreground)]">
-                Keyingi daraja: {xp?.xp_to_next_level ?? 0} XP
+                Keyingi: {xp?.next_level_xp ?? 0} XP
               </p>
             </div>
           </div>
-          <div className="h-3 bg-[var(--color-muted)] rounded-full overflow-hidden">
+          <div className="h-3 overflow-hidden rounded-full bg-[var(--color-muted)]">
             <div
-              className="h-full bg-[var(--color-primary)] rounded-full transition-all"
+              className="h-full rounded-full bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-accent)] transition-all duration-700"
               style={{ width: `${xpPercent}%` }}
             />
           </div>
-          <p className="text-xs text-[var(--color-muted-foreground)] mt-1.5 text-right">
-            {xpPercent}%
-          </p>
+          <p className="mt-1.5 text-right text-xs text-[var(--color-muted-foreground)]">{xpPercent}%</p>
         </CardContent>
       </Card>
 
-      {/* Daily goal */}
-      <Card className="mb-4">
+      <Card className="mb-6 overflow-hidden">
         <CardContent className="p-5">
-          <div className="flex items-center justify-between mb-3">
-            <div className="flex items-center gap-2">
-              <div className={cn(
-                'h-8 w-8 rounded-lg flex items-center justify-center',
-                daily?.completed
-                  ? 'bg-green-500/15 text-green-500'
-                  : 'bg-amber-500/15 text-amber-500',
-              )}>
-                <Target className="h-4 w-4" />
-              </div>
+          <div className="mb-3 flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <span
+                className={cn(
+                  'flex h-10 w-10 items-center justify-center rounded-xl',
+                  dailyDone ? 'bg-[var(--color-success)]/12' : 'bg-[var(--color-accent-soft)]',
+                )}
+              >
+                {dailyDone ? (
+                  <Zap className="h-5 w-5 text-[var(--color-success)]" />
+                ) : (
+                  <Target className="h-5 w-5 text-[var(--color-accent)]" />
+                )}
+              </span>
               <div>
-                <p className="font-semibold text-sm">Kunlik maqsad</p>
+                <p className="font-bold">Kunlik maqsad</p>
                 <p className="text-xs text-[var(--color-muted-foreground)]">
-                  {daily?.completed ? "✅ Bajarildi!" : "Davom eting!"}
+                  {dailyDone ? 'Bajarildi!' : 'Davom eting!'}
                 </p>
               </div>
             </div>
-            <p className="font-bold">
-              {daily?.earned_today ?? 0} / {daily?.target_xp ?? 30} XP
+            <p className="font-bold tabular-nums">
+              {dailyEarned} / {dailyTarget} XP
             </p>
           </div>
-          <div className="h-3 bg-[var(--color-muted)] rounded-full overflow-hidden">
+          <div className="h-3 overflow-hidden rounded-full bg-[var(--color-muted)]">
             <div
               className={cn(
-                'h-full rounded-full transition-all',
-                daily?.completed ? 'bg-green-500' : 'bg-amber-500',
+                'h-full rounded-full transition-all duration-700',
+                dailyDone
+                  ? 'bg-gradient-to-r from-[var(--color-success)] to-[var(--color-level)]'
+                  : 'bg-gradient-to-r from-[var(--color-accent)] to-[var(--color-primary)]',
               )}
               style={{ width: `${dailyPercent}%` }}
             />
@@ -196,65 +160,45 @@ export default function MyProgressPage() {
         </CardContent>
       </Card>
 
-      {/* Detailed stats */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {/* Vocabulary progress */}
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
         <Card>
           <CardContent className="p-5">
-            <h3 className="font-semibold mb-4 flex items-center gap-2">
-              <BookOpen className="h-4 w-4 text-blue-500" />
-              Lug'at holati
+            <h3 className="mb-4 flex items-center gap-2 font-bold">
+              <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-500/12">
+                <BookOpen className="h-4 w-4 text-blue-500" />
+              </span>
+              Lug&apos;at holati
             </h3>
             <div className="space-y-3">
-              <ProgressRow label="Yangi" value={stats?.words_total ? stats.words_total - stats.words_mastered - 0 : 0} total={stats?.words_total ?? 0} color="#8b5cf6" />
-              <ProgressRow label="O'rganilmoqda" value={0} total={stats?.words_total ?? 0} color="#f59e0b" />
-              <ProgressRow label="O'zlashtirilgan" value={stats?.words_mastered ?? 0} total={stats?.words_total ?? 0} color="#10b981" />
+              <ProgressRow label="Yangi" value={wordsNew} total={wordsTotal} color="#8b5cf6" />
+              <ProgressRow label="O'rganilmoqda" value={wordsLearning} total={wordsTotal} color="#f59e0b" />
+              <ProgressRow label="O'zlashtirilgan" value={wordsMastered} total={wordsTotal} color="#10b981" />
             </div>
-            <div className="mt-4 h-2 bg-[var(--color-muted)] rounded-full overflow-hidden">
+            <div className="mt-4 h-2.5 overflow-hidden rounded-full bg-[var(--color-muted)]">
               <div
-                className="h-full bg-blue-500 rounded-full"
+                className="h-full rounded-full bg-gradient-to-r from-blue-500 to-[var(--color-primary)]"
                 style={{ width: `${wordPercent}%` }}
               />
             </div>
-            <p className="text-xs text-[var(--color-muted-foreground)] mt-1">
-              {wordPercent}% o'zlashtirilgan
+            <p className="mt-1.5 text-xs text-[var(--color-muted-foreground)]">
+              {wordPercent}% o&apos;zlashtirilgan
             </p>
           </CardContent>
         </Card>
 
-        {/* Activity stats */}
         <Card>
           <CardContent className="p-5">
-            <h3 className="font-semibold mb-4 flex items-center gap-2">
-              <Trophy className="h-4 w-4 text-amber-500" />
+            <h3 className="mb-4 flex items-center gap-2 font-bold">
+              <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-[var(--color-accent-soft)]">
+                <Trophy className="h-4 w-4 text-[var(--color-accent)]" />
+              </span>
               Faollik statistikasi
             </h3>
             <div className="space-y-3">
-              <ActivityRow
-                icon={CircleCheck}
-                label="O'tilgan testlar"
-                value={stats?.quizzes_passed ?? 0}
-                color="text-green-500"
-              />
-              <ActivityRow
-                icon={Brain}
-                label="Topshirilgan vazifalar"
-                value={stats?.assignments_submitted ?? 0}
-                color="text-purple-500"
-              />
-              <ActivityRow
-                icon={Flame}
-                label="Eng uzun streak"
-                value={streak?.longest_streak ?? 0}
-                unit="kun"
-                color="text-orange-500"
-              />
-              <ActivityRow
-                icon={BookOpen}
-                label="Takrorlash uchun so'zlar"
-                value={stats?.words_due_now ?? 0}
-                color="text-blue-500"
-              />
+              <ActivityRow icon={CircleCheck} label="O'tilgan testlar" value={data?.quizzes_passed ?? 0} color="text-[var(--color-success)]" />
+              <ActivityRow icon={Trophy} label="Yutuqlar" value={data?.achievements_earned ?? 0} suffix={`/ ${data?.achievements_total ?? 0}`} color="text-[var(--color-accent)]" />
+              <ActivityRow icon={Flame} label="Eng uzun streak" value={streak?.longest_streak ?? 0} unit="kun" color="text-[var(--color-streak)]" />
+              <ActivityRow icon={BookOpen} label="Takrorlash uchun so'zlar" value={data?.words_due_now ?? 0} color="text-blue-500" />
             </div>
           </CardContent>
         </Card>
@@ -263,63 +207,56 @@ export default function MyProgressPage() {
   );
 }
 
+const ACCENTS = {
+  streak: { bg: 'bg-[var(--color-streak)]/12', text: 'text-[var(--color-streak)]', border: 'border-[var(--color-streak)]/20' },
+  primary: { bg: 'bg-[var(--color-primary-soft)]', text: 'text-[var(--color-primary)]', border: 'border-[var(--color-primary)]/20' },
+  success: { bg: 'bg-[var(--color-success)]/12', text: 'text-[var(--color-success)]', border: 'border-[var(--color-success)]/20' },
+  blue: { bg: 'bg-blue-500/12', text: 'text-blue-500', border: 'border-blue-500/20' },
+} as const;
+
 function StatCard({
   icon: Icon,
   label,
   value,
   unit,
-  color,
+  accent,
   sublabel,
 }: {
   icon: React.ElementType;
   label: string;
   value: number;
   unit?: string;
-  color: string;
+  accent: keyof typeof ACCENTS;
   sublabel?: string;
 }) {
+  const styles = ACCENTS[accent];
   return (
-    <Card>
+    <Card className={cn('border', styles.border)}>
       <CardContent className="p-4">
-        <div
-          className="h-9 w-9 rounded-lg flex items-center justify-center mb-3"
-          style={{ backgroundColor: `${color}20` }}
-        >
-          <Icon className="h-5 w-5" style={{ color }} />
+        <div className={cn('mb-3 flex h-10 w-10 items-center justify-center rounded-xl', styles.bg, styles.text)}>
+          <Icon className="h-5 w-5" />
         </div>
         <div className="flex items-baseline gap-1">
-          <p className="text-2xl font-bold" style={{ color }}>
-            {value.toLocaleString()}
-          </p>
+          <p className={cn('text-2xl font-bold tabular-nums', styles.text)}>{value.toLocaleString()}</p>
           {unit && <p className="text-xs text-[var(--color-muted-foreground)]">{unit}</p>}
         </div>
-        <p className="text-xs font-medium mt-0.5">{label}</p>
+        <p className="mt-0.5 text-xs font-semibold">{label}</p>
         {sublabel && (
-          <p className="text-[10px] text-[var(--color-muted-foreground)] mt-0.5">{sublabel}</p>
+          <p className="mt-0.5 text-[10px] text-[var(--color-muted-foreground)]">{sublabel}</p>
         )}
       </CardContent>
     </Card>
   );
 }
 
-function ProgressRow({
-  label,
-  value,
-  total,
-  color,
-}: {
-  label: string;
-  value: number;
-  total: number;
-  color: string;
-}) {
+function ProgressRow({ label, value, total, color }: { label: string; value: number; total: number; color: string }) {
   const pct = total > 0 ? Math.round((value / total) * 100) : 0;
   return (
     <div className="flex items-center gap-3">
-      <div className="w-3 h-3 rounded-full shrink-0" style={{ backgroundColor: color }} />
-      <span className="text-sm flex-1">{label}</span>
-      <span className="text-sm font-medium">{value}</span>
-      <span className="text-xs text-[var(--color-muted-foreground)] w-8 text-right">{pct}%</span>
+      <div className="h-2.5 w-2.5 shrink-0 rounded-full" style={{ backgroundColor: color }} />
+      <span className="flex-1 text-sm">{label}</span>
+      <span className="text-sm font-semibold tabular-nums">{value}</span>
+      <span className="w-8 text-right text-xs text-[var(--color-muted-foreground)]">{pct}%</span>
     </div>
   );
 }
@@ -329,20 +266,24 @@ function ActivityRow({
   label,
   value,
   unit,
+  suffix,
   color,
 }: {
   icon: React.ElementType;
   label: string;
   value: number;
   unit?: string;
+  suffix?: string;
   color: string;
 }) {
   return (
-    <div className="flex items-center gap-3">
+    <div className="flex items-center gap-3 rounded-xl p-2 hover:bg-[var(--color-muted)]/40 transition-colors">
       <Icon className={cn('h-4 w-4 shrink-0', color)} />
-      <span className="text-sm flex-1">{label}</span>
-      <span className="font-semibold text-sm">
-        {value.toLocaleString()}{unit ? ` ${unit}` : ''}
+      <span className="flex-1 text-sm">{label}</span>
+      <span className="text-sm font-bold tabular-nums">
+        {value.toLocaleString()}
+        {unit ? ` ${unit}` : ''}
+        {suffix ?? ''}
       </span>
     </div>
   );

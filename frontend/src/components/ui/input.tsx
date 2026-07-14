@@ -46,10 +46,10 @@ export function Input({
               : undefined
         }
         className={cn(
-          'flex h-11 w-full rounded-md border bg-[var(--color-surface-elevated)] px-3.5 py-2 text-sm',
-          'placeholder:text-[var(--color-muted-foreground)]',
-          'transition-colors duration-150',
-          'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-ring)] focus-visible:ring-offset-1 focus-visible:ring-offset-[var(--color-background)]',
+          'flex h-12 w-full rounded-xl border-2 bg-[var(--color-input)] px-4 py-2 text-base',
+          'placeholder:text-[var(--color-muted-foreground)]/70',
+          'transition-all duration-200',
+          'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-ring)] focus-visible:border-transparent',
           'disabled:cursor-not-allowed disabled:opacity-50',
           hasError
             ? 'border-[var(--color-danger)] focus-visible:ring-[var(--color-danger)]'

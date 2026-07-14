@@ -2,7 +2,9 @@ from django.conf import settings
 from django.contrib.auth import get_user_model
 from django.contrib.auth.password_validation import validate_password
 from django.core.exceptions import ValidationError as DjangoValidationError
+from django.contrib.auth import authenticate
 from rest_framework import serializers
+from rest_framework.exceptions import AuthenticationFailed
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 
 User = get_user_model()
@@ -65,7 +67,12 @@ class RegisterSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError(translated)
         return value
 
+    def validate_email(self, value):
+        return value.strip().lower()
+
     def validate(self, attrs):
+        attrs['email'] = attrs['email'].strip().lower()
+
         if attrs['password'] != attrs['password_confirm']:
             raise serializers.ValidationError(
                 {'password_confirm': "Parollar mos kelmadi."}
@@ -126,7 +133,7 @@ class UserSerializer(serializers.ModelSerializer):
 class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
     """JWT token ichiga user ma'lumotini ham qo'shamiz (frontend uchun qulay)."""
 
-    username_field = 'email'  # email bilan login
+    username_field = User.USERNAME_FIELD
 
     @classmethod
     def get_token(cls, user):
@@ -137,6 +144,44 @@ class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
         return token
 
     def validate(self, attrs):
-        data = super().validate(attrs)
-        data['user'] = UserSerializer(self.user).data
-        return data
+        email = attrs.get(self.username_field, '').strip().lower()
+        password = attrs.get('password', '')
+
+        if not email or not password:
+            raise AuthenticationFailed(
+                "Email va parol kiritilishi shart.",
+                code='authorization',
+            )
+
+        # USERNAME_FIELD=email bo'lgani uchun authenticate'ga username sifatida beramiz
+        self.user = authenticate(
+            request=self.context.get('request'),
+            username=email,
+            password=password,
+        )
+
+        if self.user is None:
+            # Eski hisoblarda email katta harfda saqlangan bo'lishi mumkin
+            legacy_user = User.objects.filter(email__iexact=email).first()
+            if legacy_user and legacy_user.check_password(password):
+                if not legacy_user.is_active:
+                    raise AuthenticationFailed(
+                        "Hisob faol emas. Administrator bilan bog'laning.",
+                        code='authorization',
+                    )
+                legacy_user.email = email
+                legacy_user.save(update_fields=['email'])
+                self.user = legacy_user
+
+        if self.user is None or not self.user.is_active:
+            raise AuthenticationFailed(
+                "Email yoki parol noto'g'ri.",
+                code='authorization',
+            )
+
+        refresh = self.get_token(self.user)
+        return {
+            'refresh': str(refresh),
+            'access': str(refresh.access_token),
+            'user': UserSerializer(self.user).data,
+        }

@@ -3,9 +3,10 @@
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
-import { useForm } from 'react-hook-form';
+import { useForm, useWatch } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { AxiosError } from 'axios';
+import { UserPlus } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -46,6 +47,16 @@ const GOAL_OPTIONS = [
   { value: 'ielts', label: '🎯 IELTS — imtihon tayyorgarligi' },
 ];
 
+const FIELD_LABELS: Record<string, string> = {
+  email: 'Email',
+  username: 'Username',
+  password: 'Parol',
+  password_confirm: 'Parolni tasdiqlash',
+  invite_code: "O'qituvchi kodi",
+  full_name: "To'liq ism",
+  role: 'Rol',
+};
+
 export default function RegisterPage() {
   const router = useRouter();
   const setUser = useAuthStore((s) => s.setUser);
@@ -54,7 +65,7 @@ export default function RegisterPage() {
   const {
     register,
     handleSubmit,
-    watch,
+    control,
     formState: { errors, isSubmitting },
   } = useForm<RegisterFormValues>({
     resolver: zodResolver(registerSchema),
@@ -64,24 +75,24 @@ export default function RegisterPage() {
     },
   });
 
-  const selectedRole = watch('role');
-  const selectedGoal = watch('learning_goal');
+  const selectedRole = useWatch({ control, name: 'role' });
+  const selectedGoal = useWatch({ control, name: 'learning_goal' });
   const isStudent = selectedRole === 'student';
   const isCefrTrack = selectedGoal === 'cefr';
 
   const onSubmit = async (data: RegisterFormValues) => {
     setServerError(null);
     try {
-      // Teacher uchun learning fields kerak emas
-      // CEFR track bo'lmasa cefr_level ham kerak emas
       const payload = !isStudent
         ? {
             ...data,
+            email: data.email.trim().toLowerCase(),
             cefr_level: undefined,
             learning_goal: undefined,
           }
         : {
             ...data,
+            email: data.email.trim().toLowerCase(),
             invite_code: undefined,
             ...(isCefrTrack ? {} : { cefr_level: undefined }),
           };
@@ -94,12 +105,12 @@ export default function RegisterPage() {
       const axiosErr = err as AxiosError<Record<string, string[] | string>>;
       const data = axiosErr.response?.data;
       if (data && typeof data === 'object') {
-        // Backend field-level xatolarini bitta xabarga aylantirish
         const firstError = Object.entries(data)[0];
         if (firstError) {
           const [field, message] = firstError;
           const msgText = Array.isArray(message) ? message[0] : message;
-          setServerError(`${field}: ${msgText}`);
+          const label = FIELD_LABELS[field];
+          setServerError(label ? `${label}: ${msgText}` : msgText);
           return;
         }
       }
@@ -108,18 +119,21 @@ export default function RegisterPage() {
   };
 
   return (
-    <Card>
+    <Card className="glass-card border-[var(--color-primary)]/10">
       <CardHeader>
-        <CardTitle>Ro'yxatdan o'tish</CardTitle>
+        <div className="mb-2 flex h-12 w-12 items-center justify-center rounded-2xl btn-gradient">
+          <UserPlus className="h-6 w-6" />
+        </div>
+        <CardTitle>Ro&apos;yxatdan o&apos;tish</CardTitle>
         <CardDescription>
-          Yangi hisob yarating va o'rganishni boshlang.
+          Yangi hisob yarating va o&apos;rganishni boshlang.
         </CardDescription>
       </CardHeader>
 
       <form onSubmit={handleSubmit(onSubmit)} noValidate>
-        <CardContent className="space-y-4">
+        <CardContent className="space-y-4 pt-0">
           {serverError && (
-            <div className="rounded-md border border-[var(--color-danger)] bg-[var(--color-danger)]/10 px-3 py-2 text-sm text-[var(--color-danger)]">
+            <div className="rounded-xl border border-[var(--color-danger)]/30 bg-[var(--color-danger)]/8 px-4 py-3 text-sm text-[var(--color-danger)]">
               {serverError}
             </div>
           )}
@@ -221,7 +235,7 @@ export default function RegisterPage() {
         </CardContent>
 
         <CardFooter className="flex flex-col gap-4 pt-2">
-          <Button type="submit" fullWidth loading={isSubmitting}>
+          <Button type="submit" fullWidth loading={isSubmitting} size="lg">
             {isSubmitting ? "Ro'yxatdan o'tilmoqda..." : "Ro'yxatdan o'tish"}
           </Button>
 
@@ -229,7 +243,7 @@ export default function RegisterPage() {
             Hisobingiz bormi?{' '}
             <Link
               href="/login"
-              className="text-[var(--color-primary)] font-medium hover:underline"
+              className="font-semibold text-[var(--color-primary)] hover:underline"
             >
               Kirish
             </Link>

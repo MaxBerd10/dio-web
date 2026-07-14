@@ -1,48 +1,45 @@
 'use client';
 
+import { GraduationCap } from 'lucide-react';
+
 import { useTracks } from '@/lib/hooks/use-dashboard';
+import { PageHeader } from '@/components/layout/page-header';
 import { Skeleton } from '@/components/ui/skeleton';
 import { TrackCard } from '@/components/tracks/track-card';
+import { Card, CardContent } from '@/components/ui/card';
 
 export default function TracksPage() {
   const { data: tracks, isLoading, error } = useTracks();
 
   return (
-    <div className="p-4 md:p-8 max-w-6xl mx-auto">
-      {/* Header */}
-      <div className="mb-6 md:mb-8">
-        <h1 className="text-2xl md:text-3xl font-bold tracking-tight">
-          O'rganish yo'nalishlari
-        </h1>
-        <p className="text-[var(--color-muted-foreground)] mt-1.5 text-sm md:text-base">
-          O'zingiz xohlagan yo'nalishni tanlang. Istalgan vaqtda boshqasiga
-          o'tishingiz mumkin.
-        </p>
-      </div>
+    <div className="mx-auto max-w-6xl p-4 lg:p-8 animate-fadeIn">
+      <PageHeader
+        icon={<GraduationCap className="h-6 w-6" />}
+        title="O'rganish yo'nalishlari"
+        description="O'zingiz xohlagan yo'nalishni tanlang. Istalgan vaqtda boshqasiga o'tishingiz mumkin."
+      />
 
-      {/* Tracks grid */}
       {isLoading ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 lg:gap-5">
           {[1, 2, 3].map((i) => (
-            <Skeleton key={i} className="h-[220px] rounded-xl" />
+            <Skeleton key={i} className="h-[240px] rounded-3xl" />
           ))}
         </div>
       ) : error ? (
-        <div className="text-center py-12">
-          <p className="text-[var(--color-danger)]">
-            Yo'nalishlarni yuklashda xato yuz berdi.
-          </p>
-        </div>
+        <Card className="border-[var(--color-danger)]/30">
+          <CardContent className="py-12 text-center text-[var(--color-danger)]">
+            Yo&apos;nalishlarni yuklashda xato yuz berdi.
+          </CardContent>
+        </Card>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 lg:gap-5">
           {tracks?.map((track) => (
             <TrackCard key={track.code} track={track} />
           ))}
         </div>
       )}
 
-      {/* Info section */}
-      <div className="mt-10 md:mt-12 grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 text-sm">
+      <div className="mt-10 grid grid-cols-1 gap-3 md:mt-12 md:grid-cols-3 md:gap-4">
         <InfoBlock
           icon="🗣️"
           title="General English"
@@ -63,22 +60,14 @@ export default function TracksPage() {
   );
 }
 
-function InfoBlock({
-  icon,
-  title,
-  description,
-}: {
-  icon: string;
-  title: string;
-  description: string;
-}) {
+function InfoBlock({ icon, title, description }: { icon: string; title: string; description: string }) {
   return (
-    <div className="p-4 rounded-lg bg-[var(--color-surface)]">
-      <div className="text-2xl mb-2">{icon}</div>
-      <h3 className="font-semibold mb-1">{title}</h3>
-      <p className="text-xs text-[var(--color-muted-foreground)] leading-relaxed">
-        {description}
-      </p>
-    </div>
+    <Card className="bg-[var(--color-muted)]/30 border-dashed">
+      <CardContent className="p-4">
+        <div className="mb-2 text-2xl">{icon}</div>
+        <h3 className="mb-1 font-bold">{title}</h3>
+        <p className="text-xs leading-relaxed text-[var(--color-muted-foreground)]">{description}</p>
+      </CardContent>
+    </Card>
   );
 }

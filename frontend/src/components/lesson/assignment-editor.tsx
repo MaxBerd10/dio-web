@@ -16,7 +16,6 @@ import {
 import {
   assignmentsApi,
   type Assignment,
-  type SubmissionDetail,
 } from '@/lib/api/assignments';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import {
   Star,
@@ -30,6 +30,21 @@ export function GradingForm({
   isIELTS,
   onSuccess,
 }: GradingFormProps) {
+  return (
+    <GradingFormFields
+      key={submission.id}
+      submission={submission}
+      isIELTS={isIELTS}
+      onSuccess={onSuccess}
+    />
+  );
+}
+
+function GradingFormFields({
+  submission,
+  isIELTS,
+  onSuccess,
+}: GradingFormProps) {
   const queryClient = useQueryClient();
   const [score, setScore] = useState<string>(
     submission.score !== null ? String(submission.score) : '',
@@ -39,14 +54,6 @@ export function GradingForm({
   const [improvements, setImprovements] = useState(
     submission.improvements || '',
   );
-
-  // Submission o'zgarsa form qiymatlarini yangilash (claim qilingach)
-  useEffect(() => {
-    setScore(submission.score !== null ? String(submission.score) : '');
-    setFeedback(submission.feedback || '');
-    setStrengths(submission.strengths || '');
-    setImprovements(submission.improvements || '');
-  }, [submission.id]);
 
   const gradeMutation = useMutation({
     mutationFn: (payload: GradePayload) =>

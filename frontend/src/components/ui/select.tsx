@@ -45,12 +45,13 @@ export function Select({
         id={selectId}
         ref={ref}
         className={cn(
-          'flex h-11 w-full rounded-md border bg-[var(--color-surface-elevated)] px-3 py-2 text-sm appearance-none',
+          'flex h-12 w-full rounded-xl border-2 bg-[var(--color-input)] px-4 py-2 text-base appearance-none',
           'bg-[image:var(--chevron-icon)] bg-no-repeat bg-[right_0.75rem_center] bg-[length:1rem] pr-9',
-          'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-ring)] focus-visible:ring-offset-1 focus-visible:ring-offset-[var(--color-background)]',
+          'transition-all duration-200',
+          'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-ring)] focus-visible:border-transparent',
           'disabled:cursor-not-allowed disabled:opacity-50',
           hasError
-            ? 'border-[var(--color-danger)]'
+            ? 'border-[var(--color-danger)] focus-visible:ring-[var(--color-danger)]'
             : 'border-[var(--color-border)]',
           className,
         )}
