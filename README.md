@@ -93,7 +93,23 @@ dio-web/
 
 ## 🚀 Local Setup
 
-### Backend
+### Docker (db + redis + backend)
+
+```bash
+docker compose up -d
+docker compose exec backend python manage.py migrate
+docker compose exec backend python manage.py seed_achievements  # optional
+```
+
+Frontend alohida terminalda:
+
+```bash
+cd frontend && npm install && npm run dev
+```
+
+> `frontend/.env.local`: `NEXT_PUBLIC_API_URL=http://localhost:8000/api`
+
+### Backend (host)
 
 ```bash
 cd backend

@@ -1,5 +1,5 @@
 const CACHE = 'dio-v1';
-const PRECACHE = ['/offline', '/icons/icon.svg', '/manifest.webmanifest'];
+const PRECACHE = ['/offline', '/icons/icon.svg', '/icons/icon-192.png', '/icons/icon-512.png', '/manifest.webmanifest'];
 
 self.addEventListener('install', (event) => {
   event.waitUntil(

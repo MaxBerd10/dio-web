@@ -10,8 +10,6 @@ import {
   Sparkles,
   BookOpen,
   Brain,
-  ChevronRight,
-  Trophy,
   Target,
 } from 'lucide-react';
 
@@ -20,6 +18,7 @@ import { useDashboard } from '@/lib/hooks/use-dashboard';
 import { useReviewQueue } from '@/lib/hooks/use-vocabulary';
 import { Card, CardContent } from '@/components/ui/card';
 import { LeaderboardPreview } from '@/components/dashboard/leaderboard-preview';
+import { AchievementsPreview } from '@/components/dashboard/achievements-preview';
 import { cn } from '@/lib/utils';
 
 export default function DashboardPage() {
@@ -194,42 +193,7 @@ export default function DashboardPage() {
       {/* Leaderboard + Achievements */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
         <LeaderboardPreview />
-
-        {/* Achievements mini */}
-        <Card>
-          <CardContent className="p-5">
-            <div className="flex items-center justify-between mb-4">
-              <h3 className="font-semibold flex items-center gap-2">
-                <Trophy className="h-4 w-4 text-[var(--color-accent)]" />
-                Yutuqlar
-              </h3>
-              <Link
-                href="/achievements"
-                className="text-xs text-[var(--color-primary)] hover:underline flex items-center gap-0.5"
-              >
-                Hammasi <ChevronRight className="h-3 w-3" />
-              </Link>
-            </div>
-            <div className="grid grid-cols-4 gap-2">
-              {['🔥', '📖', '✅', '⚡', '🏅', '📚', '💯', '👑'].map((emoji, i) => (
-                <div
-                  key={i}
-                  className={cn(
-                    'h-12 w-12 mx-auto rounded-xl flex items-center justify-center text-xl',
-                    i < 2
-                      ? 'bg-[var(--color-accent)]/15'
-                      : 'bg-[var(--color-muted)] grayscale opacity-40',
-                  )}
-                >
-                  {emoji}
-                </div>
-              ))}
-            </div>
-            <p className="text-xs text-[var(--color-muted-foreground)] text-center mt-3">
-              2 / 12 yutuq olindi
-            </p>
-          </CardContent>
-        </Card>
+        <AchievementsPreview />
       </div>
     </div>
   );

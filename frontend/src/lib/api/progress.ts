@@ -51,6 +51,20 @@ export interface Leaderboard {
   entries: LeaderboardEntry[];
 }
 
+export interface Achievement {
+  id: number;
+  code: string;
+  title: string;
+  description: string;
+  category: string;
+  category_display: string;
+  icon: string;
+  image: string | null;
+  target_value: number;
+  xp_reward: number;
+  is_earned: boolean;
+}
+
 export const progressApi = {
   getDashboard: async (): Promise<DashboardSummary> => {
     const { data } = await api.get<DashboardSummary>('/progress/dashboard/');
@@ -72,6 +86,14 @@ export const progressApi = {
       params: { period },
     });
     return data;
+  },
+
+  getAchievements: async (): Promise<Achievement[]> => {
+    const { data } = await api.get<Achievement[] | { results: Achievement[] }>(
+      '/progress/achievements/',
+    );
+    if (Array.isArray(data)) return data;
+    return data.results ?? [];
   },
 
   startLesson: async (lessonId: number) => {

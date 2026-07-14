@@ -43,6 +43,17 @@ export function useLeaderboard(period: 'all' | 'weekly' = 'all') {
   });
 }
 
+export function useAchievements() {
+  const { user } = useAuthStore();
+  const isStudent = user?.role === 'student';
+
+  return useQuery({
+    queryKey: ['achievements'],
+    queryFn: progressApi.getAchievements,
+    enabled: isStudent,
+  });
+}
+
 export function useTracks() {
   return useQuery({
     queryKey: ['tracks'],

@@ -93,6 +93,9 @@ class LessonProgressUpdateView(APIView):
             from .certificates import check_and_issue_certificate
             check_and_issue_certificate(request.user, lesson.module.course)
 
+            from .achievements import check_and_award_achievements
+            check_and_award_achievements(request.user)
+
         return Response({
             'progress': LessonProgressSerializer(progress).data,
             'xp_earned': xp_earned,

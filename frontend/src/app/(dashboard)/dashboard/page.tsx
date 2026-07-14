@@ -13,8 +13,6 @@ import {
   Brain,
   Gamepad2,
   Target,
-  Trophy,
-  ChevronRight,
   Zap,
 } from 'lucide-react';
 
@@ -23,6 +21,7 @@ import { useDashboard } from '@/lib/hooks/use-dashboard';
 import { useReviewQueue } from '@/lib/hooks/use-vocabulary';
 import { Card, CardContent } from '@/components/ui/card';
 import { LeaderboardPreview } from '@/components/dashboard/leaderboard-preview';
+import { AchievementsPreview } from '@/components/dashboard/achievements-preview';
 import { cn } from '@/lib/utils';
 
 export default function DashboardPage() {
@@ -181,43 +180,7 @@ export default function DashboardPage() {
       {/* Bottom grid */}
       <section className="grid grid-cols-1 gap-4 lg:grid-cols-2">
         <LeaderboardPreview />
-
-        <Card className="overflow-hidden">
-          <CardContent className="p-4 lg:p-5">
-            <div className="mb-4 flex items-center justify-between">
-              <h3 className="flex items-center gap-2 font-bold">
-                <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-[var(--color-accent-soft)]">
-                  <Trophy className="h-4 w-4 text-[var(--color-accent)]" />
-                </span>
-                Yutuqlar
-              </h3>
-              <Link
-                href="/achievements"
-                className="flex items-center gap-0.5 text-xs font-semibold text-[var(--color-primary)]"
-              >
-                Hammasi <ChevronRight className="h-3 w-3" />
-              </Link>
-            </div>
-            <div className="grid grid-cols-4 gap-2">
-              {['🔥', '📖', '✅', '⚡', '🏅', '📚', '💯', '👑'].map((emoji, i) => (
-                <div
-                  key={i}
-                  className={cn(
-                    'mx-auto flex h-12 w-12 items-center justify-center rounded-2xl text-xl transition-transform',
-                    i < 2
-                      ? 'bg-gradient-to-br from-[var(--color-accent-soft)] to-[var(--color-primary-soft)] scale-105'
-                      : 'bg-[var(--color-muted)] opacity-35 grayscale',
-                  )}
-                >
-                  {emoji}
-                </div>
-              ))}
-            </div>
-            <p className="mt-4 text-center text-xs text-[var(--color-muted-foreground)]">
-              <span className="font-bold text-[var(--color-foreground)]">2</span> / 12 yutuq olindi
-            </p>
-          </CardContent>
-        </Card>
+        <AchievementsPreview />
       </section>
     </div>
   );

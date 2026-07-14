@@ -192,6 +192,9 @@ class ReviewSubmitView(APIView):
             xp_profile, _ = UserXP.objects.get_or_create(student=request.user)
             xp_profile.add_xp(xp_amount)
 
+        from progress.achievements import check_and_award_achievements
+        check_and_award_achievements(request.user)
+
         return Response({
             'progress': WordProgressSerializer(progress).data,
             'next_review_at': progress.next_review_at,
@@ -317,6 +320,9 @@ class WordMatchResultView(APIView):
             streak, _ = Streak.objects.get_or_create(student=request.user)
             streak.record_activity()
 
+        from progress.achievements import check_and_award_achievements
+        check_and_award_achievements(request.user)
+
         return Response({
             'xp_earned': xp_earned,
             'correct_count': correct,
@@ -387,6 +393,9 @@ class HangmanResultView(APIView):
             xp_profile.add_xp(xp_earned)
             streak, _ = Streak.objects.get_or_create(student=request.user)
             streak.record_activity()
+
+        from progress.achievements import check_and_award_achievements
+        check_and_award_achievements(request.user)
 
         return Response({'xp_earned': xp_earned, 'won': won})
 
@@ -469,5 +478,8 @@ class ScrambleResultView(APIView):
             xp_profile.add_xp(xp_earned)
             streak, _ = Streak.objects.get_or_create(student=request.user)
             streak.record_activity()
+
+        from progress.achievements import check_and_award_achievements
+        check_and_award_achievements(request.user)
 
         return Response({'xp_earned': xp_earned, 'won': won})

@@ -293,6 +293,9 @@ class AttemptSubmitView(APIView):
 
         attempt.save()
 
+        from progress.achievements import check_and_award_achievements
+        check_and_award_achievements(request.user)
+
         # Natija ko'rsatish — javoblari bilan
         from .serializers import QuestionWithAnswerSerializer
         questions = attempt.quiz.questions.prefetch_related('choices').order_by('order')
