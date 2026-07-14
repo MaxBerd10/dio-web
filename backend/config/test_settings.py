@@ -1,5 +1,14 @@
 """Test uchun yengil sozlamalar — SQLite, tez parol hasher, sync Celery."""
 
+import os
+
+# CI va lokal testda .env bo'lmasa ham settings import qilinsin
+os.environ.setdefault('SECRET_KEY', 'test-secret-key-for-pytest')
+os.environ.setdefault('TEACHER_INVITE_CODE', 'teacher-invite-test')
+os.environ.setdefault('DB_NAME', 'test')
+os.environ.setdefault('DB_USER', 'test')
+os.environ.setdefault('DB_PASSWORD', 'test')
+
 from decouple import config
 
 from .settings import *  # noqa: F403, F401
